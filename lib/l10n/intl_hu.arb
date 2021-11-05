@@ -1,0 +1,14 @@
+{
+    "appTitle": "ZöldŐr",
+    "homePage": "Flutter demó otthon oldal",
+    "home": "Home",
+    "account": "Account",
+    "cards": "Kártyák",
+    "categories": "Kategoriák",
+    "latestTransactions": "Legutobbi tranzakciók",
+    "details": "Részletek",
+    "thisMonth": "Ebben a hónapban",
+    "receipts": "Receptek",
+    "addNew": "Új hozzáadása"
+
+}

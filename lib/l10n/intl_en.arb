@@ -1,0 +1,13 @@
+{
+    "appTitle": "GreenGuardian",
+    "homePage": "Flutter Demo Home Page",
+    "home": "Home",
+    "account": "Account",
+    "cards": "Cards",
+    "categories": "Categories",
+    "latestTransactions": "Latest transactions",
+    "details": "Details",
+    "thisMonth": "This month",
+    "receipts": "Receipts",
+    "addNew": "Add new"
+}
