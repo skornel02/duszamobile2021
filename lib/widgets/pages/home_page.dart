@@ -2,6 +2,7 @@
 import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../drawer.dart';
 
@@ -22,22 +23,28 @@ class HomePage extends StatelessWidget {
               child: Text("PÉNZ \$"),
             ),
             Text(S.of(context).latestTransactions),
-            ListView(
-              children: [
-                Card(
-                  child: Text("izé"),
-                ),
-              ],
+            Container(
+              height: 200,
+              child: ListView(
+                children: [
+                  Card(
+                    child: Text("izé"),
+                  ),
+                ],
+              ),
             ),
             Text("Details"),
 
             Text(S.of(context).latestTransactions),
-            ListView(
-              children: [
-                Card(
-                  child: Text("izé"),
-                ),
-              ],
+            Container(
+              height: 200,
+              child: ListView(
+                children: [
+                  Card(
+                    child: Text("izé"),
+                  ),
+                ],
+              ),
             ),
 
 
@@ -55,6 +62,14 @@ class HomePage extends StatelessWidget {
 
           ],
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: [
+          BottomNavigationBarItem(icon: const FaIcon(FontAwesomeIcons.home)),
+          BottomNavigationBarItem(icon: const FaIcon(FontAwesomeIcons.home)),
+          BottomNavigationBarItem(icon: const FaIcon(FontAwesomeIcons.home)),
+          BottomNavigationBarItem(icon: const FaIcon(FontAwesomeIcons.home)),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){},
