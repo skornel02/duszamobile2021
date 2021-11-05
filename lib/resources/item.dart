@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 class Item {
   String id;
   String title;
+  String category;
   DateTime creation;
   String balanceId;
   double amount;
@@ -13,6 +14,7 @@ class Item {
   Item({
     required this.title,
     required this.creation,
+    required this.category,
     required this.amount,
     this.monthly = false,
     required Balance balance,

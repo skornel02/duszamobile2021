@@ -7,11 +7,13 @@ class Account {
   String id;
   List<Balance> balances;
   List<Item> items;
+  Map<String, List<String>> categories;
 
   Account()
       : id = (const Uuid()).v4(),
         balances = [],
-        items = [];
+        items = [],
+        categories = {};
 
   List<Item> _getItemsInDateRange(DateTime start, DateTime end,
       {Balance? balance}) {

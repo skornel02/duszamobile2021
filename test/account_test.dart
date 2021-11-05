@@ -11,18 +11,21 @@ void main() {
       Balance balance = Balance(BalanceType.debit, "Test balance");
       Item item1 = Item(
         title: "Item1",
+        category: "TestCategory",
         creation: Jiffy().subtract(days: 3).dateTime,
         amount: 150,
         balance: balance,
       );
       Item item2 = Item(
         title: "Item2",
+        category: "TestCategory",
         creation: Jiffy().subtract(days: 2).dateTime,
         amount: 150,
         balance: balance,
       );
       Item item3 = Item(
           title: "Item3",
+          category: "TestCategory",
           creation: Jiffy().subtract(days: 1).dateTime,
           amount: 150,
           balance: balance,
@@ -43,6 +46,7 @@ void main() {
       Item item1 = Item(
         // CORRECT
         title: "Item1",
+        category: "TestCategory",
         creation: Jiffy([2021, 02, 01, 12, 3, 5]).dateTime,
         amount: -150,
         balance: balance,
@@ -50,6 +54,7 @@ void main() {
       Item item2 = Item(
         // CORRECT
         title: "Item2",
+        category: "TestCategory",
         creation: Jiffy([2021, 02, 02]).dateTime,
         amount: -150,
         balance: balance,
@@ -57,6 +62,7 @@ void main() {
       Item item3 = Item(
         // CORRECT
         title: "Item3",
+        category: "TestCategory",
         creation: Jiffy([2021, 02, 20]).dateTime,
         amount: -150,
         balance: balance,
@@ -65,6 +71,7 @@ void main() {
       Item item4 = Item(
         // CORRECT
         title: "Item4",
+        category: "TestCategory",
         creation: Jiffy([2021, 01, 15]).dateTime,
         amount: -150,
         balance: balance,
@@ -73,6 +80,7 @@ void main() {
       Item item5 = Item(
         // INCORRECT
         title: "Item5",
+        category: "TestCategory",
         creation: Jiffy([2021, 01, 20]).dateTime,
         amount: -150,
         balance: balance,
@@ -82,6 +90,7 @@ void main() {
       Item item6 = Item(
         // INCORRECT
         title: "Item6",
+        category: "TestCategory",
         creation: Jiffy([2021, 01, 15]).dateTime,
         amount: -150,
         balance: balance,
@@ -98,6 +107,7 @@ void main() {
       Item item1 = Item(
         // CORRECT
         title: "Item1",
+        category: "TestCategory",
         creation: Jiffy([2021, 02, 01, 12, 3, 5]).dateTime,
         amount: 150,
         balance: balance,
@@ -105,6 +115,7 @@ void main() {
       Item item2 = Item(
         // CORRECT
         title: "Item2",
+        category: "TestCategory",
         creation: Jiffy([2021, 02, 02]).dateTime,
         amount: 150,
         balance: balance,
@@ -112,6 +123,7 @@ void main() {
       Item item3 = Item(
         // CORRECT
         title: "Item3",
+        category: "TestCategory",
         creation: Jiffy([2021, 02, 20]).dateTime,
         amount: 150,
         balance: balance,
@@ -120,6 +132,7 @@ void main() {
       Item item4 = Item(
         // CORRECT
         title: "Item4",
+        category: "TestCategory",
         creation: Jiffy([2021, 01, 15]).dateTime,
         amount: 150,
         balance: balance,
@@ -128,6 +141,7 @@ void main() {
       Item item5 = Item(
         // INCORRECT
         title: "Item5",
+        category: "TestCategory",
         creation: Jiffy([2021, 01, 20]).dateTime,
         amount: 150,
         balance: balance,
@@ -137,6 +151,7 @@ void main() {
       Item item6 = Item(
         // INCORRECT
         title: "Item6",
+        category: "TestCategory",
         creation: Jiffy([2021, 01, 15]).dateTime,
         amount: 150,
         balance: balance,
