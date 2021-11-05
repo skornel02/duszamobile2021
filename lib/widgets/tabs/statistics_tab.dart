@@ -2,49 +2,46 @@
 import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../../drawer.dart';
-
-class HomePage extends StatelessWidget {
+class StatisticsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(S.of(context).appTitle),
+        centerTitle: true,
+        title: Text(S.of(context).receipts),
       ),
-      drawer: drawer(context),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                Card(child: Text("Számla1"),),
+              ],
+            ),
             Card(
               child: Text("PÉNZ \$"),
             ),
             Text(S.of(context).latestTransactions),
-            Container(
-              height: 200,
-              child: ListView(
-                children: [
-                  Card(
-                    child: Text("izé"),
-                  ),
-                ],
-              ),
+            ListView(
+              children: [
+                Card(
+                  child: Text("izé"),
+                ),
+              ],
             ),
             Text("Details"),
 
             Text(S.of(context).latestTransactions),
-            Container(
-              height: 200,
-              child: ListView(
-                children: [
-                  Card(
-                    child: Text("izé"),
-                  ),
-                ],
-              ),
+            ListView(
+              children: [
+                Card(
+                  child: Text("izé"),
+                ),
+              ],
             ),
 
 
@@ -62,14 +59,6 @@ class HomePage extends StatelessWidget {
 
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: [
-          BottomNavigationBarItem(icon: const FaIcon(FontAwesomeIcons.home)),
-          BottomNavigationBarItem(icon: const FaIcon(FontAwesomeIcons.home)),
-          BottomNavigationBarItem(icon: const FaIcon(FontAwesomeIcons.home)),
-          BottomNavigationBarItem(icon: const FaIcon(FontAwesomeIcons.home)),
-        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){},

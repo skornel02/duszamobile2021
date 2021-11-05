@@ -1,4 +1,4 @@
-import 'package:duszamobile2021/widgets/pages/home_page.dart';
+import 'package:duszamobile2021/widgets/pages/tab_hoster_page.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class AppModule extends Module {
@@ -7,6 +7,6 @@ class AppModule extends Module {
 
   @override
   List<ModularRoute> get routes => [
-    ChildRoute('/', child: (context, args) => HomePage()),
+    ChildRoute('/', child: (context, args) => TabHosterPage()),
   ];
 }

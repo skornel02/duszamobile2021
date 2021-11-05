@@ -1,5 +1,5 @@
-import 'package:duszamobile2021/enums/money_type.dart';
 import 'package:duszamobile2021/generated/l10n.dart';
+import 'package:duszamobile2021/resources/balance.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -9,10 +9,9 @@ class TransactionListItem extends StatelessWidget {
   DateTime date;
   String account;
   double amount;
-  MoneyType moneyType;
+  BalanceType balanceType;
 
-  TransactionListItem(this.firm, this.date, this.account, this.amount, this.moneyType);
-
+  TransactionListItem(this.firm, this.date, this.account, this.amount, this.balanceType);
 
   @override
   Widget build(BuildContext context) {
@@ -28,8 +27,9 @@ class TransactionListItem extends StatelessWidget {
           Row(
             children: [
               Text("$amount HUF"),
-              const FaIcon(FontAwesomeIcons.home)
-
+              if(balanceType == BalanceType.cash) const FaIcon(FontAwesomeIcons.moneyBill)
+              else if(balanceType == BalanceType.credit) const FaIcon(FontAwesomeIcons.creditCard)
+              else const FaIcon(FontAwesomeIcons.creditCard)
             ],
           ),
         ],
