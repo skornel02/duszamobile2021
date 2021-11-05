@@ -1,4 +1,3 @@
-import 'package:duszamobile2021/enums/money_type.dart';
 import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
