@@ -46,6 +46,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Az érték nem lehet üres"),
         "cantBeOver31":
             MessageLookupByLibrary.simpleMessage("A nap nem lehet több 31nél"),
+        "cantWithoutBalance": MessageLookupByLibrary.simpleMessage(
+            "Ez nem lehetséges számla nélkül!"),
         "cards": MessageLookupByLibrary.simpleMessage("Kártyák"),
         "cash": MessageLookupByLibrary.simpleMessage("Készpénz"),
         "categories": MessageLookupByLibrary.simpleMessage("Kategoriák"),

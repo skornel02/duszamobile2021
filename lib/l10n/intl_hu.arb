@@ -45,6 +45,7 @@
     "cantBeNegative": "Az értéknek pozitívnak kell lennie",
     "mustBeWhole": "Az értéknek egésznek kell lennie",
     "cantBeOver31": "A nap nem lehet több 31nél",
+    "cantWithoutBalance": "Ez nem lehetséges számla nélkül!",
     "balanceCreated": "Számla sikeresen létrehozva!",
     "spendingLimit": "Hitelkeret",
     "itemCreated": "Bejegyzés sikeresen létrehozva!",

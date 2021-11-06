@@ -45,6 +45,7 @@
     "cantBeNegative": "Value must be positive",
     "mustBeWhole": "Value must be a whole number",
     "cantBeOver31": "The day can't be bigger than 31",
+    "cantWithoutBalance": "You cannot do that without having a balance first!",
     "balanceCreated": "Balance created successfully!",
     "spendingLimit": "Spending limit",
     "itemCreated": "Item created successfully!",

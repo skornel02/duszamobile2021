@@ -510,6 +510,16 @@ class S {
     );
   }
 
+  /// `You cannot do that without having a balance first!`
+  String get cantWithoutBalance {
+    return Intl.message(
+      'You cannot do that without having a balance first!',
+      name: 'cantWithoutBalance',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Balance created successfully!`
   String get balanceCreated {
     return Intl.message(
