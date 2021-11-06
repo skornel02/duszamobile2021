@@ -42,10 +42,12 @@ class LocalAccountRepository extends AccountRepository {
   void saveAccount(Account account) {
     String serialized = jsonEncode(account.toMap());
     prefs.setString("account", serialized);
+    notifyListeners();
   }
 
   @override
   void removeAccount() {
     prefs.remove("account");
+    notifyListeners();
   }
 }

@@ -1,17 +1,45 @@
+import 'dart:math';
+
+import 'package:duszamobile2021/resources/account.dart';
+import 'package:duszamobile2021/resources/item.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesWidget extends StatelessWidget {
-  final Map<String, List<String>> categories;
+  final Account account;
 
-  const CategoriesWidget({Key? key, required this.categories})
-      : super(key: key);
+  const CategoriesWidget({Key? key, required this.account}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text("VALAMI STATISZTIKA JÖN IDE"),
-        DropdownButton(items: []),
+        account.items.isNotEmpty
+            ? SizedBox(
+                height: 240,
+                width: 360,
+                child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(18),
+                        ),
+                        color: Color(0xff232d37),
+                      ),
+                      child: PieChart(
+                        PieChartData(
+                          borderData: FlBorderData(
+                            show: false,
+                          ),
+                          sectionsSpace: 0,
+                          centerSpaceRadius: 40,
+                          sections: showingSections(),
+                        ),
+                      ),
+                    )),
+              )
+            : SizedBox(),
         Text("VALAMI STATISZTIKA JÖN IDE"),
         ListView.builder(
           shrinkWrap: true,
@@ -24,5 +52,29 @@ class CategoriesWidget extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  List<PieChartSectionData> showingSections() {
+    int totalItems = account.items.length;
+    Color a = Colors.blue;
+    Color b = Colors.green;
+    List<PieChartSectionData> data = [];
+    flattenCategories(account.categories).forEach((category) {
+      List<Item> items = account.items
+          .where((element) => element.category == category)
+          .toList();
+      if (items.isNotEmpty) {
+        data.add(PieChartSectionData(
+            value: items.length.toDouble(),
+            title: category,
+            radius: 50.0,
+            color: Color.lerp(a, b, items.length / totalItems.toDouble()),
+            titleStyle: TextStyle(
+              color: Colors.white,
+            )));
+      }
+    });
+
+    return data;
   }
 }

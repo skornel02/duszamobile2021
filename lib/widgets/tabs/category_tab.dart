@@ -135,7 +135,7 @@ class _CategoryTabState extends State<CategoryTab> {
         padding: const EdgeInsets.all(12),
         child: mode == CategoryMode.VIEW
             ? CategoriesWidget(
-                categories: account.categories,
+                account: account,
               )
             : EditCategoriesWidget(
                 categories: account.categories,
