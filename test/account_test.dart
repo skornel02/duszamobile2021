@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:duszamobile2021/resources/account.dart';
 import 'package:duszamobile2021/resources/balance.dart';
 import 'package:duszamobile2021/resources/item.dart';
@@ -240,6 +242,75 @@ void main() {
       acc.items.addAll([item1, item2, item3, item4, item5, item6]);
 
       assert(acc.getIncomeMonth(2021, 02) == 150 * 4);
+    });
+  });
+
+  group("Serialization test", () {
+    test("Complex serialization", () {
+      Account account = Account();
+      Balance balance = Balance(BalanceType.debit, "Test balance");
+      Balance balance2 = Balance.credit("Test credit balance", 21, 15000);
+      DateTime start = DateTime(2021, 2, 1);
+      DateTime end = Jiffy(start).add(months: 1).dateTime;
+      Item item1 = Item(
+        title: "e",
+        category: "TestCategory",
+        creation: Jiffy(start).add(days: 2).dateTime,
+        amount: 150,
+        balance: balance,
+        monthly: false,
+      );
+      Item item2 = Item(
+        title: "d",
+        category: "TestCategory",
+        creation: Jiffy(start).subtract(months: 1).add(days: 3).dateTime,
+        amount: 150,
+        balance: balance,
+        monthly: true,
+      );
+      Item item3 = Item(
+        title: "c",
+        category: "TestCategory",
+        creation: Jiffy(start).subtract(years: 1).add(days: 5).dateTime,
+        amount: 150,
+        balance: balance,
+        monthly: true,
+      );
+      Item item4 = Item(
+        title: "b",
+        category: "TestCategory",
+        creation: Jiffy(start).add(months: 1, days: 6).dateTime,
+        amount: 150,
+        balance: balance,
+        monthly: true,
+      );
+      Item item5 = Item(
+        title: "a",
+        category: "TestCategory",
+        creation: Jiffy(start).subtract(months: 2).add(days: 3).dateTime,
+        amount: 150,
+        balance: balance,
+        monthly: true,
+      );
+      item5.endDate = Jiffy(item5.creation).add(months: 1).dateTime;
+
+      account.balances.addAll([balance, balance2]);
+      account.items.addAll([item1, item2, item3, item4, item5]);
+
+      var serialized = account.toMap();
+      String json = jsonEncode(serialized);
+      print(serialized);
+      print(json);
+      Account nextAccount = Account.fromMap(serialized);
+      assert(nextAccount.id == account.id);
+      assert(nextAccount.balances.length == account.balances.length);
+      assert(nextAccount.items.length == account.items.length);
+
+      var serialized2 = nextAccount.toMap();
+      String json2 = jsonEncode(serialized2);
+      print(serialized2);
+      print(json2);
+      assert(json == json2);
     });
   });
 }

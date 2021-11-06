@@ -10,10 +10,33 @@ class TabHosterPage extends StatefulWidget {
 }
 
 class _TabHosterPageState extends State<TabHosterPage> {
-  Widget body = Container();
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    int actualIndex = 0;
+    String path = Modular.to.path;
+    switch (path) {
+      case "/balances":
+        actualIndex = 1;
+        break;
+      case "/categories":
+        actualIndex = 2;
+        break;
+      case "/statistics":
+        actualIndex = 3;
+        break;
+      case "/home":
+      default:
+        actualIndex = 0;
+        break;
+    }
+    if (selectedIndex != actualIndex) {
+      setState(() {
+        selectedIndex = actualIndex;
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -21,10 +44,13 @@ class _TabHosterPageState extends State<TabHosterPage> {
       ),
       body: RouterOutlet(),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 0,
+        currentIndex: selectedIndex,
         unselectedItemColor: Colors.black,
         selectedItemColor: Colors.red,
         onTap: (index) {
+          setState(() {
+            selectedIndex = index;
+          });
           switch (index) {
             case 0:
               Modular.to.navigate("/home");
@@ -58,7 +84,7 @@ class _TabHosterPageState extends State<TabHosterPage> {
         onPressed: () {},
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
