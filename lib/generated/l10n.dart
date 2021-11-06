@@ -120,6 +120,16 @@ class S {
     );
   }
 
+  /// `Balance`
+  String get balance {
+    return Intl.message(
+      'Balance',
+      name: 'balance',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Statistics`
   String get statistics {
     return Intl.message(
@@ -400,6 +410,16 @@ class S {
     );
   }
 
+  /// `Easy`
+  String get easy {
+    return Intl.message(
+      'Easy',
+      name: 'easy',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Cash`
   String get cash {
     return Intl.message(
@@ -505,6 +525,96 @@ class S {
     return Intl.message(
       'Spending limit',
       name: 'spendingLimit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Item created successfully!`
+  String get itemCreated {
+    return Intl.message(
+      'Item created successfully!',
+      name: 'itemCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get amount {
+    return Intl.message(
+      'Amount',
+      name: 'amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Income`
+  String get income {
+    return Intl.message(
+      'Income',
+      name: 'income',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Outcome`
+  String get outcome {
+    return Intl.message(
+      'Outcome',
+      name: 'outcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `date category`
+  String get dateCategory {
+    return Intl.message(
+      'date category',
+      name: 'dateCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Specify amount`
+  String get specifyAmount {
+    return Intl.message(
+      'Specify amount',
+      name: 'specifyAmount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add name here`
+  String get addNameHere {
+    return Intl.message(
+      'Add name here',
+      name: 'addNameHere',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose category`
+  String get chooseCategory {
+    return Intl.message(
+      'Choose category',
+      name: 'chooseCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose date`
+  String get chooseDate {
+    return Intl.message(
+      'Choose date',
+      name: 'chooseDate',
       desc: '',
       args: [],
     );

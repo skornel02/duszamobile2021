@@ -6,6 +6,7 @@
     "cards": "Kártyák",
     "categories": "Kategoriák",
     "balances": "Számlák",
+    "balance": "Számla",
     "statistics": "Statisztikák",
     "latestTransactions": "Legutobbi tranzakciók",
     "details": "Részletek",
@@ -34,6 +35,7 @@
     "removeSuccessful": "Sikeres eltávolítás!",
     "addNewBalance": "Új számla!",
     "advanced": "Részletes",
+    "easy": "Egyszerű",
     "cash": "Készpénz",
     "debit": "Bankszámla",
     "credit": "Hitelszámla",
@@ -44,6 +46,14 @@
     "mustBeWhole": "Az értéknek egésznek kell lennie",
     "cantBeOver31": "A nap nem lehet több 31nél",
     "balanceCreated": "Számla sikeresen létrehozva!",
-    "spendingLimit": "Hitelkeret"
-
+    "spendingLimit": "Hitelkeret",
+    "itemCreated": "Bejegyzés sikeresen létrehozva!",
+    "amount": "Összeg",
+    "income": "Bevétel",
+    "outcome": "Kivétel",
+    "dateCategory": "dátum ketegória",
+    "specifyAmount": "Összeg meghatározása",
+    "addNameHere": "Név megadása",
+    "chooseCategory": "Kategória kiválasztása",
+    "chooseDate": "Dátum kiválasztása"
 }

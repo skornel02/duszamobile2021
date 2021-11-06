@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "addNameHere": MessageLookupByLibrary.simpleMessage("Név megadása"),
         "addNew": MessageLookupByLibrary.simpleMessage("Új hozzáadása"),
         "addNewBalance": MessageLookupByLibrary.simpleMessage("Új számla!"),
         "addNewCategory":
@@ -29,9 +30,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "addNewSubCategory":
             MessageLookupByLibrary.simpleMessage("Új alkategória hozzáadása"),
         "advanced": MessageLookupByLibrary.simpleMessage("Részletes"),
+        "amount": MessageLookupByLibrary.simpleMessage("Összeg"),
         "appTitle": MessageLookupByLibrary.simpleMessage("ZöldŐr"),
         "areYouSure":
             MessageLookupByLibrary.simpleMessage("Biztos a döntésében?"),
+        "balance": MessageLookupByLibrary.simpleMessage("Számla"),
         "balanceCreated": MessageLookupByLibrary.simpleMessage(
             "Számla sikeresen létrehozva!"),
         "balances": MessageLookupByLibrary.simpleMessage("Számlák"),
@@ -52,15 +55,24 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kategória már létezik!"),
         "categoryNameInUse":
             MessageLookupByLibrary.simpleMessage("Kategória használatban van!"),
+        "chooseCategory":
+            MessageLookupByLibrary.simpleMessage("Kategória kiválasztása"),
+        "chooseDate":
+            MessageLookupByLibrary.simpleMessage("Dátum kiválasztása"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Következő"),
         "creation": MessageLookupByLibrary.simpleMessage("Létrehozás"),
         "credit": MessageLookupByLibrary.simpleMessage("Hitelszámla"),
+        "dateCategory": MessageLookupByLibrary.simpleMessage("dátum ketegória"),
         "debit": MessageLookupByLibrary.simpleMessage("Bankszámla"),
         "details": MessageLookupByLibrary.simpleMessage("Részletek"),
+        "easy": MessageLookupByLibrary.simpleMessage("Egyszerű"),
         "finishButton": MessageLookupByLibrary.simpleMessage("Befejezés"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter demó otthon oldal"),
+        "income": MessageLookupByLibrary.simpleMessage("Bevétel"),
+        "itemCreated": MessageLookupByLibrary.simpleMessage(
+            "Bejegyzés sikeresen létrehozva!"),
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Legutobbi tranzakciók"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),
@@ -69,10 +81,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Név"),
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
+        "outcome": MessageLookupByLibrary.simpleMessage("Kivétel"),
         "receipts": MessageLookupByLibrary.simpleMessage("Receptek"),
         "remove": MessageLookupByLibrary.simpleMessage("Törlés"),
         "removeSuccessful":
             MessageLookupByLibrary.simpleMessage("Sikeres eltávolítás!"),
+        "specifyAmount":
+            MessageLookupByLibrary.simpleMessage("Összeg meghatározása"),
         "spendingLimit": MessageLookupByLibrary.simpleMessage("Hitelkeret"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statisztikák"),
         "subcategoryCreated": MessageLookupByLibrary.simpleMessage(

@@ -1,3 +1,5 @@
+import 'package:duszamobile2021/repositories/account_repository.dart';
+import 'package:duszamobile2021/resources/account.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -5,7 +7,11 @@ import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
 class HomeTab extends StatelessWidget {
-  const HomeTab({Key? key}) : super(key: key);
+  Account account;
+
+  HomeTab({Key? key})
+      : account = Modular.get<AccountRepository>().getAccount(),
+        super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,41 +21,16 @@ class HomeTab extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Card(
-              child: Text("PÉNZ \$"),
+              child: Text(
+                  "PÉNZ: ${account.getRunningBalance(DateTime.now())} HUF"),
             ),
-            Text(S.of(context).latestTransactions),
-            Container(
-              height: 200,
-              child: ListView(
-                children: [
-                  Card(
-                    child: Text("izé", style: TextStyle(fontFamily: "Nunito", fontWeight: FontWeight.w700),),
-                  ),
-                ],
-              ),
+            Card(
+              child: Text(
+                  "KIADÁS HÓNAP: ${account.getSpendingMonth(DateTime.now().year, DateTime.now().month)} HUF"),
             ),
-            Text("Details"),
-            Text(S.of(context).latestTransactions),
-            Container(
-              height: 200,
-              child: ListView(
-                children: [
-                  Card(
-                    child: Text("izé"),
-                  ),
-                ],
-              ),
-            ),
-            Text(S.of(context).thisMonth),
-            Row(
-              children: [
-                Card(
-                  child: Text("MÉG TÖBB PÉNZ"),
-                ),
-                Card(
-                  child: Text("MÉG TÖBB PÉNZ"),
-                )
-              ],
+            Card(
+              child: Text(
+                  "BEVÉTEL HÓNAP: ${account.getIncomeMonth(DateTime.now().year, DateTime.now().month)} HUF"),
             ),
           ],
         ),
@@ -58,7 +39,7 @@ class HomeTab extends StatelessWidget {
         child: FaIcon(FontAwesomeIcons.plus),
         onPressed: () {
           Modular.to.pushNamed("/wizard");
-        //  Modular.to.navigate("/wizard");
+          //  Modular.to.navigate("/wizard");
         },
       ),
     );
