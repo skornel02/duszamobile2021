@@ -92,4 +92,23 @@ class Account {
     ).where((element) => element.amount > 0).toList();
     return calculateTotalForItems(items, start, end);
   }
+
+  Account.fromMap(Map<String, dynamic> map)
+      : id = map['id'],
+        balances = (map['balances'] as List<Map<String, dynamic>>)
+            .map((map) => Balance.fromMap(map))
+            .toList(),
+        items = (map['items'] as List<Map<String, dynamic>>)
+            .map((map) => Item.fromMap(map))
+            .toList(),
+        categories = map['categories'];
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'balances': balances.map((e) => e.toMap()).toList(),
+      'items': items.map((e) => e.toMap()).toList(),
+      'categories': categories,
+    };
+  }
 }

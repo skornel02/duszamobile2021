@@ -16,10 +16,33 @@ class TabHosterPage extends StatefulWidget {
 
 class _TabHosterPageState extends State<TabHosterPage> {
 
-  int currentIndex = 0;
+  int selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    int actualIndex = 0;
+    String path = Modular.to.path;
+    switch (path) {
+      case "/balances":
+        actualIndex = 1;
+        break;
+      case "/categories":
+        actualIndex = 2;
+        break;
+      case "/statistics":
+        actualIndex = 3;
+        break;
+      case "/home":
+      default:
+        actualIndex = 0;
+        break;
+    }
+    if (selectedIndex != actualIndex) {
+      setState(() {
+        selectedIndex = actualIndex;
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -27,34 +50,25 @@ class _TabHosterPageState extends State<TabHosterPage> {
       ),
       body:  RouterOutlet(),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: currentIndex,
+        currentIndex: selectedIndex,
         unselectedItemColor: Colors.blueGrey,
         selectedItemColor: Colors.lightGreen,
         onTap: (index){
+          setState(() {
+            selectedIndex = index;
+          });
           switch(index){
             case 0:
               Modular.to.navigate("/home");
-              setState(() {
-                currentIndex = 0;
-              });
               break;
             case 1:
               Modular.to.navigate("/balances");
-              setState(() {
-                currentIndex = 1;
-              });
               break;
             case 2:
               Modular.to.navigate("/categories");
-              setState(() {
-                currentIndex = 2;
-              });
               break;
             case 3:
               Modular.to.navigate("/statistics");
-              setState(() {
-                currentIndex = 3;
-              });
               break;
           }
         },
