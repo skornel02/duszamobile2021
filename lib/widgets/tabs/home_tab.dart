@@ -23,7 +23,7 @@ class HomeTab extends StatelessWidget {
               child: ListView(
                 children: [
                   Card(
-                    child: Text("izé"),
+                    child: Text("izé", style: TextStyle(fontFamily: "Nunito", fontWeight: FontWeight.w700),),
                   ),
                 ],
               ),

@@ -1,5 +1,5 @@
 name: duszamobile2021
-description: An app to calculate your expanses!
+description: An app to calculate your expenses!
 
 publish_to: "none"
 
@@ -32,6 +32,17 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - assets/fonts/
+  fonts:
+    - family: Nunito
+      fonts:
+        - asset: assets/fonts/Nunito-Regular.ttf
+        - asset: assets/fonts/Nunito-Light.ttf
+          weight: 100
+        - asset: assets/fonts/Nunito-Bold.ttf
+          weight: 700
 
 flutter_intl:
   enabled: true
+

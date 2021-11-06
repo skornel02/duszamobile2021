@@ -13,15 +13,18 @@ class CategoryListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Row(
-        children: [
-          Text(category),
-          const Spacer(),
-          IconButton(
-            onPressed: onPressedDeleteButton,
-            icon: FaIcon(FontAwesomeIcons.trash),
-          )
-        ],
+      child: Padding(
+        padding: const EdgeInsets.only(left: 12.0),
+        child: Row(
+          children: [
+            Text(category),
+            const Spacer(),
+            IconButton(
+              onPressed: onPressedDeleteButton,
+              icon: FaIcon(FontAwesomeIcons.trash),
+            )
+          ],
+        ),
       ),
     );
   }
