@@ -90,6 +90,8 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                   itemCount: typeChipOptions.length,
                   itemBuilder: (context, index) {
                     return ChoiceChip(
+                      elevation: 3,
+                      backgroundColor: Colors.white,
                       label: Text(typeChipOptions[index]),
                       selected: typeChipSelectedIndex == index,
                       onSelected: (selected) {
