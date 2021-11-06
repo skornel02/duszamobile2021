@@ -1,14 +1,10 @@
 import 'package:duszamobile2021/generated/l10n.dart';
-import 'package:duszamobile2021/widgets/tabs/categories_tab.dart';
-import 'package:duszamobile2021/widgets/tabs/home_tab.dart';
-import 'package:duszamobile2021/widgets/tabs/receipts_tab.dart';
-import 'package:duszamobile2021/widgets/tabs/statistics_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TabHosterPage extends StatefulWidget {
-
   @override
   State<TabHosterPage> createState() => _TabHosterPageState();
 }
@@ -23,41 +19,43 @@ class _TabHosterPageState extends State<TabHosterPage> {
         centerTitle: true,
         title: Text(S.of(context).appTitle),
       ),
-      body: body,
+      body: RouterOutlet(),
       bottomNavigationBar: BottomNavigationBar(
-        onTap: (index){
-          switch(index){
+        currentIndex: 0,
+        unselectedItemColor: Colors.black,
+        selectedItemColor: Colors.red,
+        onTap: (index) {
+          switch (index) {
             case 0:
-              setState(() {
-                body = HomeTab();
-              });
+              Modular.to.navigate("/home");
               break;
             case 1:
-              setState(() {
-                body = ReceiptsTab();
-              });
+              Modular.to.navigate("/balances");
               break;
             case 2:
-              setState(() {
-                body = CategoriesTab();
-              });
+              Modular.to.navigate("/categories");
               break;
             case 3:
-              setState(() {
-                body = StatisticsTab();
-              });
+              Modular.to.navigate("/statistics");
               break;
           }
         },
         items: [
-          BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.home, color: Colors.lightGreen,), label: S.of(context).home),
-          BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.home), label: S.of(context).home),
-          BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.home), label: S.of(context).home),
-          BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.home), label: S.of(context).home),
+          BottomNavigationBarItem(
+              icon: FaIcon(
+                FontAwesomeIcons.home,
+              ),
+              label: S.of(context).home),
+          BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.home), label: S.of(context).home),
+          BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.home), label: S.of(context).home),
+          BottomNavigationBarItem(
+              icon: FaIcon(FontAwesomeIcons.home), label: S.of(context).home),
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: () {},
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

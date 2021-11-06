@@ -20,4 +20,30 @@ class Item {
     required Balance balance,
   })  : id = (const Uuid()).v4(),
         balanceId = balance.id;
+
+  Item.fromMap(Map<String, dynamic> map)
+      : id = map['id'],
+        title = map['title'],
+        category = map['category'],
+        creation = DateTime.fromMillisecondsSinceEpoch(map['creation']),
+        balanceId = map['balanceId'],
+        amount = map['amount'],
+        monthly = map['monthly'] {
+    if (map['endDate'] != null) {
+      endDate = DateTime.fromMillisecondsSinceEpoch(map['endDate']);
+    }
+  }
+
+  Map<String, dynamic> toMap() {
+    return {
+      'id': id,
+      'title': title,
+      'category': category,
+      'creation': creation.millisecondsSinceEpoch,
+      'balanceId': balanceId,
+      'amount': amount,
+      'monthly': monthly,
+      'endDate': endDate == null ? null : endDate!.millisecondsSinceEpoch,
+    };
+  }
 }
