@@ -1,7 +1,5 @@
+import 'package:duszamobile2021/app_module.dart';
 import 'package:duszamobile2021/generated/l10n.dart';
-import 'package:duszamobile2021/widgets/tabs/home_tab.dart';
-import 'package:duszamobile2021/widgets/tabs/balance_tab.dart';
-import 'package:duszamobile2021/widgets/tabs/statistics_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -14,9 +12,19 @@ class TabHosterPage extends StatefulWidget {
 
 class _TabHosterPageState extends State<TabHosterPage> {
   int selectedIndex = 0;
+  bool loaded = false;
+
+  loadModular() async {
+    await Modular.isModuleReady<AppModule>();
+    setState(() {
+      loaded = true;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
+    loadModular();
+
     int actualIndex = 0;
     String path = Modular.to.path;
     switch (path) {
@@ -30,8 +38,10 @@ class _TabHosterPageState extends State<TabHosterPage> {
         actualIndex = 3;
         break;
       case "/home":
-      default:
         actualIndex = 0;
+        break;
+      default:
+        Modular.to.navigate("/home");
         break;
     }
     if (selectedIndex != actualIndex) {
@@ -45,7 +55,7 @@ class _TabHosterPageState extends State<TabHosterPage> {
         centerTitle: true,
         title: Text(S.of(context).appTitle),
       ),
-      body: RouterOutlet(),
+      body: loaded ? RouterOutlet() : SizedBox(),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
         unselectedItemColor: Colors.blueGrey,

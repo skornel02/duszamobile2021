@@ -49,6 +49,16 @@ double calculateTotalForItems(
   return total;
 }
 
+List<String> flattenCategories(Map<String, List<String>> categories) {
+  List<String> flat = [];
+  categories.forEach((category, value) {
+    value.forEach((subCategory) {
+      flat.add('${category}/${subCategory}');
+    });
+  });
+  return flat;
+}
+
 class Account {
   String id;
   List<Balance> balances;
@@ -60,6 +70,8 @@ class Account {
         balances = [],
         items = [],
         categories = {};
+
+  Account.copy(Account acc) : this.fromMap(acc.toMap());
 
   double getRunningBalance(DateTime end, {Balance? balance}) {
     List<Item> items =
@@ -93,15 +105,29 @@ class Account {
     return calculateTotalForItems(items, start, end);
   }
 
+  Map<String, int> getCategoryUsage() {
+    Map<String, int> usage = {};
+    items.forEach((item) {
+      usage.putIfAbsent(item.category, () => 0);
+      usage[item.category] = usage[item.category]! + 1;
+    });
+    return usage;
+  }
+
   Account.fromMap(Map<String, dynamic> map)
       : id = map['id'],
-        balances = (map['balances'] as List<Map<String, dynamic>>)
+        balances = (map['balances'] as List<dynamic>)
             .map((map) => Balance.fromMap(map))
             .toList(),
-        items = (map['items'] as List<Map<String, dynamic>>)
+        items = (map['items'] as List<dynamic>)
             .map((map) => Item.fromMap(map))
             .toList(),
-        categories = map['categories'];
+        categories =
+            (map['categories'] as Map<dynamic, dynamic>).map((key, value) {
+          String nextKey = key;
+          List<String> nextVal = List.from(value as List<dynamic>);
+          return MapEntry(nextKey, nextVal);
+        });
 
   Map<String, dynamic> toMap() {
     return {
