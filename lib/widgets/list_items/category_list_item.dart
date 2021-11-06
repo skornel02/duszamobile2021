@@ -6,8 +6,9 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CategoryListItem extends StatelessWidget {
 
   String category;
+  VoidCallback onPressedDeleteButton;
 
-  CategoryListItem(this.category);
+  CategoryListItem({required this.category, required this.onPressedDeleteButton});
 
 
   @override
@@ -16,8 +17,8 @@ class CategoryListItem extends StatelessWidget {
       child: Row(
         children: [
           Text(category),
-          Spacer(),
-          FaIcon(FontAwesomeIcons.trash),
+          const Spacer(),
+          IconButton(onPressed: onPressedDeleteButton, icon: FaIcon(FontAwesomeIcons.trash),)
         ],
       ),
     );

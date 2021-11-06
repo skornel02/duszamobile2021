@@ -23,16 +23,24 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "addNew": MessageLookupByLibrary.simpleMessage("Add new"),
+        "addNewCategory":
+            MessageLookupByLibrary.simpleMessage("Add new category"),
+        "addNewSubCategory":
+            MessageLookupByLibrary.simpleMessage("Add new sub category"),
         "appTitle": MessageLookupByLibrary.simpleMessage("GreenGuardian"),
+        "balances": MessageLookupByLibrary.simpleMessage("Balances"),
         "cards": MessageLookupByLibrary.simpleMessage("Cards"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
+        "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter Demo Home Page"),
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Latest transactions"),
+        "new_title": MessageLookupByLibrary.simpleMessage("New"),
         "receipts": MessageLookupByLibrary.simpleMessage("Receipts"),
+        "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
         "thisMonth": MessageLookupByLibrary.simpleMessage("This month")
       };
 }

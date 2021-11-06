@@ -110,6 +110,26 @@ class S {
     );
   }
 
+  /// `Balances`
+  String get balances {
+    return Intl.message(
+      'Balances',
+      name: 'balances',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Statistics`
+  String get statistics {
+    return Intl.message(
+      'Statistics',
+      name: 'statistics',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Latest transactions`
   String get latestTransactions {
     return Intl.message(
@@ -155,6 +175,46 @@ class S {
     return Intl.message(
       'Add new',
       name: 'addNew',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New`
+  String get new_title {
+    return Intl.message(
+      'New',
+      name: 'new_title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Continue`
+  String get continueButton {
+    return Intl.message(
+      'Continue',
+      name: 'continueButton',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add new category`
+  String get addNewCategory {
+    return Intl.message(
+      'Add new category',
+      name: 'addNewCategory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add new sub category`
+  String get addNewSubCategory {
+    return Intl.message(
+      'Add new sub category',
+      name: 'addNewSubCategory',
       desc: '',
       args: [],
     );

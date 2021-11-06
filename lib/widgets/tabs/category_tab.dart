@@ -1,8 +1,9 @@
-
 import 'package:duszamobile2021/generated/l10n.dart';
+import 'package:duszamobile2021/widgets/list_items/add_category_list_item.dart';
+import 'package:duszamobile2021/widgets/list_items/category_list_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CategoryTab extends StatelessWidget {
 
@@ -10,31 +11,35 @@ class CategoryTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
 
-      body: Center(
+      body: Padding(
+        padding: const EdgeInsets.all(12),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+
           children: <Widget>[
-            Card(
-              child: Text("PÉNZ \$"),
-            ),
-            Text(S.of(context).latestTransactions),
-            ListView(
-              children: [
-                Card(
-                  child: Text("izé"),
-                ),
-              ],
+            AddCategoryListItem(text: S.of(context).addNewCategory, onAddButtonPressed: (){
+
+            }),
+            Text("CATEGORY NAME "),
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              itemCount: 2+1,
+              itemBuilder: (context, index){
+                if(index != 2){
+                  return CategoryListItem(category: "Wife", onPressedDeleteButton: (){
+
+                  },);
+                }else{
+                  return AddCategoryListItem(text: S.of(context).addNewSubCategory, onAddButtonPressed: (){
+
+                  },);
+                }
+              },
             ),
             Text("Details"),
 
             Text(S.of(context).latestTransactions),
-            ListView(
-              children: [
-                Card(
-                  child: Text("izé"),
-                ),
-              ],
-            ),
+
             Text(S.of(context).thisMonth),
             Row(
               children: [
@@ -52,8 +57,7 @@ class CategoryTab extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        child: const FaIcon(FontAwesomeIcons.edit),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

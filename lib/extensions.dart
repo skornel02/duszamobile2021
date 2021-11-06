@@ -3,5 +3,5 @@ extension StringHufinator on String {
 }
 
 extension DoubleHufinator on double {
-  String get huf => this.toString() + " HUF";
+  String get huf => toString() + " HUF";
 }

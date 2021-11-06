@@ -5,9 +5,15 @@
     "account": "Account",
     "cards": "Cards",
     "categories": "Categories",
+    "balances": "Balances",
+    "statistics": "Statistics",
     "latestTransactions": "Latest transactions",
     "details": "Details",
     "thisMonth": "This month",
     "receipts": "Receipts",
-    "addNew": "Add new"
+    "addNew": "Add new",
+    "new_title": "New",
+    "continueButton": "Continue",
+    "addNewCategory": "Add new category",
+    "addNewSubCategory": "Add new sub category"
 }

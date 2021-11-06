@@ -5,10 +5,17 @@
     "account": "Account",
     "cards": "Kártyák",
     "categories": "Kategoriák",
+    "balances": "Számlák",
+    "statistics": "Statisztikák",
     "latestTransactions": "Legutobbi tranzakciók",
     "details": "Részletek",
     "thisMonth": "Ebben a hónapban",
     "receipts": "Receptek",
-    "addNew": "Új hozzáadása"
+    "addNew": "Új hozzáadása",
+    "new_title": "Új",
+    "continueButton": "Következő",
+    "addNewCategory": "Új kategória hozzáadása",
+    "addNewSubCategory": "Új alkategória hozzáadása"
+
 
 }

@@ -23,16 +23,24 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "addNew": MessageLookupByLibrary.simpleMessage("Új hozzáadása"),
+        "addNewCategory":
+            MessageLookupByLibrary.simpleMessage("Új kategória hozzáadása"),
+        "addNewSubCategory":
+            MessageLookupByLibrary.simpleMessage("Új alkategória hozzáadása"),
         "appTitle": MessageLookupByLibrary.simpleMessage("ZöldŐr"),
+        "balances": MessageLookupByLibrary.simpleMessage("Számlák"),
         "cards": MessageLookupByLibrary.simpleMessage("Kártyák"),
         "categories": MessageLookupByLibrary.simpleMessage("Kategoriák"),
+        "continueButton": MessageLookupByLibrary.simpleMessage("Következő"),
         "details": MessageLookupByLibrary.simpleMessage("Részletek"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter demó otthon oldal"),
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Legutobbi tranzakciók"),
+        "new_title": MessageLookupByLibrary.simpleMessage("Új"),
         "receipts": MessageLookupByLibrary.simpleMessage("Receptek"),
+        "statistics": MessageLookupByLibrary.simpleMessage("Statisztikák"),
         "thisMonth": MessageLookupByLibrary.simpleMessage("Ebben a hónapban")
       };
 }

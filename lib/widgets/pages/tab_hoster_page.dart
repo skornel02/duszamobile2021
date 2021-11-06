@@ -5,6 +5,7 @@ import 'package:duszamobile2021/widgets/tabs/balance_tab.dart';
 import 'package:duszamobile2021/widgets/tabs/statistics_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TabHosterPage extends StatefulWidget {
@@ -14,7 +15,8 @@ class TabHosterPage extends StatefulWidget {
 }
 
 class _TabHosterPageState extends State<TabHosterPage> {
-  Widget body = Container();
+
+  int currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -23,42 +25,48 @@ class _TabHosterPageState extends State<TabHosterPage> {
         centerTitle: true,
         title: Text(S.of(context).appTitle),
       ),
-      body: body,
+      body:  RouterOutlet(),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: currentIndex,
+        unselectedItemColor: Colors.blueGrey,
+        selectedItemColor: Colors.lightGreen,
         onTap: (index){
           switch(index){
             case 0:
+              Modular.to.navigate("/home");
               setState(() {
-                body = HomeTab();
+                currentIndex = 0;
               });
               break;
             case 1:
+              Modular.to.navigate("/balances");
               setState(() {
-                body = BalanceTab();
+                currentIndex = 1;
               });
               break;
             case 2:
+              Modular.to.navigate("/categories");
               setState(() {
-                body = CategoryTab();
+                currentIndex = 2;
               });
               break;
             case 3:
+              Modular.to.navigate("/statistics");
               setState(() {
-                body = StatisticsTab();
+                currentIndex = 3;
               });
               break;
           }
         },
         items: [
-          BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.home, color: Colors.lightGreen,), label: S.of(context).home),
           BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.home), label: S.of(context).home),
-          BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.home), label: S.of(context).home),
-          BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.home), label: S.of(context).home),
+          BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.balanceScale), label: S.of(context).balances),
+          BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.shapes), label: S.of(context).categories),
+          BottomNavigationBarItem(icon: FaIcon(FontAwesomeIcons.chartBar), label: S.of(context).statistics),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: (){},
-        tooltip: 'Increment',
         child: const Icon(Icons.add),
       ),
     );
