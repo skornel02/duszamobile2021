@@ -32,5 +32,15 @@
     "turn": "Forduló",
     "removeSuccessful": "Sikeres eltávolítás!",
     "addNewBalance": "Új számla!",
-    "advanced": "Részletes"
+    "advanced": "Részletes",
+    "cash": "Készpénz",
+    "debit": "Bankszámla",
+    "credit": "Hitelszámla",
+    "limit": "Limit",
+    "billingDay": "Számlázási nap",
+    "cantBeNull": "Az érték nem lehet üres",
+    "cantBeNegative": "Az értéknek pozitívnak kell lennie",
+    "mustBeWhole": "Az értéknek egésznek kell lennie",
+    "cantBeOver31": "A nap nem lehet több 31nél",
+    "balanceCreated": "Számla sikeresen létrehozva!"
 }

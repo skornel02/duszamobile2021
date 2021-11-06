@@ -1,12 +1,14 @@
 import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:duszamobile2021/resources/balance.dart';
+import 'package:duszamobile2021/widgets/balances/balance_creator.dart';
 import 'package:flutter/material.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class BalancePicker extends StatelessWidget {
   final int? selectedIndex;
   final List<Balance> balances;
   final Function(int) selectIndex;
-  final Function handleCreate;
+  final Function(Balance) handleCreate;
 
   const BalancePicker({
     Key? key,
@@ -40,7 +42,17 @@ class BalancePicker extends StatelessWidget {
                 label: Text(S.of(context).addNewBalance),
                 selected: false,
                 onSelected: (selected) {
-                  handleCreate();
+                  Alert(
+                      context: context,
+                      title: S.of(context).creation,
+                      content: Column(
+                        children: <Widget>[
+                          BalanceCreatorWidget(
+                            createBalance: handleCreate,
+                          ),
+                        ],
+                      ),
+                      buttons: []).show();
                 },
               );
             }

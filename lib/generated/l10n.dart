@@ -389,6 +389,106 @@ class S {
       args: [],
     );
   }
+
+  /// `Cash`
+  String get cash {
+    return Intl.message(
+      'Cash',
+      name: 'cash',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Debit`
+  String get debit {
+    return Intl.message(
+      'Debit',
+      name: 'debit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Credit`
+  String get credit {
+    return Intl.message(
+      'Credit',
+      name: 'credit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Limit`
+  String get limit {
+    return Intl.message(
+      'Limit',
+      name: 'limit',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Billing day`
+  String get billingDay {
+    return Intl.message(
+      'Billing day',
+      name: 'billingDay',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Value can't be null`
+  String get cantBeNull {
+    return Intl.message(
+      'Value can\'t be null',
+      name: 'cantBeNull',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Value must be positive`
+  String get cantBeNegative {
+    return Intl.message(
+      'Value must be positive',
+      name: 'cantBeNegative',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Value must be a whole number`
+  String get mustBeWhole {
+    return Intl.message(
+      'Value must be a whole number',
+      name: 'mustBeWhole',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `The day can't be bigger than 31`
+  String get cantBeOver31 {
+    return Intl.message(
+      'The day can\'t be bigger than 31',
+      name: 'cantBeOver31',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Balance created successfully!`
+  String get balanceCreated {
+    return Intl.message(
+      'Balance created successfully!',
+      name: 'balanceCreated',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

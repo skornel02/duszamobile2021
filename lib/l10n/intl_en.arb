@@ -32,5 +32,15 @@
     "turn": "Turn",
     "removeSuccessful": "Removed successfully!",
     "addNewBalance": "Add new balance!",
-    "advanced": "Advanced"
+    "advanced": "Advanced",
+    "cash": "Cash",
+    "debit": "Debit",
+    "credit": "Credit",
+    "limit": "Limit",
+    "billingDay": "Billing day",
+    "cantBeNull": "Value can't be null",
+    "cantBeNegative": "Value must be positive",
+    "mustBeWhole": "Value must be a whole number",
+    "cantBeOver31": "The day can't be bigger than 31",
+    "balanceCreated": "Balance created successfully!"
 }

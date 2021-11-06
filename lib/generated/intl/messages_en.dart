@@ -33,9 +33,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "appTitle": MessageLookupByLibrary.simpleMessage("GreenGuardian"),
         "areYouSure":
             MessageLookupByLibrary.simpleMessage("Are you sure about that?"),
+        "balanceCreated": MessageLookupByLibrary.simpleMessage(
+            "Balance created successfully!"),
         "balances": MessageLookupByLibrary.simpleMessage("Balances"),
+        "billingDay": MessageLookupByLibrary.simpleMessage("Billing day"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "cantBeNegative":
+            MessageLookupByLibrary.simpleMessage("Value must be positive"),
+        "cantBeNull":
+            MessageLookupByLibrary.simpleMessage("Value can\'t be null"),
+        "cantBeOver31": MessageLookupByLibrary.simpleMessage(
+            "The day can\'t be bigger than 31"),
         "cards": MessageLookupByLibrary.simpleMessage("Cards"),
+        "cash": MessageLookupByLibrary.simpleMessage("Cash"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
         "categoryCreated": MessageLookupByLibrary.simpleMessage(
             "Category created successfully!"),
@@ -45,12 +55,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Category is in use!"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "creation": MessageLookupByLibrary.simpleMessage("Creation"),
+        "credit": MessageLookupByLibrary.simpleMessage("Credit"),
+        "debit": MessageLookupByLibrary.simpleMessage("Debit"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter Demo Home Page"),
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Latest transactions"),
+        "limit": MessageLookupByLibrary.simpleMessage("Limit"),
+        "mustBeWhole": MessageLookupByLibrary.simpleMessage(
+            "Value must be a whole number"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "new_title": MessageLookupByLibrary.simpleMessage("New"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),

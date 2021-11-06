@@ -32,9 +32,19 @@ class MessageLookup extends MessageLookupByLibrary {
         "appTitle": MessageLookupByLibrary.simpleMessage("ZöldŐr"),
         "areYouSure":
             MessageLookupByLibrary.simpleMessage("Biztos a döntésében?"),
+        "balanceCreated": MessageLookupByLibrary.simpleMessage(
+            "Számla sikeresen létrehozva!"),
         "balances": MessageLookupByLibrary.simpleMessage("Számlák"),
+        "billingDay": MessageLookupByLibrary.simpleMessage("Számlázási nap"),
         "cancel": MessageLookupByLibrary.simpleMessage("Mégsem"),
+        "cantBeNegative": MessageLookupByLibrary.simpleMessage(
+            "Az értéknek pozitívnak kell lennie"),
+        "cantBeNull":
+            MessageLookupByLibrary.simpleMessage("Az érték nem lehet üres"),
+        "cantBeOver31":
+            MessageLookupByLibrary.simpleMessage("A nap nem lehet több 31nél"),
         "cards": MessageLookupByLibrary.simpleMessage("Kártyák"),
+        "cash": MessageLookupByLibrary.simpleMessage("Készpénz"),
         "categories": MessageLookupByLibrary.simpleMessage("Kategoriák"),
         "categoryCreated": MessageLookupByLibrary.simpleMessage(
             "Kategória sikeresen létrehozva!"),
@@ -44,12 +54,17 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kategória használatban van!"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Következő"),
         "creation": MessageLookupByLibrary.simpleMessage("Létrehozás"),
+        "credit": MessageLookupByLibrary.simpleMessage("Hitelszámla"),
+        "debit": MessageLookupByLibrary.simpleMessage("Bankszámla"),
         "details": MessageLookupByLibrary.simpleMessage("Részletek"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter demó otthon oldal"),
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Legutobbi tranzakciók"),
+        "limit": MessageLookupByLibrary.simpleMessage("Limit"),
+        "mustBeWhole": MessageLookupByLibrary.simpleMessage(
+            "Az értéknek egésznek kell lennie"),
         "name": MessageLookupByLibrary.simpleMessage("Név"),
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
