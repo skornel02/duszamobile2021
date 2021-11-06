@@ -49,6 +49,16 @@ double calculateTotalForItems(
   return total;
 }
 
+List<String> flattenCategories(Map<String, List<String>> categories) {
+  List<String> flat = [];
+  categories.forEach((category, value) {
+    value.forEach((subCategory) {
+      flat.add('${category}/${subCategory}');
+    });
+  });
+  return flat;
+}
+
 class Account {
   String id;
   List<Balance> balances;
@@ -60,6 +70,8 @@ class Account {
         balances = [],
         items = [],
         categories = {};
+
+  Account.copy(Account acc) : this.fromMap(acc.toMap());
 
   double getRunningBalance(DateTime end, {Balance? balance}) {
     List<Item> items =
@@ -91,6 +103,15 @@ class Account {
       balance: balance,
     ).where((element) => element.amount > 0).toList();
     return calculateTotalForItems(items, start, end);
+  }
+
+  Map<String, int> getCategoryUsage() {
+    Map<String, int> usage = {};
+    items.forEach((item) {
+      usage.putIfAbsent(item.category, () => 0);
+      usage[item.category] = usage[item.category]! + 1;
+    });
+    return usage;
   }
 
   Account.fromMap(Map<String, dynamic> map)
