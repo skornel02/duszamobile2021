@@ -41,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
         "receipts": MessageLookupByLibrary.simpleMessage("Receptek"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statisztikák"),
-        "thisMonth": MessageLookupByLibrary.simpleMessage("Ebben a hónapban")
+        "thisMonth": MessageLookupByLibrary.simpleMessage("Ebben a hónapban"),
+        "turn": MessageLookupByLibrary.simpleMessage("Forduló"),
+        "type": MessageLookupByLibrary.simpleMessage("Típus")
       };
 }

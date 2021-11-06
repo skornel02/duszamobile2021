@@ -41,6 +41,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "new_title": MessageLookupByLibrary.simpleMessage("New"),
         "receipts": MessageLookupByLibrary.simpleMessage("Receipts"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
-        "thisMonth": MessageLookupByLibrary.simpleMessage("This month")
+        "thisMonth": MessageLookupByLibrary.simpleMessage("This month"),
+        "turn": MessageLookupByLibrary.simpleMessage("Turn"),
+        "type": MessageLookupByLibrary.simpleMessage("Type")
       };
 }

@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CategoryListItem extends StatelessWidget {
-
   String category;
   VoidCallback onPressedDeleteButton;
 
-  CategoryListItem({required this.category, required this.onPressedDeleteButton});
-
+  CategoryListItem(
+      {required this.category, required this.onPressedDeleteButton});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +17,10 @@ class CategoryListItem extends StatelessWidget {
         children: [
           Text(category),
           const Spacer(),
-          IconButton(onPressed: onPressedDeleteButton, icon: FaIcon(FontAwesomeIcons.trash),)
+          IconButton(
+            onPressed: onPressedDeleteButton,
+            icon: FaIcon(FontAwesomeIcons.trash),
+          )
         ],
       ),
     );

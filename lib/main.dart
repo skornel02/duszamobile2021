@@ -28,4 +28,3 @@ class ZoldOr extends StatelessWidget {
     ).modular();
   }
 }
-

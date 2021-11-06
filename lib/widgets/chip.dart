@@ -3,24 +3,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class CreditCardCountdownListItem extends StatelessWidget {
-  String card;
-  DateTime date;
-  DateTime countdownDate;
+class Chip extends StatelessWidget {
+  String text;
+  String? label;
 
-  CreditCardCountdownListItem(this.card, this.date, this.countdownDate);
+  Chip({required this.text, this.label});
 
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Row(
         children: [
-          Expanded(
-            child: Column(
-              children: [Text(card), Text("$date.toString()")],
+          if (label != null)
+            Text(
+              label!,
+              style: TextStyle(color: Colors.black26, fontSize: 12),
             ),
-          ),
-          Text("Ezt majd...")
+          Text(text),
         ],
       ),
     );
