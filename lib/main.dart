@@ -23,6 +23,7 @@ class ZoldOr extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      initialRoute: "/home",
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,

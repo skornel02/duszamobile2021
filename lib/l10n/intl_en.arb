@@ -17,5 +17,6 @@
     "addNewCategory": "Add new category",
     "addNewSubCategory": "Add new sub category",
     "type": "Type",
-    "turn": "Turn"
+    "turn": "Turn",
+    "advanced": "Advanced"
 }

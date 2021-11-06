@@ -57,7 +57,8 @@ class HomeTab extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: FaIcon(FontAwesomeIcons.plus),
         onPressed: () {
-          Modular.to.navigate("/wizard");
+          Modular.to.pushNamed("/wizard");
+        //  Modular.to.navigate("/wizard");
         },
       ),
     );

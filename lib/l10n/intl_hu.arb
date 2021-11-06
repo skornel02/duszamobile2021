@@ -17,7 +17,8 @@
     "addNewCategory": "Új kategória hozzáadása",
     "addNewSubCategory": "Új alkategória hozzáadása",
     "type": "Típus",
-    "turn": "Forduló"
+    "turn": "Forduló",
+    "advanced": "Részletes"
 
 
 }
