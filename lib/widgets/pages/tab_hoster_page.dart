@@ -40,9 +40,10 @@ class _TabHosterPageState extends State<TabHosterPage> {
       case "/home":
         actualIndex = 0;
         break;
-      default:
+      case "/":
         Modular.to.navigate("/home");
         break;
+
     }
     if (selectedIndex != actualIndex) {
       setState(() {

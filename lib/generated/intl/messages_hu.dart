@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Új kategória hozzáadása"),
         "addNewSubCategory":
             MessageLookupByLibrary.simpleMessage("Új alkategória hozzáadása"),
+        "advanced": MessageLookupByLibrary.simpleMessage("Részletes"),
         "appTitle": MessageLookupByLibrary.simpleMessage("ZöldŐr"),
         "areYouSure":
             MessageLookupByLibrary.simpleMessage("Biztos a döntésében?"),

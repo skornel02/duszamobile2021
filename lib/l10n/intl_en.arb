@@ -31,5 +31,6 @@
     "type": "Type",
     "turn": "Turn",
     "removeSuccessful": "Removed successfully!",
-    "addNewBalance": "Add new balance!"
+    "addNewBalance": "Add new balance!",
+    "advanced": "Advanced"
 }

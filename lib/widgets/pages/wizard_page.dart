@@ -1,7 +1,9 @@
 import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:duszamobile2021/extensions.dart';
 import 'package:expandable/expandable.dart';
 
 // useful video: https://www.youtube.com/watch?v=2aJZzRMziJc
@@ -13,6 +15,12 @@ class WizardPage extends StatefulWidget {
 
 class _WizardPageState extends State<WizardPage> {
   int wizardStep = 1;
+
+  String? selectedTypeChip;
+  String? selectedAmount;
+  String? selectedAccountChip;
+
+  bool amountIsFine = false;
 
   int? typeChipSelectedIndex;
 
@@ -53,9 +61,19 @@ class _WizardPageState extends State<WizardPage> {
   ExpandableController controller2 = ExpandableController();
   ExpandableController controller3 = ExpandableController();
 
+  ExpandableThemeData theme = const ExpandableThemeData(hasIcon: false, tapBodyToExpand: false, tapBodyToCollapse: false, tapHeaderToExpand: false);
 
   _WizardPageState(){
     controller1.toggle();
+    textEditingController.addListener(() {
+      setState(() {
+        if(textEditingController.text != ""){
+          amountIsFine = true;
+        }else{
+          amountIsFine = false;
+        }
+      });
+    });
   }
 
   @override
@@ -63,25 +81,28 @@ class _WizardPageState extends State<WizardPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(S.of(context).new_title),
+        leading: IconButton(icon: const FaIcon(FontAwesomeIcons.arrowLeft), onPressed: (){
+          Modular.to.pop();
+        },),
       ),
       body: SingleChildScrollView(
         child: Column(
-
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ExpandablePanel(
 
               header: Row(
                 children: [
                   Text("1"),
-                  Text("Type"),
+                  Text("${S.of(context).type}${selectedTypeChip != null ? ": ${selectedTypeChip}" : ""}"),
                 ],
               ),
               collapsed: Container(),
               expanded: Column(
                 children: [
                   SizedBox(
-                    height: 300,
-                    width: 200,
+                    height: 100,
+
                     child: ListView.builder(
                         shrinkWrap: true,
                         scrollDirection: Axis.horizontal,
@@ -99,13 +120,14 @@ class _WizardPageState extends State<WizardPage> {
                         }),
                   ),
                   ElevatedButton(
-                    child: typeChipSelectedIndex == null
+                    child: Text(S.of(context).continueButton),
+                    onPressed: typeChipSelectedIndex == null
                         ? null
-                        : Text(S.of(context).continueButton),
-                    onPressed: () {
+                        : () {
                       setState(() {
                         controller1.toggle();
                         controller2.toggle();
+                        selectedTypeChip = typeChipOptions[typeChipSelectedIndex!];
                         wizardStep++;
                       });
                     },
@@ -113,13 +135,13 @@ class _WizardPageState extends State<WizardPage> {
                 ],
               ),
               controller: controller1,
-              theme: const ExpandableThemeData(hasIcon: false),
+              theme: theme,
             ),
             ExpandablePanel(
               header: Row(
                 children: [
                   Text("2"),
-                  Text("Type"),
+                  Text("${S.of(context).account}${selectedAmount != null ? ": ${selectedAmount!.huf}" : ""}"),
                 ],
               ),
               collapsed: Container(),
@@ -127,13 +149,16 @@ class _WizardPageState extends State<WizardPage> {
                 children: [
                   TextField(
                     controller: textEditingController,
+                    keyboardType: TextInputType.number
                   ),
                   ElevatedButton(
                     child: Text(S.of(context).continueButton),
-                    onPressed: () {
+                    onPressed: !amountIsFine ? null :  () {
                       setState(() {
                         controller2.toggle();
                         controller3.toggle();
+                        selectedAmount = textEditingController.text;
+
                         wizardStep++;
                       });
                     },
@@ -141,21 +166,20 @@ class _WizardPageState extends State<WizardPage> {
                 ],
               ),
               controller: controller2,
-              theme: const ExpandableThemeData(hasIcon: false),
+              theme: theme,
             ),
             ExpandablePanel(
               header: Row(
                 children: [
                   Text("3"),
-                  Text("Type"),
+                  Text("${S.of(context).type}${selectedAccountChip != null ? ": ${selectedAccountChip}" : ""}"),
                 ],
               ),
               collapsed: Container(),
               expanded: Column(
                 children: [
                   SizedBox(
-                    height: 300,
-                    width: 200,
+                    height: 100,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: accountChipOptions.length,
@@ -173,9 +197,11 @@ class _WizardPageState extends State<WizardPage> {
                   ),
                   ElevatedButton(
                     child: Text(S.of(context).continueButton),
-                    onPressed: () {
+                    onPressed: accountChipSelectedIndex == null ? null : () {
                       setState(() {
                         controller3.toggle();
+                        selectedAccountChip = accountChipOptions[accountChipSelectedIndex!];
+
                         wizardStep++;
                       });
                     },
@@ -183,97 +209,23 @@ class _WizardPageState extends State<WizardPage> {
                 ],
               ),
               controller: controller3,
-              theme: const ExpandableThemeData(hasIcon: false),
+              theme: theme,
             ),
-            /*
-            ExpansionPanel(
 
-                isExpanded: wizardStep == 1,
-                canTapOnHeader: false,
-                headerBuilder: (context, isExpanded) {
-                  return Row(
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, top: 50),
+              child: ElevatedButton(
+                child: Text(S.of(context).advanced),
+                onPressed: () {
+                  setState(() {
+                    controller3.toggle();
+                    selectedAccountChip = accountChipOptions[accountChipSelectedIndex!];
 
-                    children: [
-                      Text("1"),
-                      Text("Type"),
-                    ],
-                  );
+                    wizardStep++;
+                  });
                 },
-                body: ),
-            ExpansionPanel(
-                isExpanded: wizardStep == 2,
-                canTapOnHeader: false,
-                headerBuilder: (context, isExpanded) {
-                  return SizedBox(
-                    width: 300,
-                    height: 300,
-                    child: Row(
-                      children: [
-                        Text("2"),
-                        Text("amount"),
-                      ],
-                    ),
-                  );
-                },
-                body: Column(
-
-                  children: [
-                    TextField(
-                      controller: textEditingController,
-                    ),
-                    ElevatedButton(
-                      child: Text(S.of(context).continueButton),
-                      onPressed: () {
-                        setState(() {
-                          wizardStep++;
-                        });
-                      },
-                    )
-                  ],
-                )),
-            ExpansionPanel(
-                isExpanded: wizardStep == 3,
-                canTapOnHeader: false,
-                headerBuilder: (context, isExpanded) {
-                  return Row(
-                    children: [
-                      Text("3"),
-                      Text("account"),
-                    ],
-                  );
-                },
-                body: SizedBox(
-                  height: 200,
-                  child: Column(
-                    children: [
-                      Expanded(
-                        child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: accountChipOptions.length,
-                            itemBuilder: (context, index) {
-                              return ChoiceChip(
-                                label: Text(accountChipOptions[index]),
-                                selected: accountChipSelectedIndex == index,
-                                onSelected: (selected) {
-                                  setState(() {
-                                    accountChipSelectedIndex = index;
-                                  });
-                                },
-                              );
-                            }),
-                      ),
-                      ElevatedButton(
-                        child: Text(S.of(context).continueButton),
-                        onPressed: () {
-                          setState(() {
-                            wizardStep++;
-                          });
-                        },
-                      )
-                    ],
-                  ),
-                )),
-            */
+              ),
+            )
           ],
         ),
       ),

@@ -31,5 +31,6 @@
     "type": "Típus",
     "turn": "Forduló",
     "removeSuccessful": "Sikeres eltávolítás!",
-    "addNewBalance": "Új számla!"
+    "addNewBalance": "Új számla!",
+    "advanced": "Részletes"
 }

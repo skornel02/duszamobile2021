@@ -29,6 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Add new category"),
         "addNewSubCategory":
             MessageLookupByLibrary.simpleMessage("Add new sub category"),
+        "advanced": MessageLookupByLibrary.simpleMessage("Advanced"),
         "appTitle": MessageLookupByLibrary.simpleMessage("GreenGuardian"),
         "areYouSure":
             MessageLookupByLibrary.simpleMessage("Are you sure about that?"),
