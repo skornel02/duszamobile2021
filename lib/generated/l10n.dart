@@ -219,6 +219,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Type`
+  String get type {
+    return Intl.message(
+      'Type',
+      name: 'type',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Turn`
+  String get turn {
+    return Intl.message(
+      'Turn',
+      name: 'turn',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
