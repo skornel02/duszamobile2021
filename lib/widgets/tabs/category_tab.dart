@@ -1,3 +1,4 @@
+import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:duszamobile2021/repositories/account_repository.dart';
 import 'package:duszamobile2021/resources/account.dart';
 import 'package:duszamobile2021/widgets/categories/categories.dart';
@@ -5,6 +6,7 @@ import 'package:duszamobile2021/widgets/categories/edit_categories.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 enum CategoryMode { VIEW, EDIT }
@@ -30,8 +32,19 @@ class _CategoryTabState extends State<CategoryTab> {
       setState(() {
         account = next;
       });
+      Fluttertoast.showToast(
+        msg: S.current.categoryCreated,
+        toastLength: Toast.LENGTH_LONG,
+        textColor: Colors.white,
+        backgroundColor: Colors.green,
+      );
     } else {
-      // TODO: PROMPT ERROR
+      Fluttertoast.showToast(
+        msg: S.current.categoryNameAlreadyInUse,
+        toastLength: Toast.LENGTH_LONG,
+        textColor: Colors.white,
+        backgroundColor: Colors.red,
+      );
     }
   }
 
@@ -45,8 +58,19 @@ class _CategoryTabState extends State<CategoryTab> {
       setState(() {
         account = next;
       });
+      Fluttertoast.showToast(
+        msg: S.current.subcategoryCreated,
+        toastLength: Toast.LENGTH_LONG,
+        textColor: Colors.white,
+        backgroundColor: Colors.green,
+      );
     } else {
-      // TODO: PROMPT ERROR
+      Fluttertoast.showToast(
+        msg: S.current.subcategoryNameAlreadyInUse,
+        toastLength: Toast.LENGTH_LONG,
+        textColor: Colors.white,
+        backgroundColor: Colors.red,
+      );
     }
   }
 
@@ -60,8 +84,19 @@ class _CategoryTabState extends State<CategoryTab> {
       setState(() {
         account = next;
       });
+      Fluttertoast.showToast(
+        msg: S.current.removeSuccessful,
+        toastLength: Toast.LENGTH_LONG,
+        textColor: Colors.white,
+        backgroundColor: Colors.green,
+      );
     } else {
-      // TODO: PROMPT ERROR.
+      Fluttertoast.showToast(
+        msg: S.current.categoryNameInUse,
+        toastLength: Toast.LENGTH_LONG,
+        textColor: Colors.white,
+        backgroundColor: Colors.red,
+      );
     }
   }
 
@@ -77,8 +112,19 @@ class _CategoryTabState extends State<CategoryTab> {
       setState(() {
         account = next;
       });
+      Fluttertoast.showToast(
+        msg: S.current.removeSuccessful,
+        toastLength: Toast.LENGTH_LONG,
+        textColor: Colors.white,
+        backgroundColor: Colors.green,
+      );
     } else {
-      // TODO: PROMPT ERROR.
+      Fluttertoast.showToast(
+        msg: S.current.subcategoryNameInUse,
+        toastLength: Toast.LENGTH_LONG,
+        textColor: Colors.white,
+        backgroundColor: Colors.red,
+      );
     }
   }
 
@@ -114,8 +160,8 @@ class _CategoryTabState extends State<CategoryTab> {
                   mode = CategoryMode.VIEW;
                 });
               },
-              child: const FaIcon(FontAwesomeIcons.save),
-            ), // This trailing comma makes auto-formatting nicer for build methods.
+              child: const FaIcon(FontAwesomeIcons.stepBackward),
+            ),
     );
   }
 }

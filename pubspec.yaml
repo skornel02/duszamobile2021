@@ -10,16 +10,18 @@ environment:
 
 dependencies:
   cupertino_icons: ^1.0.2
+  expandable: ^5.0.1
   flutter:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
   flutter_modular: ^4.2.0
+  fluttertoast: ^8.0.8
   jiffy: ^4.1.0
   monet: ^0.1.0
+  rflutter_alert: ^2.0.4
   shared_preferences: ^2.0.8
   uuid: ^3.0.5
-  expandable: ^5.0.1
 
 dev_dependencies:
   flutter_lints: ^1.0.0

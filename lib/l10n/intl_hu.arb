@@ -11,13 +11,25 @@
     "details": "Részletek",
     "thisMonth": "Ebben a hónapban",
     "receipts": "Receptek",
+    "ok": "Ok",
+    "cancel": "Mégsem",
+    "name": "Név",
     "addNew": "Új hozzáadása",
+    "remove": "Törlés",
+    "creation": "Létrehozás",
+    "areYouSure": "Biztos a döntésében?",
     "new_title": "Új",
     "continueButton": "Következő",
     "addNewCategory": "Új kategória hozzáadása",
     "addNewSubCategory": "Új alkategória hozzáadása",
+    "categoryNameAlreadyInUse": "Kategória már létezik!",
+    "subcategoryNameAlreadyInUse": "Alkategória már létezik!",
+    "categoryNameInUse": "Kategória használatban van!",
+    "subcategoryNameInUse": "Alkategéria használatban van!",
+    "categoryCreated": "Kategória sikeresen létrehozva!",
+    "subcategoryCreated": "Alkategória sikeresen létrehozva!",
     "type": "Típus",
-    "turn": "Forduló"
-
-
+    "turn": "Forduló",
+    "removeSuccessful": "Sikeres eltávolítás!",
+    "addNewBalance": "Új számla!"
 }

@@ -23,24 +23,47 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "addNew": MessageLookupByLibrary.simpleMessage("Add new"),
+        "addNewBalance":
+            MessageLookupByLibrary.simpleMessage("Add new balance!"),
         "addNewCategory":
             MessageLookupByLibrary.simpleMessage("Add new category"),
         "addNewSubCategory":
             MessageLookupByLibrary.simpleMessage("Add new sub category"),
         "appTitle": MessageLookupByLibrary.simpleMessage("GreenGuardian"),
+        "areYouSure":
+            MessageLookupByLibrary.simpleMessage("Are you sure about that?"),
         "balances": MessageLookupByLibrary.simpleMessage("Balances"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
         "cards": MessageLookupByLibrary.simpleMessage("Cards"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
+        "categoryCreated": MessageLookupByLibrary.simpleMessage(
+            "Category created successfully!"),
+        "categoryNameAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+            "Category name already exists!"),
+        "categoryNameInUse":
+            MessageLookupByLibrary.simpleMessage("Category is in use!"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
+        "creation": MessageLookupByLibrary.simpleMessage("Creation"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter Demo Home Page"),
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Latest transactions"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "new_title": MessageLookupByLibrary.simpleMessage("New"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "receipts": MessageLookupByLibrary.simpleMessage("Receipts"),
+        "remove": MessageLookupByLibrary.simpleMessage("Remove"),
+        "removeSuccessful":
+            MessageLookupByLibrary.simpleMessage("Removed successfully!"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
+        "subcategoryCreated": MessageLookupByLibrary.simpleMessage(
+            "Subcategory created successfully!"),
+        "subcategoryNameAlreadyInUse": MessageLookupByLibrary.simpleMessage(
+            "Subcategory name already exists!"),
+        "subcategoryNameInUse":
+            MessageLookupByLibrary.simpleMessage("Subcategory is in use!"),
         "thisMonth": MessageLookupByLibrary.simpleMessage("This month"),
         "turn": MessageLookupByLibrary.simpleMessage("Turn"),
         "type": MessageLookupByLibrary.simpleMessage("Type")

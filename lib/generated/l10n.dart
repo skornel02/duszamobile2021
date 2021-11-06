@@ -170,11 +170,71 @@ class S {
     );
   }
 
+  /// `Ok`
+  String get ok {
+    return Intl.message(
+      'Ok',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Cancel`
+  String get cancel {
+    return Intl.message(
+      'Cancel',
+      name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add new`
   String get addNew {
     return Intl.message(
       'Add new',
       name: 'addNew',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remove`
+  String get remove {
+    return Intl.message(
+      'Remove',
+      name: 'remove',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Creation`
+  String get creation {
+    return Intl.message(
+      'Creation',
+      name: 'creation',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Are you sure about that?`
+  String get areYouSure {
+    return Intl.message(
+      'Are you sure about that?',
+      name: 'areYouSure',
       desc: '',
       args: [],
     );
@@ -220,6 +280,66 @@ class S {
     );
   }
 
+  /// `Category name already exists!`
+  String get categoryNameAlreadyInUse {
+    return Intl.message(
+      'Category name already exists!',
+      name: 'categoryNameAlreadyInUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subcategory name already exists!`
+  String get subcategoryNameAlreadyInUse {
+    return Intl.message(
+      'Subcategory name already exists!',
+      name: 'subcategoryNameAlreadyInUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category is in use!`
+  String get categoryNameInUse {
+    return Intl.message(
+      'Category is in use!',
+      name: 'categoryNameInUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subcategory is in use!`
+  String get subcategoryNameInUse {
+    return Intl.message(
+      'Subcategory is in use!',
+      name: 'subcategoryNameInUse',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Category created successfully!`
+  String get categoryCreated {
+    return Intl.message(
+      'Category created successfully!',
+      name: 'categoryCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Subcategory created successfully!`
+  String get subcategoryCreated {
+    return Intl.message(
+      'Subcategory created successfully!',
+      name: 'subcategoryCreated',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Type`
   String get type {
     return Intl.message(
@@ -235,6 +355,26 @@ class S {
     return Intl.message(
       'Turn',
       name: 'turn',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Removed successfully!`
+  String get removeSuccessful {
+    return Intl.message(
+      'Removed successfully!',
+      name: 'removeSuccessful',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add new balance!`
+  String get addNewBalance {
+    return Intl.message(
+      'Add new balance!',
+      name: 'addNewBalance',
       desc: '',
       args: [],
     );

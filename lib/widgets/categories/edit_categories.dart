@@ -1,8 +1,12 @@
 import 'package:duszamobile2021/generated/l10n.dart';
+import 'package:duszamobile2021/widgets/categories/category_creator.dart';
+import 'package:duszamobile2021/widgets/dialog_helper.dart';
 import 'package:duszamobile2021/widgets/list_items/add_category_list_item.dart';
 import 'package:duszamobile2021/widgets/list_items/category_list_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class EditCategoriesWidget extends StatelessWidget {
   final Map<String, List<String>> categories;
@@ -28,9 +32,19 @@ class EditCategoriesWidget extends StatelessWidget {
           AddCategoryListItem(
               text: S.of(context).addNewCategory,
               onAddButtonPressed: () {
-                // TODO: Popup, ask for name
-                String name = "heyyyy";
-                addCategory(name);
+                Alert(
+                    context: context,
+                    title: S.of(context).creation,
+                    content: Column(
+                      children: <Widget>[
+                        CategoryCreator(
+                          createCategory: (name) {
+                            addCategory(name);
+                          },
+                        ),
+                      ],
+                    ),
+                    buttons: []).show();
               }),
           ListView.builder(
             itemCount: categories.keys.length,
@@ -43,8 +57,9 @@ class EditCategoriesWidget extends StatelessWidget {
                   Text(category),
                   IconButton(
                     onPressed: () {
-                      // TODO: PROMPT FOR CONFIRMATION
-                      removeCategory(category);
+                      showAreYouSureRemoveDialog(context, () {
+                        removeCategory(category);
+                      });
                     },
                     icon: const FaIcon(FontAwesomeIcons.trash),
                   ),
@@ -55,8 +70,9 @@ class EditCategoriesWidget extends StatelessWidget {
                       return CategoryListItem(
                         category: subcategory,
                         onPressedDeleteButton: () {
-                          // TODO: PROMPT FOR CONFIRMATION
-                          removeSubcategory(category, subcategory);
+                          showAreYouSureRemoveDialog(context, () {
+                            removeSubcategory(category, subcategory);
+                          });
                         },
                       );
                     },
@@ -66,9 +82,19 @@ class EditCategoriesWidget extends StatelessWidget {
                   AddCategoryListItem(
                     text: S.of(context).addNewSubCategory,
                     onAddButtonPressed: () {
-                      // TODO: PROMPT NAME
-                      String subcategory = "HEYYY";
-                      addSubcategory(category, subcategory);
+                      Alert(
+                          context: context,
+                          title: S.of(context).creation,
+                          content: Column(
+                            children: <Widget>[
+                              CategoryCreator(
+                                createCategory: (name) {
+                                  addSubcategory(category, name);
+                                },
+                              ),
+                            ],
+                          ),
+                          buttons: []).show();
                     },
                   )
                 ],

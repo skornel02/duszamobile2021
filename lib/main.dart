@@ -9,11 +9,14 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final MonetProvider monet = await MonetProvider.newInstance();
 
-  runApp(ModularApp(
+  runApp(
+    ModularApp(
       module: AppModule(),
       child: ZoldOr(
         colors: monet.getColors(Colors.green),
-      )));
+      ),
+    ),
+  );
 }
 
 class ZoldOr extends StatelessWidget {

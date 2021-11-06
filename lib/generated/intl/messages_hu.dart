@@ -23,24 +23,46 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
         "addNew": MessageLookupByLibrary.simpleMessage("Új hozzáadása"),
+        "addNewBalance": MessageLookupByLibrary.simpleMessage("Új számla!"),
         "addNewCategory":
             MessageLookupByLibrary.simpleMessage("Új kategória hozzáadása"),
         "addNewSubCategory":
             MessageLookupByLibrary.simpleMessage("Új alkategória hozzáadása"),
         "appTitle": MessageLookupByLibrary.simpleMessage("ZöldŐr"),
+        "areYouSure":
+            MessageLookupByLibrary.simpleMessage("Biztos a döntésében?"),
         "balances": MessageLookupByLibrary.simpleMessage("Számlák"),
+        "cancel": MessageLookupByLibrary.simpleMessage("Mégsem"),
         "cards": MessageLookupByLibrary.simpleMessage("Kártyák"),
         "categories": MessageLookupByLibrary.simpleMessage("Kategoriák"),
+        "categoryCreated": MessageLookupByLibrary.simpleMessage(
+            "Kategória sikeresen létrehozva!"),
+        "categoryNameAlreadyInUse":
+            MessageLookupByLibrary.simpleMessage("Kategória már létezik!"),
+        "categoryNameInUse":
+            MessageLookupByLibrary.simpleMessage("Kategória használatban van!"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Következő"),
+        "creation": MessageLookupByLibrary.simpleMessage("Létrehozás"),
         "details": MessageLookupByLibrary.simpleMessage("Részletek"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter demó otthon oldal"),
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Legutobbi tranzakciók"),
+        "name": MessageLookupByLibrary.simpleMessage("Név"),
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
+        "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "receipts": MessageLookupByLibrary.simpleMessage("Receptek"),
+        "remove": MessageLookupByLibrary.simpleMessage("Törlés"),
+        "removeSuccessful":
+            MessageLookupByLibrary.simpleMessage("Sikeres eltávolítás!"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statisztikák"),
+        "subcategoryCreated": MessageLookupByLibrary.simpleMessage(
+            "Alkategória sikeresen létrehozva!"),
+        "subcategoryNameAlreadyInUse":
+            MessageLookupByLibrary.simpleMessage("Alkategória már létezik!"),
+        "subcategoryNameInUse": MessageLookupByLibrary.simpleMessage(
+            "Alkategéria használatban van!"),
         "thisMonth": MessageLookupByLibrary.simpleMessage("Ebben a hónapban"),
         "turn": MessageLookupByLibrary.simpleMessage("Forduló"),
         "type": MessageLookupByLibrary.simpleMessage("Típus")
