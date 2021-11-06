@@ -17,6 +17,8 @@ class SimpleItemWizardWidget extends StatefulWidget {
     required this.createItem,
   }) : super(key: key);
 
+
+
   @override
   _SimpleItemWizardWidgetState createState() => _SimpleItemWizardWidgetState();
 }
@@ -202,11 +204,11 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
           ExpandablePanel(
             header: Row(
               children: [
-                Card(
+                const Card(
                   color: Colors.lightGreen,
                   elevation: 0,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 8, bottom: 8.0, left: 12, right: 12),
+                    padding: EdgeInsets.only(top: 8, bottom: 8.0, left: 12, right: 12),
                     child: Text("3"),
                   ),
                 ),
@@ -214,7 +216,7 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
                     "${S.of(context).balance}${selectedBalance != null ? ": ${selectedBalance!.name}" : ""}",
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
 

@@ -43,7 +43,6 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
     });
     if(account.balances.length == 1){
         balanceChipSelectedIndex = 0;
-
     }
   }
 
@@ -69,7 +68,7 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
       children: [
         Scaffold(
           appBar: AppBar(
-            title: Text(S.of(context).new_title),
+            title: Text("${S.of(context).new_title} - ${S.of(context).advanced}"),
             leading: IconButton(
               icon: const FaIcon(FontAwesomeIcons.arrowLeft),
               onPressed: () {
@@ -87,7 +86,7 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Text(
                       "${S.of(context).balance}",
-                      style: TextStyle(fontSize: 16),
+                      style: const TextStyle(fontSize: 16),
                     ),
                   ),
                   SizedBox(
@@ -128,7 +127,7 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: TextField(
-                        decoration: new InputDecoration.collapsed(
+                        decoration: InputDecoration.collapsed(
                             hintText: S.of(context).specifyAmount
                         ),
                         controller: amountTextEditingController,
@@ -142,7 +141,7 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: TextField(
-                      decoration: new InputDecoration.collapsed(
+                      decoration: InputDecoration.collapsed(
                           hintText: S.of(context).addNameHere
                       ),
                       controller: nameTextEditingController,
@@ -155,7 +154,7 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                       onChanged: (dynamic selectedItem){
                         selectedCategory = selectedItem;
                       },
-                      decoration: new InputDecoration.collapsed(
+                      decoration: InputDecoration.collapsed(
                           hintText: S.of(context).chooseCategory
                       ),
                       items: categories,
@@ -164,13 +163,13 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: TextField(
-                      decoration: new InputDecoration.collapsed(
+                      decoration: InputDecoration.collapsed(
                           hintText: S.of(context).chooseDate
                       ),
                       controller: dateTextEditingController,
                       onTap: () async{
                         // Below line stops keyboard from appearing
-                        FocusScope.of(context).requestFocus(new FocusNode());
+                        FocusScope.of(context).requestFocus(FocusNode());
                         DateTime? pickedDateTime = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime.now().subtract(const Duration(days: 365)), lastDate: DateTime.now());
                         if(pickedDateTime != null){
                           dateTextEditingController.text = pickedDateTime.toString();

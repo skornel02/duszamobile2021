@@ -6,12 +6,25 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
-class HomeTab extends StatelessWidget {
-  Account account;
+class HomeTab extends StatefulWidget {
+  const HomeTab({Key? key}) : super(key: key);
 
-  HomeTab({Key? key})
-      : account = Modular.get<AccountRepository>().getAccount(),
-        super(key: key);
+  @override
+  _HomeTabState createState() => _HomeTabState();
+}
+
+class _HomeTabState extends State {
+  late Account account;
+
+  _HomeTabState() {
+    var repo = Modular.get<AccountRepository>();
+    account = repo.getAccount();
+    repo.addListener(() {
+      setState(() {
+        account = repo.getAccount();
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
