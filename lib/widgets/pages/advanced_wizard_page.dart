@@ -9,8 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
-enum Come { INCOME, OUTCOME }
+import 'package:toggle_switch/toggle_switch.dart';
 
 class AdvancedWizardPage extends StatefulWidget {
   @override
@@ -20,7 +19,8 @@ class AdvancedWizardPage extends StatefulWidget {
 class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
   Account account;
 
-  Come come = Come.INCOME;
+  bool isIncome = true;
+  bool isSingle = true;
   int? balanceChipSelectedIndex;
 
   TextEditingController amountTextEditingController = TextEditingController();
@@ -31,6 +31,9 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
 
   String? selectedCategory;
   DateTime? selectedDateTime;
+
+  int incomeToggleIndex = 0;
+  int singleToggleIndex = 0;
 
   _AdvancedWizardPageState()
       : account = Modular.get<AccountRepository>().getAccount() {
@@ -106,24 +109,60 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                           );
                         }),
                   ),
-                  RadioListTile(
-                      title: Text(S.of(context).income),
-                      value: Come.INCOME,
-                      groupValue: come,
-                      onChanged: (c) {
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ToggleSwitch(
+                      initialLabelIndex: incomeToggleIndex,
+                      totalSwitches: 2,
+                      minWidth: 100,
+                      labels: [
+                        S.of(context).income,
+                        S.of(context).outcome,
+                      ],
+                      onToggle: (index) {
                         setState(() {
-                          come = Come.INCOME;
+                          incomeToggleIndex = index;
+                          switch (index) {
+                            case 0:
+                              isIncome = true;
+                              break;
+                            case 1:
+                              isIncome = false;
+                              break;
+                          }
                         });
-                      }),
-                  RadioListTile(
-                      title: Text(S.of(context).outcome),
-                      value: Come.OUTCOME,
-                      groupValue: come,
-                      onChanged: (c) {
+                      },
+                      animate: true,
+                      animationDuration: 250,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ToggleSwitch(
+                      initialLabelIndex: singleToggleIndex,
+                      totalSwitches: 2,
+                      minWidth: 100,
+                      labels: [
+                        S.of(context).single,
+                        S.of(context).monthly,
+                      ],
+                      onToggle: (index) {
                         setState(() {
-                          come = Come.OUTCOME;
+                          singleToggleIndex = index;
+                          switch (index) {
+                            case 0:
+                              isSingle = true;
+                              break;
+                            case 1:
+                              isSingle = false;
+                              break;
+                          }
                         });
-                      }),
+                      },
+                      animate: true,
+                      animationDuration: 250,
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(4),
                     child: Text(S.of(context).amount),
@@ -199,13 +238,12 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                                 title: nameTextEditingController.text,
                                 amount: int.parse(
                                         amountTextEditingController.text) *
-                                    (come == Come.INCOME ? 1 : -1),
+                                    (isIncome ? 1 : -1),
                                 balance:
                                     account.balances[balanceChipSelectedIndex!],
                                 category: selectedCategory!,
                                 creation: selectedDateTime!,
-                                // TODO: monthly
-                                monthly: false,
+                                monthly: !isSingle,
                               );
                               createItem(item);
                             },

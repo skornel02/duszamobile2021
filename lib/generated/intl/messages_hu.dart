@@ -78,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Legutobbi tranzakciók"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),
+        "monthly": MessageLookupByLibrary.simpleMessage("Havi"),
         "mustBeWhole": MessageLookupByLibrary.simpleMessage(
             "Az értéknek egésznek kell lennie"),
         "name": MessageLookupByLibrary.simpleMessage("Név"),
@@ -88,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove": MessageLookupByLibrary.simpleMessage("Törlés"),
         "removeSuccessful":
             MessageLookupByLibrary.simpleMessage("Sikeres eltávolítás!"),
+        "single": MessageLookupByLibrary.simpleMessage("Egyszeri"),
         "specifyAmount":
             MessageLookupByLibrary.simpleMessage("Összeg meghatározása"),
         "spendingLimit": MessageLookupByLibrary.simpleMessage("Hitelkeret"),

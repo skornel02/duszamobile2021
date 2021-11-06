@@ -629,6 +629,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Single`
+  String get single {
+    return Intl.message(
+      'Single',
+      name: 'single',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Monthly`
+  String get monthly {
+    return Intl.message(
+      'Monthly',
+      name: 'monthly',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -56,5 +56,7 @@
     "specifyAmount": "Összeg meghatározása",
     "addNameHere": "Név megadása",
     "chooseCategory": "Kategória kiválasztása",
-    "chooseDate": "Dátum kiválasztása"
+    "chooseDate": "Dátum kiválasztása",
+    "single": "Egyszeri",
+    "monthly": "Havi"
 }

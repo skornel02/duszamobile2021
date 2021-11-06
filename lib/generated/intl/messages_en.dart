@@ -78,6 +78,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Latest transactions"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),
+        "monthly": MessageLookupByLibrary.simpleMessage("Monthly"),
         "mustBeWhole": MessageLookupByLibrary.simpleMessage(
             "Value must be a whole number"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
@@ -88,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "removeSuccessful":
             MessageLookupByLibrary.simpleMessage("Removed successfully!"),
+        "single": MessageLookupByLibrary.simpleMessage("Single"),
         "specifyAmount": MessageLookupByLibrary.simpleMessage("Specify amount"),
         "spendingLimit": MessageLookupByLibrary.simpleMessage("Spending limit"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),

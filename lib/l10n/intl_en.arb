@@ -56,6 +56,7 @@
     "specifyAmount": "Specify amount",
     "addNameHere": "Add name here",
     "chooseCategory": "Choose category",
-    "chooseDate": "Choose date"
-
+    "chooseDate": "Choose date",
+    "single": "Single",
+    "monthly": "Monthly"
 }
