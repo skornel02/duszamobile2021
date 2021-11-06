@@ -44,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Value can\'t be null"),
         "cantBeOver31": MessageLookupByLibrary.simpleMessage(
             "The day can\'t be bigger than 31"),
+        "cantWithoutBalance": MessageLookupByLibrary.simpleMessage(
+            "You cannot do that without having a balance first!"),
         "cards": MessageLookupByLibrary.simpleMessage("Cards"),
         "cash": MessageLookupByLibrary.simpleMessage("Cash"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),

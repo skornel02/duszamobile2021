@@ -1,6 +1,7 @@
 import 'package:duszamobile2021/repositories/account_repository.dart';
 import 'package:duszamobile2021/resources/account.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:duszamobile2021/generated/l10n.dart';
@@ -51,8 +52,17 @@ class _HomeTabState extends State {
       floatingActionButton: FloatingActionButton(
         child: FaIcon(FontAwesomeIcons.plus),
         onPressed: () {
+          if (account.balances.isEmpty) {
+            Fluttertoast.showToast(
+              msg: S.of(context).cantWithoutBalance,
+              toastLength: Toast.LENGTH_LONG,
+              textColor: Colors.white,
+              backgroundColor: Colors.orange,
+            );
+            Modular.to.navigate("/balances");
+            return;
+          }
           Modular.to.pushNamed("/wizard");
-          //  Modular.to.navigate("/wizard");
         },
       ),
     );
