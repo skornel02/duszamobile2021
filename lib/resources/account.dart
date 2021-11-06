@@ -95,13 +95,18 @@ class Account {
 
   Account.fromMap(Map<String, dynamic> map)
       : id = map['id'],
-        balances = (map['balances'] as List<Map<String, dynamic>>)
+        balances = (map['balances'] as List<dynamic>)
             .map((map) => Balance.fromMap(map))
             .toList(),
-        items = (map['items'] as List<Map<String, dynamic>>)
+        items = (map['items'] as List<dynamic>)
             .map((map) => Item.fromMap(map))
             .toList(),
-        categories = map['categories'];
+        categories =
+            (map['categories'] as Map<dynamic, dynamic>).map((key, value) {
+          String nextKey = key;
+          List<String> nextVal = List.from(value as List<dynamic>);
+          return MapEntry(nextKey, nextVal);
+        });
 
   Map<String, dynamic> toMap() {
     return {

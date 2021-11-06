@@ -1,3 +1,5 @@
+import 'package:duszamobile2021/repositories/account_repository.dart';
+import 'package:duszamobile2021/repositories/local_account_repostiroy.dart';
 import 'package:duszamobile2021/widgets/pages/tab_hoster_page.dart';
 import 'package:duszamobile2021/widgets/pages/wizard_page.dart';
 import 'package:duszamobile2021/widgets/tabs/balance_tab.dart';
@@ -5,10 +7,14 @@ import 'package:duszamobile2021/widgets/tabs/category_tab.dart';
 import 'package:duszamobile2021/widgets/tabs/home_tab.dart';
 import 'package:duszamobile2021/widgets/tabs/statistics_tab.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AppModule extends Module {
   @override
-  List<Bind> get binds => [];
+  List<Bind> get binds => [
+        AsyncBind<AccountRepository>((i) async =>
+            LocalAccountRepository(await SharedPreferences.getInstance())),
+      ];
 
   @override
   List<ModularRoute> get routes => [
