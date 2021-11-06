@@ -1,7 +1,7 @@
 import 'package:duszamobile2021/generated/l10n.dart';
-import 'package:duszamobile2021/widgets/tabs/categories_tab.dart';
+import 'package:duszamobile2021/widgets/tabs/category_tab.dart';
 import 'package:duszamobile2021/widgets/tabs/home_tab.dart';
-import 'package:duszamobile2021/widgets/tabs/receipts_tab.dart';
+import 'package:duszamobile2021/widgets/tabs/balance_tab.dart';
 import 'package:duszamobile2021/widgets/tabs/statistics_tab.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -34,12 +34,12 @@ class _TabHosterPageState extends State<TabHosterPage> {
               break;
             case 1:
               setState(() {
-                body = ReceiptsTab();
+                body = BalanceTab();
               });
               break;
             case 2:
               setState(() {
-                body = CategoriesTab();
+                body = CategoryTab();
               });
               break;
             case 3:
@@ -60,7 +60,7 @@ class _TabHosterPageState extends State<TabHosterPage> {
         onPressed: (){},
         tooltip: 'Increment',
         child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }

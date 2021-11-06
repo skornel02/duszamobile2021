@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
-class CategoriesTab extends StatelessWidget {
+class CategoryTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +35,6 @@ class CategoriesTab extends StatelessWidget {
                 ),
               ],
             ),
-
-
             Text(S.of(context).thisMonth),
             Row(
               children: [

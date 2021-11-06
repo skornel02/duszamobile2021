@@ -3,7 +3,7 @@ import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ReceiptsTab extends StatelessWidget {
+class BalanceTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
