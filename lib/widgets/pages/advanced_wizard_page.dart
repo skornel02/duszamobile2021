@@ -10,14 +10,9 @@ import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-enum Come{
-  INCOME,
-  OUTCOME
-}
+enum Come { INCOME, OUTCOME }
 
 class AdvancedWizardPage extends StatefulWidget {
-
-
   @override
   State<AdvancedWizardPage> createState() => _AdvancedWizardPageState();
 }
@@ -37,12 +32,16 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
   String? selectedCategory;
   DateTime? selectedDateTime;
 
-  _AdvancedWizardPageState() : account = Modular.get<AccountRepository>().getAccount(){
-    account.categories.keys.toList().forEach((element) {
-      categories.add(DropdownMenuItem(child: Text(element), value: element,));
+  _AdvancedWizardPageState()
+      : account = Modular.get<AccountRepository>().getAccount() {
+    flattenCategories(account.categories).forEach((element) {
+      categories.add(DropdownMenuItem(
+        child: Text(element),
+        value: element,
+      ));
     });
-    if(account.balances.length == 1){
-        balanceChipSelectedIndex = 0;
+    if (account.balances.length == 1) {
+      balanceChipSelectedIndex = 0;
     }
   }
 
@@ -68,7 +67,8 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
       children: [
         Scaffold(
           appBar: AppBar(
-            title: Text("${S.of(context).new_title} - ${S.of(context).advanced}"),
+            title:
+                Text("${S.of(context).new_title} - ${S.of(context).advanced}"),
             leading: IconButton(
               icon: const FaIcon(FontAwesomeIcons.arrowLeft),
               onPressed: () {
@@ -104,22 +104,26 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                               });
                             },
                           );
-                        }
-                    ),
+                        }),
                   ),
-
-                  RadioListTile(title: Text(S.of(context).income),
-                    value: Come.INCOME, groupValue: come, onChanged: (c){
-                    setState(() {
-                      come = Come.INCOME;
-                    });
-                  }),
-                  RadioListTile(title: Text(S.of(context).outcome),
-                    value: Come.OUTCOME, groupValue: come, onChanged: (c){
-                    setState(() {
-                      come = Come.OUTCOME;
-                    });
-                  }),
+                  RadioListTile(
+                      title: Text(S.of(context).income),
+                      value: Come.INCOME,
+                      groupValue: come,
+                      onChanged: (c) {
+                        setState(() {
+                          come = Come.INCOME;
+                        });
+                      }),
+                  RadioListTile(
+                      title: Text(S.of(context).outcome),
+                      value: Come.OUTCOME,
+                      groupValue: come,
+                      onChanged: (c) {
+                        setState(() {
+                          come = Come.OUTCOME;
+                        });
+                      }),
                   Padding(
                     padding: const EdgeInsets.all(4),
                     child: Text(S.of(context).amount),
@@ -128,22 +132,20 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                     padding: const EdgeInsets.all(20),
                     child: TextField(
                         decoration: InputDecoration.collapsed(
-                            hintText: S.of(context).specifyAmount
-                        ),
+                            hintText: S.of(context).specifyAmount),
                         controller: amountTextEditingController,
                         keyboardType: TextInputType.number),
                   ),
-
                   Padding(
                     padding: const EdgeInsets.all(4),
-                    child: Text("${S.of(context).name}, ${S.of(context).dateCategory}"),
+                    child: Text(
+                        "${S.of(context).name}, ${S.of(context).dateCategory}"),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(20),
                     child: TextField(
                       decoration: InputDecoration.collapsed(
-                          hintText: S.of(context).addNameHere
-                      ),
+                          hintText: S.of(context).addNameHere),
                       controller: nameTextEditingController,
                     ),
                   ),
@@ -151,12 +153,11 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                     padding: const EdgeInsets.all(20),
                     child: DropdownButtonFormField(
                       value: selectedCategory,
-                      onChanged: (dynamic selectedItem){
+                      onChanged: (dynamic selectedItem) {
                         selectedCategory = selectedItem;
                       },
                       decoration: InputDecoration.collapsed(
-                          hintText: S.of(context).chooseCategory
-                      ),
+                          hintText: S.of(context).chooseCategory),
                       items: categories,
                     ),
                   ),
@@ -164,33 +165,51 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                     padding: const EdgeInsets.all(20),
                     child: TextField(
                       decoration: InputDecoration.collapsed(
-                          hintText: S.of(context).chooseDate
-                      ),
+                          hintText: S.of(context).chooseDate),
                       controller: dateTextEditingController,
-                      onTap: () async{
+                      onTap: () async {
                         // Below line stops keyboard from appearing
                         FocusScope.of(context).requestFocus(FocusNode());
-                        DateTime? pickedDateTime = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime.now().subtract(const Duration(days: 365)), lastDate: DateTime.now());
-                        if(pickedDateTime != null){
-                          dateTextEditingController.text = pickedDateTime.toString();
+                        DateTime? pickedDateTime = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime.now()
+                                .subtract(const Duration(days: 365)),
+                            lastDate: DateTime.now());
+                        if (pickedDateTime != null) {
+                          dateTextEditingController.text =
+                              pickedDateTime.toString();
                           setState(() {
                             selectedDateTime = pickedDateTime;
                           });
                         }
-
                       },
                     ),
                   ),
-                  if(selectedCategory != null
-                      && balanceChipSelectedIndex != null
-                      && nameTextEditingController.text != ""
-                      && amountTextEditingController.text != "")
+                  if (selectedCategory != null &&
+                      balanceChipSelectedIndex != null &&
+                      nameTextEditingController.text != "" &&
+                      amountTextEditingController.text != "")
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        ElevatedButton(onPressed: (){
-
-                        }, child: Text(S.of(context).finishButton))
+                        ElevatedButton(
+                            onPressed: () {
+                              Item item = Item(
+                                title: nameTextEditingController.text,
+                                amount: int.parse(
+                                        amountTextEditingController.text) *
+                                    (come == Come.INCOME ? 1 : -1),
+                                balance:
+                                    account.balances[balanceChipSelectedIndex!],
+                                category: selectedCategory!,
+                                creation: selectedDateTime!,
+                                // TODO: monthly
+                                monthly: false,
+                              );
+                              createItem(item);
+                            },
+                            child: Text(S.of(context).finishButton))
                       ],
                     )
                   /*
@@ -207,7 +226,6 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                   )
 
                    */
-
                 ],
               ),
             ),

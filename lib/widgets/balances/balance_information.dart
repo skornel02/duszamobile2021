@@ -95,6 +95,7 @@ class BalanceInformation extends StatelessWidget {
     }
 
     double maxMoney = moneyEachMonth.values.reduce(max);
+    double minMoney = moneyEachMonth.values.reduce(min);
 
     return LineChartData(
       gridData: FlGridData(
@@ -138,7 +139,7 @@ class BalanceInformation extends StatelessWidget {
           border: Border.all(color: const Color(0xff37434d), width: 1)),
       minX: monthMin.toDouble(),
       maxX: monthMax.toDouble(),
-      minY: 0,
+      minY: minMoney,
       maxY: maxMoney,
       lineBarsData: [
         LineChartBarData(
