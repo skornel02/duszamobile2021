@@ -1,16 +1,24 @@
 import 'package:duszamobile2021/app_module.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:monet/monet.dart';
 import 'generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(ModularApp(module: AppModule(), child: const ZoldOr()));
+  final MonetProvider monet = await MonetProvider.newInstance();
+
+  runApp(ModularApp(
+      module: AppModule(),
+      child: ZoldOr(
+        colors: monet.getColors(Colors.green),
+      )));
 }
 
 class ZoldOr extends StatelessWidget {
-  const ZoldOr({Key? key}) : super(key: key);
+  MonetColors colors;
+  ZoldOr({Key? key, required this.colors}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +31,7 @@ class ZoldOr extends StatelessWidget {
       ],
       supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: colors.accent1.asMaterialColor,
       ),
     ).modular();
   }

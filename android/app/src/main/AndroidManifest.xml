@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.duszamobile2021">
+    package="hu.hazizz.duszamobile2021">
    <application
-        android:label="duszamobile2021"
+        android:label="ZöldŐr"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

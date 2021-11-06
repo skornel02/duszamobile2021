@@ -59,7 +59,7 @@ class _TabHosterPageState extends State<TabHosterPage> {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: selectedIndex,
         unselectedItemColor: Colors.blueGrey,
-        selectedItemColor: Colors.lightGreen,
+        selectedItemColor: Theme.of(context).primaryColor,
         onTap: (index) {
           setState(() {
             selectedIndex = index;
