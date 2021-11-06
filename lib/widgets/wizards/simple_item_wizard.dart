@@ -1,5 +1,6 @@
 import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:duszamobile2021/resources/balance.dart';
+import 'package:duszamobile2021/resources/item.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -8,9 +9,13 @@ import 'package:duszamobile2021/extensions.dart';
 
 class SimpleItemWizardWidget extends StatefulWidget {
   final List<Balance> balances;
+  final Function(Item) createItem;
 
-  const SimpleItemWizardWidget({Key? key, required this.balances})
-      : super(key: key);
+  const SimpleItemWizardWidget({
+    Key? key,
+    required this.balances,
+    required this.createItem,
+  }) : super(key: key);
 
   @override
   _SimpleItemWizardWidgetState createState() => _SimpleItemWizardWidgetState();
@@ -28,17 +33,11 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
   int? typeChipSelectedIndex;
 
   List<String> typeChipOptions = [
-    'News',
-    'Entertainment',
-    'Politics',
-    'Automotive',
-    'Sports',
-    'Education',
-    'Fashion',
-    'Travel',
-    'Food',
-    'Tech',
-    'Science',
+    'Bevásárlás',
+    'Egyéb program',
+    'Egyszeri bevétel',
+    'Ajándék pénz',
+    'Rendszeres fizetés',
   ];
 
   int? balanceChipSelectedIndex;
@@ -209,7 +208,60 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                 int amount = int.parse(selectedAmount!);
                 Balance bal = selectedBalance!;
                 print("${type} preset: ${amount} HUF to: ${bal.name}");
-                //TODO: Create item;
+
+                Item? item;
+                switch (typeChipSelectedIndex) {
+                  case 0:
+                    item = Item(
+                      title: "Bevásárlás",
+                      creation: DateTime.now(),
+                      category: "Általános/Bevásárlás",
+                      amount: (0 - amount).toDouble(),
+                      balance: bal,
+                    );
+                    break;
+                  case 1:
+                    item = Item(
+                      title: "Egyéb program",
+                      creation: DateTime.now(),
+                      category: "Program/Egyéb",
+                      amount: (0 - amount).toDouble(),
+                      balance: bal,
+                    );
+                    break;
+                  case 2:
+                    item = Item(
+                      title: "Egyszeri bevétel",
+                      creation: DateTime.now(),
+                      category: "Bevétel/Egyszeri bevétel",
+                      amount: (amount).toDouble(),
+                      balance: bal,
+                    );
+                    break;
+                  case 3:
+                    item = Item(
+                      title: "Ajándék",
+                      creation: DateTime.now(),
+                      category: "Bevétel/Ajándék",
+                      amount: (amount).toDouble(),
+                      balance: bal,
+                    );
+                    break;
+                  case 4:
+                    item = Item(
+                      title: "Fizetés",
+                      creation: DateTime.now(),
+                      category: "Bevétel/Fizetés",
+                      amount: (amount).toDouble(),
+                      balance: bal,
+                      monthly: true,
+                    );
+                    break;
+                }
+
+                if (item != null) {
+                  widget.createItem(item);
+                }
               },
             )
           : const SizedBox(),

@@ -61,6 +61,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter demó otthon oldal"),
+        "itemCreated": MessageLookupByLibrary.simpleMessage(
+            "Bejegyzés sikeresen létrehozva!"),
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Legutobbi tranzakciók"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),

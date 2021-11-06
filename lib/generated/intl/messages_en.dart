@@ -62,6 +62,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter Demo Home Page"),
+        "itemCreated":
+            MessageLookupByLibrary.simpleMessage("Item created successfully!"),
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Latest transactions"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),

@@ -499,6 +499,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Item created successfully!`
+  String get itemCreated {
+    return Intl.message(
+      'Item created successfully!',
+      name: 'itemCreated',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
