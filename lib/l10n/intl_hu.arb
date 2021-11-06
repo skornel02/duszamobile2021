@@ -43,5 +43,7 @@
     "cantBeNegative": "Az értéknek pozitívnak kell lennie",
     "mustBeWhole": "Az értéknek egésznek kell lennie",
     "cantBeOver31": "A nap nem lehet több 31nél",
-    "balanceCreated": "Számla sikeresen létrehozva!"
+    "balanceCreated": "Számla sikeresen létrehozva!",
+    "spendingLimit": "Hitelkeret"
+
 }

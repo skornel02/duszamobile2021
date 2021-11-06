@@ -43,5 +43,6 @@
     "cantBeNegative": "Value must be positive",
     "mustBeWhole": "Value must be a whole number",
     "cantBeOver31": "The day can't be bigger than 31",
-    "balanceCreated": "Balance created successfully!"
+    "balanceCreated": "Balance created successfully!",
+    "spendingLimit": "Spending limit"
 }

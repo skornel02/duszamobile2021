@@ -74,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "removeSuccessful":
             MessageLookupByLibrary.simpleMessage("Removed successfully!"),
+        "spendingLimit": MessageLookupByLibrary.simpleMessage("Spending limit"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
         "subcategoryCreated": MessageLookupByLibrary.simpleMessage(
             "Subcategory created successfully!"),

@@ -10,7 +10,6 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 enum CategoryMode { VIEW, EDIT }
-
 class CategoryTab extends StatefulWidget {
   @override
   State<CategoryTab> createState() => _CategoryTabState();

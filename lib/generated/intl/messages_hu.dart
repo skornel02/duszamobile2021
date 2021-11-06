@@ -73,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "remove": MessageLookupByLibrary.simpleMessage("Törlés"),
         "removeSuccessful":
             MessageLookupByLibrary.simpleMessage("Sikeres eltávolítás!"),
+        "spendingLimit": MessageLookupByLibrary.simpleMessage("Hitelkeret"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statisztikák"),
         "subcategoryCreated": MessageLookupByLibrary.simpleMessage(
             "Alkategória sikeresen létrehozva!"),

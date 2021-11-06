@@ -27,83 +27,100 @@ class EditCategoriesWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        children: <Widget>[
-          AddCategoryListItem(
-              text: S.of(context).addNewCategory,
-              onAddButtonPressed: () {
-                Alert(
-                    context: context,
-                    title: S.of(context).creation,
-                    content: Column(
-                      children: <Widget>[
-                        CategoryCreator(
-                          createCategory: (name) {
-                            addCategory(name);
+      child: Padding(
+        padding: const EdgeInsets.only(left: 16, top: 10, right: 16),
+        child: Column(
+          children: <Widget>[
+            AddCategoryListItem(
+                text: S.of(context).addNewCategory,
+                onAddButtonPressed: () {
+                  Alert(
+                      context: context,
+                      title: S.of(context).creation,
+                      content: Column(
+                        children: <Widget>[
+                          CategoryCreator(
+                            createCategory: (name) {
+                              addCategory(name);
+                            },
+                          ),
+                        ],
+                      ),
+                      buttons: []).show();
+                }),
+            Padding(
+              padding: const EdgeInsets.only(left: 16, right: 16),
+              child: ListView.builder(
+                itemCount: categories.keys.length,
+                itemBuilder: (context, index) {
+                  String category = categories.keys.elementAt(index);
+                  List<String> subCategories = categories[category]!;
+
+                  return Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(category, style: TextStyle(fontSize: 20),),
+                          IconButton(
+                            onPressed: () {
+                              showAreYouSureRemoveDialog(context, () {
+                                removeCategory(category);
+                              });
+                            },
+                            icon: const FaIcon(FontAwesomeIcons.trash),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: ListView.builder(
+                          itemCount: subCategories.length,
+                          itemBuilder: (context, index) {
+                            String subcategory = subCategories[index];
+                            return CategoryListItem(
+                              category: subcategory,
+                              onPressedDeleteButton: () {
+                                showAreYouSureRemoveDialog(context, () {
+                                  removeSubcategory(category, subcategory);
+                                });
+                              },
+                            );
+                          },
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10, right: 10),
+                        child: AddCategoryListItem(
+                          text: S.of(context).addNewSubCategory,
+                          onAddButtonPressed: () {
+                            Alert(
+                                context: context,
+                                title: S.of(context).creation,
+                                content: Column(
+                                  children: <Widget>[
+                                    CategoryCreator(
+                                      createCategory: (name) {
+                                        addSubcategory(category, name);
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                buttons: []).show();
                           },
                         ),
-                      ],
-                    ),
-                    buttons: []).show();
-              }),
-          ListView.builder(
-            itemCount: categories.keys.length,
-            itemBuilder: (context, index) {
-              String category = categories.keys.elementAt(index);
-              List<String> subCategories = categories[category]!;
-
-              return Column(
-                children: [
-                  Text(category),
-                  IconButton(
-                    onPressed: () {
-                      showAreYouSureRemoveDialog(context, () {
-                        removeCategory(category);
-                      });
-                    },
-                    icon: const FaIcon(FontAwesomeIcons.trash),
-                  ),
-                  ListView.builder(
-                    itemCount: subCategories.length,
-                    itemBuilder: (context, index) {
-                      String subcategory = subCategories[index];
-                      return CategoryListItem(
-                        category: subcategory,
-                        onPressedDeleteButton: () {
-                          showAreYouSureRemoveDialog(context, () {
-                            removeSubcategory(category, subcategory);
-                          });
-                        },
-                      );
-                    },
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                  ),
-                  AddCategoryListItem(
-                    text: S.of(context).addNewSubCategory,
-                    onAddButtonPressed: () {
-                      Alert(
-                          context: context,
-                          title: S.of(context).creation,
-                          content: Column(
-                            children: <Widget>[
-                              CategoryCreator(
-                                createCategory: (name) {
-                                  addSubcategory(category, name);
-                                },
-                              ),
-                            ],
-                          ),
-                          buttons: []).show();
-                    },
-                  )
-                ],
-              );
-            },
-            physics: const NeverScrollableScrollPhysics(),
-            shrinkWrap: true,
-          ),
-        ],
+                      )
+                    ],
+                  );
+                },
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+              ),
+            ),
+            SizedBox(height: 60,)
+          ],
+        ),
       ),
     );
   }

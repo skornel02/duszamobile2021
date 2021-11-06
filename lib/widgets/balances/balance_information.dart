@@ -2,8 +2,8 @@ import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:duszamobile2021/resources/account.dart';
 import 'package:duszamobile2021/resources/balance.dart';
 import 'package:flutter/material.dart';
+import 'package:duszamobile2021/extensions.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:jiffy/jiffy.dart';
 
 class BalanceInformation extends StatelessWidget {
   final Account account;
@@ -36,14 +36,41 @@ class BalanceInformation extends StatelessWidget {
         children: [
           Column(
             children: [
-              Text("${S.of(context).type}: ${typeName}"),
-              ...(balance.type == BalanceType.credit
-                  ? [
-                      Text(
-                          "${S.of(context).turn}: ${dueDate.toIso8601String()}"),
-                      Text("${S.of(context).limit}: ${balance.limit}"),
-                    ]
-                  : []),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("${S.of(context).type}: ${typeName}"),
+                  ...(balance.type == BalanceType.credit
+                      ? [
+                    Text(
+                        "${S.of(context).turn}: ${dueDate.toIso8601String()}"),
+                    Text("${S.of(context).limit}: ${balance.limit}"),
+                  ]
+                      : []),
+
+                  IconButton(onPressed: (){
+
+                  }, icon: const FaIcon(FontAwesomeIcons.solidEdit),)
+                ],
+              ),
+
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Card(
+
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("${S.of(context).spendingLimit}:"),
+                        Text("izé".huf),
+                        Container()
+                      ],
+                    ),
+                  ),
+                ),
+              ),
               Text("Statisztikák!!!"),
             ],
           )

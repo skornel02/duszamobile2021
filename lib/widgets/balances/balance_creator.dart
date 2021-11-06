@@ -82,6 +82,7 @@ class _BalanceCreatorWidgetState extends State<BalanceCreatorWidget> {
         children: [
           TextFormField(
             controller: _nameController,
+            autofocus: true,
             autovalidateMode: AutovalidateMode.always,
             validator: (input) {
               if (input == null || input.isEmpty)

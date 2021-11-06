@@ -46,6 +46,7 @@ class _BalanceTabState extends State<BalanceTab> {
     return Scaffold(
       body: Center(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             BalancePicker(
               balances: account.balances,

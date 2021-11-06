@@ -499,6 +499,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Spending limit`
+  String get spendingLimit {
+    return Intl.message(
+      'Spending limit',
+      name: 'spendingLimit',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
