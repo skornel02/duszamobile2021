@@ -10,9 +10,9 @@ class BalanceTab extends StatefulWidget {
 }
 
 class _BalanceTabState extends State<BalanceTab> {
-  int tag = 1;
+  int? balanceChipSelectedIndex;
 
-  List<String> options = [
+  List<String> balanceChipOptions = [
     'News',
     'Entertainment',
     'Politics',
@@ -28,54 +28,79 @@ class _BalanceTabState extends State<BalanceTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          ListView.builder(
-              itemCount: options.length,
-              itemBuilder: (context, index) {
-                return ChoiceChip(
-                  label: Text(options[index]),
-                  selected: tag == index,
-                  onSelected: (selected) {
-                    setState(() {
-                      tag = index;
-                    });
-                  },
-                );
-              }),
-          Text("${S.of(context).type}: ${"Credit card vagy mi"}"),
-          Text("${S.of(context).turn}: ${"2000.01.01"}"),
-          Text("Statisztikák!!!"),
-          Container(
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    IconButton(
-                        onPressed: () {},
-                        icon: const FaIcon(FontAwesomeIcons.arrowLeft)),
-                    Expanded(child: Text("DÁTUM")),
-                    IconButton(
-                        onPressed: () {},
-                        icon: const FaIcon(FontAwesomeIcons.arrowRight))
-                  ],
-                ),
-                PageView.builder(itemBuilder: (context, index) {
-                  return ListView.builder(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context2, index2) {
-                        //  return TransactionListItem("firm", null, account, amount, balanceType);
-                        return Text("");
-                      });
-                })
-              ],
+    return Scaffold(
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            SizedBox( height: 100,
+              child: ListView.builder(
+
+                  padding: const EdgeInsets.all(4),
+                  scrollDirection: Axis.horizontal,
+                  shrinkWrap: true,
+                  itemCount: balanceChipOptions.length,
+                  itemBuilder: (context, index) {
+                    return ChoiceChip(
+                      label: Text(balanceChipOptions[index]),
+                      selected: balanceChipSelectedIndex == index,
+                      onSelected: (selected) {
+                        setState(() {
+                          balanceChipSelectedIndex = index;
+                        });
+                      },
+                    );
+                  }),
             ),
-          ),
-        ],
+
+            Expanded(
+              child: Column(
+                children: [
+                  Text("${S.of(context).type}: ${"Credit card vagy mi"}"),
+                  Text("${S.of(context).turn}: ${"2000.01.01"}"),
+                  Text("Statisztikák!!!"),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(14),
+              child: Column(
+
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                    children: [
+                      IconButton(
+                          onPressed: () {},
+                          icon: const FaIcon(FontAwesomeIcons.arrowLeft)),
+                      Text("DÁTUM"),
+                      IconButton(
+                          onPressed: () {},
+                          icon: const FaIcon(FontAwesomeIcons.arrowRight))
+                    ],
+                  ),
+                  SizedBox(
+                    width: 300, height: 300,
+                    child: PageView.builder(itemBuilder: (context, index) {
+                      return ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: 3,
+                          itemBuilder: (context2, index2) {
+                            //  return TransactionListItem(item);
+                            return Text("ASD");
+                          });
+                    }),
+                  )
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
+      floatingActionButton: FloatingActionButton(child: FaIcon(FontAwesomeIcons.dollarSign),onPressed: (){
+
+      },),
     );
   }
 }
