@@ -20,6 +20,7 @@
     "areYouSure": "Are you sure about that?",
     "new_title": "New",
     "continueButton": "Continue",
+    "finishButton": "Finish",
     "addNewCategory": "Add new category",
     "addNewSubCategory": "Add new sub category",
     "categoryNameAlreadyInUse": "Category name already exists!",

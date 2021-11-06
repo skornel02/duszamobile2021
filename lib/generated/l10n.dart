@@ -260,6 +260,16 @@ class S {
     );
   }
 
+  /// `Finish`
+  String get finishButton {
+    return Intl.message(
+      'Finish',
+      name: 'finishButton',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add new category`
   String get addNewCategory {
     return Intl.message(

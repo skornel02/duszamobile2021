@@ -57,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "credit": MessageLookupByLibrary.simpleMessage("Hitelszámla"),
         "debit": MessageLookupByLibrary.simpleMessage("Bankszámla"),
         "details": MessageLookupByLibrary.simpleMessage("Részletek"),
+        "finishButton": MessageLookupByLibrary.simpleMessage("Befejezés"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter demó otthon oldal"),

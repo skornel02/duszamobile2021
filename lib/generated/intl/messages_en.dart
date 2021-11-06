@@ -58,6 +58,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "credit": MessageLookupByLibrary.simpleMessage("Credit"),
         "debit": MessageLookupByLibrary.simpleMessage("Debit"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
+        "finishButton": MessageLookupByLibrary.simpleMessage("Finish"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter Demo Home Page"),
