@@ -73,6 +73,25 @@ class Account {
 
   Account.copy(Account acc) : this.fromMap(acc.toMap());
 
+  void transfer(Balance fromBalance, Balance toBalance, int amount){
+    if (!categories.containsKey("Általános")){
+      //add
+      categories["Általános"] = [];
+    }
+    if (!categories["Általános"]!.contains("Pénz mozgás")) {
+      categories["Általános"]!.add("Pénz mozgás");
+    }
+    DateTime now = DateTime.now();
+    items.add(Item(title: "Utalás", category: "Általános/Pénz mozgás", creation: now, monthly: false,
+      balance: fromBalance, amount: -amount.toDouble()
+    ));
+    items.add(Item(title: "Utalás", category: "Általános/Pénz mozgás", creation: now, monthly: false,
+        balance: toBalance, amount: amount.toDouble()
+    ));
+
+   // items.forEach((element) {print("oioio: " + element.title);});
+  }
+
   Item? getItemFromId(String itemId) {
     return items.firstWhere((element) => element.id == itemId);
   }

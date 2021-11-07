@@ -31,7 +31,7 @@ class LocalAccountRepository extends AccountRepository {
       'Közüzem': ["Áram", "Víz", "Csatornázás", "Gáz", "Tüzelő"],
       'Autó': ["Javítás", "Tankolás"],
       'Gyerek': ["Tankönyv", "Ebéd befizetés", "Zongora"],
-      'Általános': ["Bevásárlás", "Étterem"],
+      'Általános': ["Bevásárlás", "Étterem", "Pénz mozgás"],
       'Program': ["Mozi", "Színház", "Egyéb"],
     };
     saveAccount(acc);

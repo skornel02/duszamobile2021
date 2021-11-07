@@ -36,6 +36,15 @@ class ZoldOr extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData(
         primarySwatch: colors.accent1.asMaterialColor,
+        inputDecorationTheme: const InputDecorationTheme(
+            filled: true,
+            fillColor: Colors.white24,
+            border: OutlineInputBorder(
+              borderSide: BorderSide(
+                  color: Colors.grey,
+                  width: 5.0),
+            ),
+        ),
         fontFamily: "Nunito",
         cardTheme: CardTheme(
           shape:

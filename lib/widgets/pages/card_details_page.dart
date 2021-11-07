@@ -1,13 +1,20 @@
+
+import 'dart:io';
+
 import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:duszamobile2021/repositories/account_repository.dart';
 import 'package:duszamobile2021/resources/account.dart';
 import 'package:duszamobile2021/resources/balance.dart';
 import 'package:duszamobile2021/resources/item.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
@@ -44,6 +51,8 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
   int incomeToggleIndex = 0;
   int singleToggleIndex = 0;
 
+  List<String> filePaths = [];
+
   _CardDetailsPageState(String id)
       : account = Modular.get<AccountRepository>().getAccount(),
         titleTextEditingController = TextEditingController(),
@@ -51,7 +60,7 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
     item = account.items.firstWhere((element) => element.id == id);
     selectedDateTime = item.creation;
     titleTextEditingController.text = item.title;
-    dateTextEditingController.text = item.creation.toString();
+    dateTextEditingController.text = DateFormat('yyyy.MM.dd').format(item.creation);
     amountTextEditingController = MoneyMaskedTextController(
       initialValue: item.amount,
       rightSymbol: " HUF",
@@ -98,203 +107,238 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
           },
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 12, left: 30, right: 30),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            /*
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(item!.title, style: TextStyle(fontSize: 20),),
-                IconButton(icon: FaIcon(FontAwesomeIcons.edit), onPressed: () {
-                  // TODO: popup
-                },),
-              ],
-            ),
-            */
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 5, left: 30, right: 30),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
 
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: TextField(
-                decoration:
-                    InputDecoration.collapsed(hintText: S.of(context).title),
-                controller: titleTextEditingController,
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: TextField(
+                  decoration:
+                      InputDecoration(
+                        hintText: S.of(context).title
+                      ),
+                  controller: titleTextEditingController,
+                ),
               ),
-            ),
 
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: TextField(
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: TextField(
+                    decoration: InputDecoration.collapsed(
+                        hintText: S.of(context).specifyAmount),
+                    controller: amountTextEditingController,
+                    keyboardType: TextInputType.number),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: TextField(
                   decoration: InputDecoration.collapsed(
-                      hintText: S.of(context).specifyAmount),
-                  controller: amountTextEditingController,
-                  keyboardType: TextInputType.number),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: TextField(
-                decoration: InputDecoration.collapsed(
-                    hintText: S.of(context).chooseDate),
-                controller: dateTextEditingController,
-                onTap: () async {
-                  // Below line stops keyboard from appearing
-                  FocusScope.of(context).requestFocus(FocusNode());
+                      hintText: S.of(context).chooseDate),
+                  controller: dateTextEditingController,
+                  onTap: () async {
+                    // Below line stops keyboard from appearing
+                    FocusScope.of(context).requestFocus(FocusNode());
 
-                  DatePicker.showDateTimePicker(
-                    context,
-                    showTitleActions: true,
-                    currentTime: selectedDateTime,
-                    minTime: Jiffy(DateTime.now()).subtract(years: 1).dateTime,
-                    maxTime: Jiffy(DateTime(DateTime.now().year,
-                            DateTime.now().month, DateTime.now().day))
-                        .add(days: 1)
-                        .subtract(seconds: 1)
-                        .dateTime,
-                    onChanged: (date) {
-                      setState(() {
-                        selectedDateTime = date;
-                        dateTextEditingController.text =
-                            selectedDateTime.toString();
-                      });
-                    },
-                    onConfirm: (date) {
-                      setState(() {
-                        selectedDateTime = date;
-                        dateTextEditingController.text =
-                            selectedDateTime.toString();
-                      });
-                    },
-                    locale: LocaleType.en,
-                  );
-                },
+                    DatePicker.showDateTimePicker(
+                      context,
+                      showTitleActions: true,
+                      currentTime: selectedDateTime,
+                      minTime: Jiffy(DateTime.now()).subtract(years: 1).dateTime,
+                      maxTime: Jiffy(DateTime(DateTime.now().year,
+                              DateTime.now().month, DateTime.now().day))
+                          .add(days: 1)
+                          .subtract(seconds: 1)
+                          .dateTime,
+                      onChanged: (date) {
+                        setState(() {
+                          selectedDateTime = date;
+                          dateTextEditingController.text =
+                              DateFormat('yyyy.MM.dd').format(selectedDateTime);
+                        });
+                      },
+                      onConfirm: (date) {
+                        setState(() {
+                          selectedDateTime = date;
+                          dateTextEditingController.text =
+                              selectedDateTime.toString();
+                        });
+                      },
+                      locale: LocaleType.en,
+                    );
+                  },
+                ),
               ),
-            ),
-            /*
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: TextField(
-                decoration: InputDecoration.collapsed(
-                    hintText: S.of(context).chooseDate),
-                controller: dateTextEditingController,
-                onTap: () async {
-                  // Below line stops keyboard from appearing
-                  FocusScope.of(context).requestFocus(FocusNode());
+              /*
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: TextField(
+                  decoration: InputDecoration.collapsed(
+                      hintText: S.of(context).chooseDate),
+                  controller: dateTextEditingController,
+                  onTap: () async {
+                    // Below line stops keyboard from appearing
+                    FocusScope.of(context).requestFocus(FocusNode());
 
 
-                  TimeOfDay? pickedDateTime = await showTimePicker(
-                      context: context,
-                      initialTime: TimeOfDay.now(),
+                    TimeOfDay? pickedDateTime = await showTimePicker(
+                        context: context,
+                        initialTime: TimeOfDay.now(),
 
-                      lastDate: DateTime.now());
-                  if (pickedDateTime != null) {
+                        lastDate: DateTime.now());
+                    if (pickedDateTime != null) {
 
+                      setState(() {
+                        dateTextEditingController.text =
+                            pickedDateTime.toString();
+                        selectedDateTime = pickedDateTime;
+                      });
+                    }
+
+                  },
+                ),
+              ),
+              */
+
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: DropdownButtonFormField(
+                  value: selectedCategory,
+                  onChanged: (dynamic selectedItem) {
+                    selectedCategory = selectedItem;
+                  },
+                  decoration: InputDecoration.collapsed(
+                      hintText: S.of(context).chooseCategory),
+                  items: categories,
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(20),
+                child: DropdownButtonFormField(
+                  value: selectedBalance,
+                  onChanged: (dynamic selectedItem) {
+                    selectedBalance = selectedItem;
+                  },
+                  decoration: InputDecoration.collapsed(
+                      hintText: S.of(context).chooseCategory),
+                  items: balances,
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ToggleSwitch(
+                  initialLabelIndex: incomeToggleIndex,
+                  totalSwitches: 2,
+                  minWidth: 100,
+                  labels: [
+                    S.of(context).income,
+                    S.of(context).outcome,
+                  ],
+                  onToggle: (index) {
                     setState(() {
-                      dateTextEditingController.text =
-                          pickedDateTime.toString();
-                      selectedDateTime = pickedDateTime;
+                      incomeToggleIndex = index;
+                      switch (index) {
+                        case 0:
+                          isIncome = true;
+                          break;
+                        case 1:
+                          isIncome = false;
+                          break;
+                      }
                     });
-                  }
-
-                },
+                  },
+                  animate: true,
+                  animationDuration: 250,
+                ),
               ),
-            ),
-            */
-
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: DropdownButtonFormField(
-                value: selectedCategory,
-                onChanged: (dynamic selectedItem) {
-                  selectedCategory = selectedItem;
-                },
-                decoration: InputDecoration.collapsed(
-                    hintText: S.of(context).chooseCategory),
-                items: categories,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ToggleSwitch(
+                  initialLabelIndex: singleToggleIndex,
+                  totalSwitches: 2,
+                  minWidth: 100,
+                  labels: [
+                    S.of(context).single,
+                    S.of(context).monthly,
+                  ],
+                  onToggle: (index) {
+                    setState(() {
+                      singleToggleIndex = index;
+                      switch (index) {
+                        case 0:
+                          isSingle = true;
+                          break;
+                        case 1:
+                          isSingle = false;
+                          break;
+                      }
+                    });
+                  },
+                  animate: true,
+                  animationDuration: 250,
+                ),
               ),
-            ),
 
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: DropdownButtonFormField(
-                value: selectedBalance,
-                onChanged: (dynamic selectedItem) {
-                  selectedBalance = selectedItem;
-                },
-                decoration: InputDecoration.collapsed(
-                    hintText: S.of(context).chooseCategory),
-                items: balances,
-              ),
-            ),
+              if(!kIsWeb) Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, bottom: 10),
+                    child: ElevatedButton(onPressed: () async {
+                      FilePickerResult? result = await FilePicker.platform.pickFiles();
 
-            Padding(
-              padding: const EdgeInsets.all(20),
-              child: TextField(
-                  decoration: InputDecoration.collapsed(
-                      hintText: S.of(context).specifyAmount),
-                  controller: amountTextEditingController,
-                  keyboardType: TextInputType.number),
-            ),
+                      if (result != null) {
+                        String path = result!.files!.single!.path!;
+                        File file = File(path);
+                        setState(() {
+                          filePaths.add(path);
+                        });
 
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ToggleSwitch(
-                initialLabelIndex: incomeToggleIndex,
-                totalSwitches: 2,
-                minWidth: 100,
-                labels: [
-                  S.of(context).income,
-                  S.of(context).outcome,
+                      } else {
+                        // User canceled the picker
+                      }
+
+
+                    }, child: Text(S.of(context).chooseAttachments)),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 80),
+                  //  height: 200,
+                  //  width: 400,
+                    child: ListView.builder(
+                        physics: const NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: filePaths.length,
+                        itemBuilder: (context, index){
+                          List<String> list = filePaths[index].split("/");
+                          return Card(
+                            child: Row(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8.0),
+                                  child: Text(list[list.length-1]),
+                                ),
+                                Spacer(),
+                                IconButton(onPressed: (){
+                                  setState(() {
+                                    filePaths.removeAt(index);
+                                  });
+                                }, icon: const FaIcon(FontAwesomeIcons.times))
+                              ],
+                            )
+                          );
+                        }),
+                  )
                 ],
-                onToggle: (index) {
-                  setState(() {
-                    incomeToggleIndex = index;
-                    switch (index) {
-                      case 0:
-                        isIncome = true;
-                        break;
-                      case 1:
-                        isIncome = false;
-                        break;
-                    }
-                  });
-                },
-                animate: true,
-                animationDuration: 250,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ToggleSwitch(
-                initialLabelIndex: singleToggleIndex,
-                totalSwitches: 2,
-                minWidth: 100,
-                labels: [
-                  S.of(context).single,
-                  S.of(context).monthly,
-                ],
-                onToggle: (index) {
-                  setState(() {
-                    singleToggleIndex = index;
-                    switch (index) {
-                      case 0:
-                        isSingle = true;
-                        break;
-                      case 1:
-                        isSingle = false;
-                        break;
-                    }
-                  });
-                },
-                animate: true,
-                animationDuration: 250,
-              ),
-            ),
+              )
 
-            // TODO: csatolmányokat megcsinálni
-            Text("Csatolmányok???"),
-          ],
+
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
@@ -307,7 +351,7 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
           nextItem.category = selectedCategory;
           nextItem.creation = selectedDateTime;
           nextItem.balanceId = selectedBalance.id;
-
+          nextItem.filePaths = filePaths;
           Account next = Account.copy(account);
           next.items = [
             ...account.items.where((element) => element.id != item.id),

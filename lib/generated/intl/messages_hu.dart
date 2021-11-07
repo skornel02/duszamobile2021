@@ -64,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kategória már létezik!"),
         "categoryNameInUse":
             MessageLookupByLibrary.simpleMessage("Kategória használatban van!"),
+        "chooseAttachments":
+            MessageLookupByLibrary.simpleMessage("Csatolmányok választása"),
         "chooseCategory":
             MessageLookupByLibrary.simpleMessage("Kategória kiválasztása"),
         "chooseDate":
@@ -84,7 +86,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "exportVisuals":
             MessageLookupByLibrary.simpleMessage("Kimutatások exportálása"),
         "finishButton": MessageLookupByLibrary.simpleMessage("Befejezés"),
-        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "fromBalance": MessageLookupByLibrary.simpleMessage("Honnan"),
+        "home": MessageLookupByLibrary.simpleMessage("Főoldal"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter demó otthon oldal"),
         "income": MessageLookupByLibrary.simpleMessage("Bevétel"),
@@ -97,6 +100,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mustBeWhole": MessageLookupByLibrary.simpleMessage(
             "Az értéknek egésznek kell lennie"),
         "name": MessageLookupByLibrary.simpleMessage("Név"),
+        "newTransaction": MessageLookupByLibrary.simpleMessage("Új tranzakció"),
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
         "no": MessageLookupByLibrary.simpleMessage("nem"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
@@ -126,6 +130,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Alkategéria használatban van!"),
         "thisMonth": MessageLookupByLibrary.simpleMessage("Jelenlegi hónap"),
         "title": MessageLookupByLibrary.simpleMessage("Cím"),
+        "toBalance": MessageLookupByLibrary.simpleMessage("Hova"),
         "turn": MessageLookupByLibrary.simpleMessage("Forduló"),
         "type": MessageLookupByLibrary.simpleMessage("Típus"),
         "yes": MessageLookupByLibrary.simpleMessage("igen")

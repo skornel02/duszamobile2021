@@ -819,6 +819,46 @@ class S {
       args: [],
     );
   }
+
+  /// `From balance`
+  String get fromBalance {
+    return Intl.message(
+      'From balance',
+      name: 'fromBalance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To balance`
+  String get toBalance {
+    return Intl.message(
+      'To balance',
+      name: 'toBalance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New transaction`
+  String get newTransaction {
+    return Intl.message(
+      'New transaction',
+      name: 'newTransaction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose attachments`
+  String get chooseAttachments {
+    return Intl.message(
+      'Choose attachments',
+      name: 'chooseAttachments',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -1,7 +1,7 @@
 {
     "appTitle": "ZöldŐr",
     "homePage": "Flutter demó otthon oldal",
-    "home": "Home",
+    "home": "Főoldal",
     "account": "Account",
     "cards": "Kártyák",
     "categories": "Kategóriák",
@@ -74,5 +74,9 @@
     "overBudget": "Túlhaladt a kereten",
     "yes": "igen",
     "no": "nem",
-    "spendingsThisMonth": "E havi költések"
+    "spendingsThisMonth": "E havi költések",
+    "fromBalance": "Honnan",
+    "toBalance": "Hova",
+    "newTransaction": "Új tranzakció",
+    "chooseAttachments": "Csatolmányok választása"
 }

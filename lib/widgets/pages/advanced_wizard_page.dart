@@ -10,6 +10,7 @@ import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:intl/intl.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class AdvancedWizardPage extends StatefulWidget {
@@ -233,7 +234,7 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                             lastDate: DateTime.now());
                         if (pickedDateTime != null) {
                           dateTextEditingController.text =
-                              pickedDateTime.toString();
+                              DateFormat('yyyy.MM.dd').format(pickedDateTime);
                           setState(() {
                             selectedDateTime = pickedDateTime;
                           });

@@ -75,5 +75,9 @@
     "overBudget": "Over budget",
     "yes": "yes",
     "no": "no",
-    "spendingsThisMonth": "Spendings this month"
+    "spendingsThisMonth": "Spendings this month",
+    "fromBalance": "From balance",
+    "toBalance": "To balance",
+    "newTransaction": "New transaction",
+    "chooseAttachments": "Choose attachments"
 }
