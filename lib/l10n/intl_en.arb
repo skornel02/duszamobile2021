@@ -83,5 +83,6 @@
     "chooseAttachments": "Choose attachments",
     "comparisonPerBalance": "Comparison per balance",
     "noRecordForAccount": "No records for account",
-    "clearCO": "With this much money the below amount of CO₂ could be cleared: "
+    "clearCO": "With this much money the below amount of CO₂ could be cleared: ",
+    "total": "Total"
 }

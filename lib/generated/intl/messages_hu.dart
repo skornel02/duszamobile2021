@@ -142,6 +142,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "thisMonth": MessageLookupByLibrary.simpleMessage("Jelenlegi hónap"),
         "title": MessageLookupByLibrary.simpleMessage("Cím"),
         "toBalance": MessageLookupByLibrary.simpleMessage("Hova"),
+        "total": MessageLookupByLibrary.simpleMessage("Összes"),
         "turn": MessageLookupByLibrary.simpleMessage("Forduló"),
         "type": MessageLookupByLibrary.simpleMessage("Típus")
       };

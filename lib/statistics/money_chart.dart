@@ -30,7 +30,7 @@ class MoneyChart extends StatelessWidget {
             Indicator(color: Colors.red, text: S.of(context).outcome, isSquare: true),
             Indicator(
                 color: Theme.of(context).primaryColor,
-                text: "_TOTAL",
+                text: S.of(context).total,
                 isSquare: true),
             ...account.balances
                 .map((balance) => Indicator(
