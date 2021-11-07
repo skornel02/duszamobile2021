@@ -29,7 +29,7 @@ class ItemWidget extends StatelessWidget {
                           style: const TextStyle(
                               fontSize: 16, fontWeight: FontWeight.w400)),
                       Text(
-                        Jiffy(item.creation).format("yyyy MM dd"),
+                        Jiffy(item.creation).format("yyyy. MM. dd."),
                         style: const TextStyle(
                             fontSize: 15, fontWeight: FontWeight.w400),
                       ),

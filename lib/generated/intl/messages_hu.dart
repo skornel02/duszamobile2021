@@ -75,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hitelszámla fordulók"),
         "date": MessageLookupByLibrary.simpleMessage("Dátum"),
         "dateCategory": MessageLookupByLibrary.simpleMessage("dátum ketegória"),
+        "daysRemaining": MessageLookupByLibrary.simpleMessage("nap maradt"),
         "debit": MessageLookupByLibrary.simpleMessage("Bankszámla"),
         "details": MessageLookupByLibrary.simpleMessage("Részletek"),
         "easy": MessageLookupByLibrary.simpleMessage("Egyszerű"),
@@ -99,8 +100,11 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Név"),
         "newTransaction": MessageLookupByLibrary.simpleMessage("Új tranzakció"),
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
+        "no": MessageLookupByLibrary.simpleMessage("nem"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "outcome": MessageLookupByLibrary.simpleMessage("Kiadás"),
+        "overBudget":
+            MessageLookupByLibrary.simpleMessage("Túlhaladt a kereten"),
         "printStatistics":
             MessageLookupByLibrary.simpleMessage("Statisztikák nyomtatása"),
         "remove": MessageLookupByLibrary.simpleMessage("Törlés"),
@@ -124,6 +128,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "title": MessageLookupByLibrary.simpleMessage("Cím"),
         "toBalance": MessageLookupByLibrary.simpleMessage("Hova"),
         "turn": MessageLookupByLibrary.simpleMessage("Forduló"),
-        "type": MessageLookupByLibrary.simpleMessage("Típus")
+        "type": MessageLookupByLibrary.simpleMessage("Típus"),
+        "yes": MessageLookupByLibrary.simpleMessage("igen")
       };
 }

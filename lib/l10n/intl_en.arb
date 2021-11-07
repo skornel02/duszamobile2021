@@ -14,7 +14,6 @@
     "cancel": "Cancel",
     "save": "Save",
     "printStatistics": "Print statistics",
-    "exportData": "Export data",
     "name": "Name",
     "addNew": "Add new",
     "remove": "Remove",
@@ -72,7 +71,8 @@
     "amazonTrees": "With this much money this number of trees could have been planted in the Amazonian rainforest: ",
     "date": "Date",
     "accountMoneyHistory": "Account history",
-    "newTransaction": "New transaction",
-    "fromBalance": "From balance",
-    "toBalance": "To balance"
+    "daysRemaining": "days remaining",
+    "overBudget": "Over budget",
+    "yes": "yes",
+    "no": "no"
 }

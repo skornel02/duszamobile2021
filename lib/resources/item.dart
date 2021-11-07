@@ -10,6 +10,7 @@ class Item {
   double amount;
   bool monthly;
   DateTime? endDate;
+  List<String> filePaths;
 
   Item({
     required this.title,
@@ -19,7 +20,8 @@ class Item {
     this.monthly = false,
     required Balance balance,
   })  : id = (const Uuid()).v4(),
-        balanceId = balance.id;
+        balanceId = balance.id,
+        filePaths = [];
 
   Item.copy(Item item) : this.fromMap(item.toMap());
 
@@ -30,7 +32,8 @@ class Item {
         creation = DateTime.fromMillisecondsSinceEpoch(map['creation']),
         balanceId = map['balanceId'],
         amount = map['amount'],
-        monthly = map['monthly'] {
+        monthly = map['monthly'],
+        filePaths = List.from((map['filePaths'] as List<dynamic>?) ?? []) {
     if (map['endDate'] != null) {
       endDate = DateTime.fromMillisecondsSinceEpoch(map['endDate']);
     }
@@ -46,6 +49,7 @@ class Item {
       'amount': amount,
       'monthly': monthly,
       'endDate': endDate == null ? null : endDate!.millisecondsSinceEpoch,
+      'filePaths': filePaths
     };
   }
 }

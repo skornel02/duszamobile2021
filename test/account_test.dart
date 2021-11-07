@@ -260,6 +260,7 @@ void main() {
         balance: balance,
         monthly: false,
       );
+      item1.filePaths = ["sajt", "sajt2"];
       Item item2 = Item(
         title: "d",
         category: "TestCategory",
