@@ -1,6 +1,5 @@
 import 'package:duszamobile2021/repositories/account_repository.dart';
 import 'package:duszamobile2021/repositories/local_account_repostiroy.dart';
-import 'package:duszamobile2021/widgets/pages/advanced_wizard_page.dart';
 import 'package:duszamobile2021/widgets/pages/card_details_page.dart';
 import 'package:duszamobile2021/widgets/pages/tab_hoster_page.dart';
 import 'package:duszamobile2021/widgets/pages/transaction_wizard_page.dart';
