@@ -122,6 +122,18 @@ class Account {
     return usage;
   }
 
+  List<Balance> get creditBalances {
+    return balances
+        .where((element) => element.type == BalanceType.credit)
+        .toList();
+  }
+
+  List<Item> get lastSortedItems {
+    List<Item> ordered = List.of(items);
+    ordered.sort((a1, a2) => a2.creation.compareTo(a1.creation));
+    return ordered;
+  }
+
   Account.fromMap(Map<String, dynamic> map)
       : id = map['id'],
         balances = (map['balances'] as List<dynamic>)

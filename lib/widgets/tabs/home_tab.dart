@@ -1,5 +1,6 @@
 import 'package:duszamobile2021/repositories/account_repository.dart';
 import 'package:duszamobile2021/resources/account.dart';
+import 'package:duszamobile2021/resources/balance.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -8,6 +9,7 @@ import 'package:duszamobile2021/widgets/list_items/item_item.dart';
 
 import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -16,17 +18,28 @@ class HomeTab extends StatefulWidget {
   _HomeTabState createState() => _HomeTabState();
 }
 
-class _HomeTabState extends State {
+class _HomeTabState extends State implements Disposable {
+  late AccountRepository repo;
   late Account account;
 
   _HomeTabState() {
-    var repo = Modular.get<AccountRepository>();
+    repo = Modular.get<AccountRepository>();
     account = repo.getAccount();
+    repo.addListener(handleAccountChange);
+  }
+
+  void handleAccountChange() {
     repo.addListener(() {
       setState(() {
         account = repo.getAccount();
       });
     });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    repo.removeListener(handleAccountChange);
   }
 
   @override
@@ -82,12 +95,13 @@ class _HomeTabState extends State {
               ),
               ListView.builder(
                 shrinkWrap: true,
-                itemCount: account.items.take(3).length,
+                itemCount: account.lastSortedItems.take(3).length,
                 itemBuilder: (context, index) {
-                  Item item = account.items[index];
+                  Item item = account.lastSortedItems[index];
 
                   return ItemWidget(item: item);
                 },
+                physics: const NeverScrollableScrollPhysics(),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
@@ -101,6 +115,52 @@ class _HomeTabState extends State {
                   ),
                 ],
               ),
+              ...(account.creditBalances.isNotEmpty
+                  ? [
+                      Align(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 16.0),
+                          child: Text(
+                            S.of(context).creditCards,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w300, fontSize: 20.0),
+                          ),
+                        ),
+                        alignment: Alignment.centerLeft,
+                      ),
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: account.creditBalances.length,
+                        itemBuilder: (context, index) {
+                          Balance creditBalance = account.creditBalances[index];
+                          DateTime dueDate = DateTime(
+                              DateTime.now().year,
+                              DateTime.now().month,
+                              creditBalance.dayOfMonth ?? -1);
+                          if (dueDate.isBefore(DateTime.now())) {
+                            dueDate = Jiffy(dueDate).add(months: 1).dateTime;
+                          }
+                          double daysRemaining = Jiffy(dueDate)
+                              .diff(Jiffy(DateTime.now()), Units.DAY)
+                              .toDouble();
+
+                          double currentBudget = account.getRunningBalance(
+                            DateTime.now(),
+                            balance: creditBalance,
+                          );
+
+                          bool overBudget =
+                              currentBudget < (0 - (creditBalance.limit ?? 0));
+
+                          bool alert =
+                              creditBalance.limit != null && overBudget;
+
+                          return Text(
+                              "${creditBalance.name}: $daysRemaining _DAYSREMAINING; _OVERBUDGET: $alert");
+                        },
+                      ),
+                    ]
+                  : []),
               Align(
                 child: Text(
                   S.of(context).thisMonth,

@@ -2,13 +2,15 @@ import 'package:duszamobile2021/chart_helper.dart';
 import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:duszamobile2021/repositories/account_repository.dart';
 import 'package:duszamobile2021/resources/account.dart';
+import 'package:duszamobile2021/resources/exporter.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:pdf/pdf.dart';
 import 'package:pdf/widgets.dart' as pw;
 import 'package:printing/printing.dart';
+import 'package:share_plus/share_plus.dart';
 
 class StatisticsTab extends StatelessWidget {
   final Account account;
@@ -41,19 +43,61 @@ class StatisticsTab extends StatelessWidget {
     });
   }
 
+  void _shareData() async {
+    List<ExportItem> exportItems = createExportItems(account);
+    List<String> filelines = [ExportItem.headerLine];
+    exportItems.forEach((element) {
+      filelines.add(element.line);
+    });
+    String fileContent = filelines.join('\n');
+    Share.share(fileContent);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.print),
-        onPressed: _printScreen,
+      floatingActionButton: SpeedDial(
+        icon: Icons.save,
+        activeIcon: Icons.close,
+        activeLabel: Text(S.of(context).cancel),
+        children: [
+          SpeedDialChild(
+            child: const Icon(Icons.print),
+            label: S.of(context).printStatistics,
+            onTap: () {
+              _printScreen();
+            },
+          ),
+          SpeedDialChild(
+            child: const Icon(Icons.import_export),
+            label: S.of(context).exportData,
+            onTap: () {
+              _shareData();
+            },
+          ),
+        ],
       ),
+      // floatingActionButton: FloatingActionButton(
+      //   child: const Icon(Icons.print),
+      //   onPressed: _printScreen,
+      // ),
       body: SingleChildScrollView(
         child: RepaintBoundary(
           key: _printKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
+              Align(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Text(
+                    S.of(context).accountMoneyHistory,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w300, fontSize: 20.0),
+                  ),
+                ),
+                alignment: Alignment.centerLeft,
+              ),
               SizedBox(
                 height: 240,
                 child: AspectRatio(

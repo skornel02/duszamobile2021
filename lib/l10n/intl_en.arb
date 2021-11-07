@@ -9,12 +9,12 @@
     "balances": "Balances",
     "balance": "Balance",
     "statistics": "Statistics",
-    "latestTransactions": "Latest transactions",
-    "details": "Details",
-    "thisMonth": "This month",
     "receipts": "Receipts",
     "ok": "Ok",
     "cancel": "Cancel",
+    "save": "Save",
+    "printStatistics": "Print statistics",
+    "exportData": "Export data",
     "name": "Name",
     "addNew": "Add new",
     "remove": "Remove",
@@ -65,10 +65,11 @@
     "accountwideBalance": "Accountwide balance",
     "thisMonth": "This month",
     "latestTransactions": "Latest transactions",
+    "creditCards": "Credit due dates",
     "details": "Details",
     "exportData": "Export data",
     "exportVisuals": "Export visuals",
     "amazonTrees": "With this much money this number of trees could have been planted in the Amazonian rainforest: ",
-    "date": "Date"
-
+    "date": "Date",
+    "accountMoneyHistory": "Account history"
 }

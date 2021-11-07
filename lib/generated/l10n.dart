@@ -150,36 +150,6 @@ class S {
     );
   }
 
-  /// `Latest transactions`
-  String get latestTransactions {
-    return Intl.message(
-      'Latest transactions',
-      name: 'latestTransactions',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Details`
-  String get details {
-    return Intl.message(
-      'Details',
-      name: 'details',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `This month`
-  String get thisMonth {
-    return Intl.message(
-      'This month',
-      name: 'thisMonth',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Receipts`
   String get receipts {
     return Intl.message(
@@ -205,6 +175,36 @@ class S {
     return Intl.message(
       'Cancel',
       name: 'cancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Print statistics`
+  String get printStatistics {
+    return Intl.message(
+      'Print statistics',
+      name: 'printStatistics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Export data`
+  String get exportData {
+    return Intl.message(
+      'Export data',
+      name: 'exportData',
       desc: '',
       args: [],
     );
@@ -690,11 +690,41 @@ class S {
     );
   }
 
-  /// `Export data`
-  String get exportData {
+  /// `This month`
+  String get thisMonth {
     return Intl.message(
-      'Export data',
-      name: 'exportData',
+      'This month',
+      name: 'thisMonth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Latest transactions`
+  String get latestTransactions {
+    return Intl.message(
+      'Latest transactions',
+      name: 'latestTransactions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Credit due dates`
+  String get creditCards {
+    return Intl.message(
+      'Credit due dates',
+      name: 'creditCards',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Details`
+  String get details {
+    return Intl.message(
+      'Details',
+      name: 'details',
       desc: '',
       args: [],
     );
@@ -725,6 +755,16 @@ class S {
     return Intl.message(
       'Date',
       name: 'date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account history`
+  String get accountMoneyHistory {
+    return Intl.message(
+      'Account history',
+      name: 'accountMoneyHistory',
       desc: '',
       args: [],
     );

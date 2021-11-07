@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "accountMoneyHistory":
+            MessageLookupByLibrary.simpleMessage("Számla történet"),
         "accountwideBalance":
             MessageLookupByLibrary.simpleMessage("Összes pénz"),
         "addNameHere": MessageLookupByLibrary.simpleMessage("Név megadása"),
@@ -69,6 +71,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "continueButton": MessageLookupByLibrary.simpleMessage("Következő"),
         "creation": MessageLookupByLibrary.simpleMessage("Létrehozás"),
         "credit": MessageLookupByLibrary.simpleMessage("Hitelszámla"),
+        "creditCards":
+            MessageLookupByLibrary.simpleMessage("Hitelszámla fordulók"),
         "date": MessageLookupByLibrary.simpleMessage("Dátum"),
         "dateCategory": MessageLookupByLibrary.simpleMessage("dátum ketegória"),
         "debit": MessageLookupByLibrary.simpleMessage("Bankszámla"),
@@ -95,10 +99,12 @@ class MessageLookup extends MessageLookupByLibrary {
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "outcome": MessageLookupByLibrary.simpleMessage("Kiadás"),
-        "receipts": MessageLookupByLibrary.simpleMessage("Receptek"),
+        "printStatistics":
+            MessageLookupByLibrary.simpleMessage("Statisztikák nyomtatása"),
         "remove": MessageLookupByLibrary.simpleMessage("Törlés"),
         "removeSuccessful":
             MessageLookupByLibrary.simpleMessage("Sikeres eltávolítás!"),
+        "save": MessageLookupByLibrary.simpleMessage("Mentés"),
         "selectBalance": MessageLookupByLibrary.simpleMessage(
             "Kérjük válasszon ki egy számlát!"),
         "single": MessageLookupByLibrary.simpleMessage("Egyszeri"),

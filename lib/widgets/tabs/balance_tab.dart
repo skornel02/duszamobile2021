@@ -44,30 +44,41 @@ class _BalanceTabState extends State<BalanceTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            BalancePicker(
-              balances: account.balances,
-              selectIndex: handleSelectBalance,
-              handleCreate: createBalance,
-              selectedIndex: balanceChipSelectedIndex,
-            ),
-            balanceChipSelectedIndex != null
-                ? BalanceInformation(
-                    account: account,
-                    balance: account.balances[balanceChipSelectedIndex!],
-                  )
-                : Align(
-                    child: Text(
-                      S.of(context).selectBalance,
-                      style: const TextStyle(fontSize: 16.0),
-                    ),
-                    alignment: Alignment.center,
-                  ),
-          ],
-        ),
+      body: LayoutBuilder(
+        builder: (BuildContext context, BoxConstraints viewportConstraints) {
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(
+                height: 80,
+                child: BalancePicker(
+                  balances: account.balances,
+                  selectIndex: handleSelectBalance,
+                  handleCreate: createBalance,
+                  selectedIndex: balanceChipSelectedIndex,
+                ),
+              ),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                    maxHeight: viewportConstraints.maxHeight - 80),
+                child: balanceChipSelectedIndex != null
+                    ? SingleChildScrollView(
+                        child: BalanceInformation(
+                          account: account,
+                          balance: account.balances[balanceChipSelectedIndex!],
+                        ),
+                      )
+                    : Align(
+                        child: Text(
+                          S.of(context).selectBalance,
+                          style: const TextStyle(fontSize: 16.0),
+                        ),
+                        alignment: Alignment.center,
+                      ),
+              ),
+            ],
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         child: FaIcon(

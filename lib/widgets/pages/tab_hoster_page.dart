@@ -50,36 +50,10 @@ class _TabHosterPageState extends State<TabHosterPage> {
       });
     }
 
-    List<PopupMenuEntry> items = [
-      PopupMenuItem(
-        child: Text(S.of(context).exportData),
-        onTap: () {
-          // TODO: Add data export functionality
-        },
-      ),
-      const PopupMenuDivider(),
-      PopupMenuItem(
-        child: Text(S.of(context).exportVisuals),
-        onTap: () {
-          // TODO: Add visuals exporting functionality?
-        },
-      ),
-    ];
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(S.of(context).appTitle),
-        actions: <Widget>[
-          selectedIndex == 3
-              ? PopupMenuButton(
-                  icon: FaIcon(FontAwesomeIcons.ellipsisH),
-                  itemBuilder: (context) {
-                    return items;
-                  },
-                )
-              : const SizedBox.shrink(),
-        ],
       ),
       body: loaded ? RouterOutlet() : SizedBox(),
       bottomNavigationBar: BottomNavigationBar(

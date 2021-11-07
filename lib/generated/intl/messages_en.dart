@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "accountMoneyHistory":
+            MessageLookupByLibrary.simpleMessage("Account history"),
         "accountwideBalance":
             MessageLookupByLibrary.simpleMessage("Accountwide balance"),
         "addNameHere": MessageLookupByLibrary.simpleMessage("Add name here"),
@@ -69,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "creation": MessageLookupByLibrary.simpleMessage("Creation"),
         "credit": MessageLookupByLibrary.simpleMessage("Credit"),
+        "creditCards": MessageLookupByLibrary.simpleMessage("Credit due dates"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateCategory": MessageLookupByLibrary.simpleMessage("date category"),
         "debit": MessageLookupByLibrary.simpleMessage("Debit"),
@@ -93,10 +96,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "new_title": MessageLookupByLibrary.simpleMessage("New"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "outcome": MessageLookupByLibrary.simpleMessage("Spending"),
+        "printStatistics":
+            MessageLookupByLibrary.simpleMessage("Print statistics"),
         "receipts": MessageLookupByLibrary.simpleMessage("Receipts"),
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "removeSuccessful":
             MessageLookupByLibrary.simpleMessage("Removed successfully!"),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
         "selectBalance":
             MessageLookupByLibrary.simpleMessage("Please select a balance!"),
         "single": MessageLookupByLibrary.simpleMessage("Single"),
