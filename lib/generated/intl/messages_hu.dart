@@ -64,6 +64,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kategória már létezik!"),
         "categoryNameInUse":
             MessageLookupByLibrary.simpleMessage("Kategória használatban van!"),
+        "chooseAttachments":
+            MessageLookupByLibrary.simpleMessage("Csatolmányok választása"),
         "chooseCategory":
             MessageLookupByLibrary.simpleMessage("Kategória kiválasztása"),
         "chooseDate":

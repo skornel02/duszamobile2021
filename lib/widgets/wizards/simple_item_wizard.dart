@@ -3,6 +3,7 @@ import 'package:duszamobile2021/resources/balance.dart';
 import 'package:duszamobile2021/resources/item.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:duszamobile2021/extensions.dart';
@@ -27,7 +28,7 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
   int wizardStep = 1;
 
   String? selectedTypeChip;
-  String? selectedAmount;
+  int selectedAmount = 0;
   Balance? selectedBalance;
 
   bool amountIsFine = false;
@@ -44,7 +45,7 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
 
   int? balanceChipSelectedIndex;
 
-  TextEditingController textEditingController = TextEditingController();
+  late MoneyMaskedTextController textEditingController;
 
   ExpandableController controller1 = ExpandableController();
   ExpandableController controller2 = ExpandableController();
@@ -58,15 +59,23 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
 
   _SimpleItemWizardWidgetState() {
     controller1.toggle();
+    textEditingController =  MoneyMaskedTextController(
+      rightSymbol: " HUF",
+      decimalSeparator: "",
+      thousandSeparator: " ",
+      precision: 0,
+    );
     textEditingController.addListener(() {
       setState(() {
-        if (textEditingController.text != "") {
+        if (textEditingController.numberValue != 0) {
           amountIsFine = true;
         } else {
           amountIsFine = false;
         }
       });
     });
+
+
   }
 
   @override
@@ -163,7 +172,7 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
-                    "${S.of(context).amount}${selectedAmount != null ? ": ${selectedAmount!.huf}" : ""}",
+                    "${S.of(context).amount}${selectedAmount != 0 ? ": ${selectedAmount.huf}" : ""}",
                     style: const TextStyle(fontSize: 16),
                   ),
                 ),
@@ -177,7 +186,7 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                     keyboardType: TextInputType.number),
                 Row(
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     Padding(
                       padding: const EdgeInsets.only(top: 16, right: 8),
                       child: ElevatedButton(
@@ -188,8 +197,8 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                                 setState(() {
                                   controller2.toggle();
                                   controller3.toggle();
-                                  selectedAmount = textEditingController.text;
-
+                                  selectedAmount = textEditingController.numberValue.toInt();
+                                  FocusScope.of(context).unfocus();
                                   wizardStep++;
                                 });
                               },
@@ -260,12 +269,13 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                                     widget.balances[balanceChipSelectedIndex!];
 
                                 wizardStep++;
+
                               });
                             },
                     )
                   ],
                 ),
-                selectedAmount != null
+                selectedAmount != 0
                     ? Row(
                         children: [
                           Lottie.asset(
@@ -276,7 +286,7 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                           Flexible(
                             child: Text(
                               S.of(context).amazonTrees +
-                                  "${(int.parse(textEditingController.value.text) / 300).floor()}",
+                                  "${(textEditingController.numberValue / 300).floor()}",
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -298,7 +308,7 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                         child: Text(S.of(context).finishButton),
                         onPressed: () {
                           String type = typeChipOptions[typeChipSelectedIndex!];
-                          int amount = int.parse(selectedAmount!);
+                          int amount = selectedAmount;
                           Balance bal = selectedBalance!;
                           print(
                               "${type} preset: ${amount} HUF to: ${bal.name}");

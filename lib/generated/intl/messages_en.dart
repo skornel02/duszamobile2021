@@ -65,6 +65,8 @@ class MessageLookup extends MessageLookupByLibrary {
             "Category name already exists!"),
         "categoryNameInUse":
             MessageLookupByLibrary.simpleMessage("Category is in use!"),
+        "chooseAttachments":
+            MessageLookupByLibrary.simpleMessage("Choose attachments"),
         "chooseCategory":
             MessageLookupByLibrary.simpleMessage("Choose category"),
         "chooseDate": MessageLookupByLibrary.simpleMessage("Choose date"),

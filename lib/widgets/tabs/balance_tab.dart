@@ -66,9 +66,12 @@ class _BalanceTabState extends State<BalanceTab> {
                     maxHeight: viewportConstraints.maxHeight - 80),
                 child: balanceChipSelectedIndex != null
                     ? SingleChildScrollView(
-                        child: BalanceInformation(
-                          account: account,
-                          balance: account.balances[balanceChipSelectedIndex!],
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 70),
+                          child: BalanceInformation(
+                            account: account,
+                            balance: account.balances[balanceChipSelectedIndex!],
+                          ),
                         ),
                       )
                     : Align(
@@ -84,7 +87,7 @@ class _BalanceTabState extends State<BalanceTab> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        child: FaIcon(
+        child: const FaIcon(
           FontAwesomeIcons.dollarSign,
          // color: Theme.of(context).disabledColor,
         ),

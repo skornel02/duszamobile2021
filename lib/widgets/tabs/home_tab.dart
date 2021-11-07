@@ -51,7 +51,7 @@ class _HomeTabState extends State implements Disposable {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          padding: const EdgeInsets.only(left: 16, right: 16, bottom: 70),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[

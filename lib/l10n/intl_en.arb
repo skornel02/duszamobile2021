@@ -74,5 +74,9 @@
     "daysRemaining": "days remaining",
     "overBudget": "Over budget",
     "yes": "yes",
-    "no": "no"
+    "no": "no",
+    "fromBalance": "From balance",
+    "toBalance": "To balance",
+    "newTransaction": "New transaction",
+    "chooseAttachments": "Choose attachments"
 }

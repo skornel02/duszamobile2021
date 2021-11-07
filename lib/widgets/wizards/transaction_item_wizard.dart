@@ -5,6 +5,7 @@ import 'package:duszamobile2021/resources/balance.dart';
 import 'package:duszamobile2021/resources/item.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:duszamobile2021/extensions.dart';
 import 'package:lottie/lottie.dart';
@@ -26,7 +27,7 @@ class TransactionItemWizardWidget extends StatefulWidget {
 class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidget> {
   int wizardStep = 1;
 
-  String? selectedAmount;
+  int selectedAmount = 0;
 
   bool amountIsFine = false;
 
@@ -36,7 +37,7 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
   List<Balance> toBalanceOptions = [];
   int? selectedToBalanceIndex;
 
-  TextEditingController textEditingController = TextEditingController();
+  late MoneyMaskedTextController textEditingController;
 
   ExpandableController controller1 = ExpandableController();
   ExpandableController controller2 = ExpandableController();
@@ -55,15 +56,22 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
     fromBalanceOptions = account.balances;
     toBalanceOptions = account.balances;
     controller1.toggle();
+    textEditingController = MoneyMaskedTextController(
+      rightSymbol: " HUF",
+      decimalSeparator: "",
+      thousandSeparator: " ",
+      precision: 0,
+    );
     textEditingController.addListener(() {
       setState(() {
-        if (textEditingController.text != "") {
+        if (textEditingController.text != "" && textEditingController.numberValue != 0) {
           amountIsFine = true;
         } else {
           amountIsFine = false;
         }
       });
     });
+
   }
 
   @override
@@ -210,7 +218,7 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
                     )
                   ],
                 ),
-                selectedAmount != null
+                selectedAmount != 0
                     ? Row(
                   children: [
                     Lottie.asset(
@@ -221,7 +229,7 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
                     Flexible(
                       child: Text(
                         S.of(context).amazonTrees +
-                            "${(int.parse(textEditingController.value.text) / 300).floor()}",
+                            "${(textEditingController.numberValue / 300).floor()}",
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -249,7 +257,7 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
                 Padding(
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
-                    "${S.of(context).amount}${selectedAmount != null ? ": ${selectedAmount!.huf}" : ""}",
+                    "${S.of(context).amount}${selectedAmount != 0 ? ": ${selectedAmount!.huf}" : ""}",
                     style: const TextStyle(fontSize: 16),
                   ),
                 ),
@@ -273,7 +281,7 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
                             : () {
                           setState(() {
                             controller3.toggle();
-                            selectedAmount = textEditingController.text;
+                            selectedAmount = textEditingController.numberValue.toInt();
 
                             wizardStep++;
                           });
@@ -299,10 +307,8 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
                     Balance selectedFromBalance = fromBalanceOptions[selectedFromBalanceIndex!];
                     Balance selectedToBalance = toBalanceOptions[selectedToBalanceIndex!];
 
-                    int amount = int.parse(selectedAmount!);
-
                     
-                    Account next = Account.copy(account)..transfer(selectedFromBalance, selectedToBalance, amount);
+                    Account next = Account.copy(account)..transfer(selectedFromBalance, selectedToBalance, selectedAmount);
                     Modular.get<AccountRepository>().saveAccount(next);
                     
                     Modular.to.pop();

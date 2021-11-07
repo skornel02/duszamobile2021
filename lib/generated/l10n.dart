@@ -770,49 +770,26 @@ class S {
     );
   }
 
-<<<<<<< HEAD
-  /// `New transaction`
-  String get newTransaction {
-    return Intl.message(
-      'New transaction',
-      name: 'newTransaction',
-=======
   /// `days remaining`
   String get daysRemaining {
     return Intl.message(
       'days remaining',
       name: 'daysRemaining',
->>>>>>> 242b31a214428a0b3479c3468070bb85ff9c57bb
       desc: '',
       args: [],
     );
   }
 
-<<<<<<< HEAD
-  /// `From balance`
-  String get fromBalance {
-    return Intl.message(
-      'From balance',
-      name: 'fromBalance',
-=======
   /// `Over budget`
   String get overBudget {
     return Intl.message(
       'Over budget',
       name: 'overBudget',
->>>>>>> 242b31a214428a0b3479c3468070bb85ff9c57bb
       desc: '',
       args: [],
     );
   }
 
-<<<<<<< HEAD
-  /// `To balance`
-  String get toBalance {
-    return Intl.message(
-      'To balance',
-      name: 'toBalance',
-=======
   /// `yes`
   String get yes {
     return Intl.message(
@@ -828,7 +805,46 @@ class S {
     return Intl.message(
       'no',
       name: 'no',
->>>>>>> 242b31a214428a0b3479c3468070bb85ff9c57bb
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `From balance`
+  String get fromBalance {
+    return Intl.message(
+      'From balance',
+      name: 'fromBalance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To balance`
+  String get toBalance {
+    return Intl.message(
+      'To balance',
+      name: 'toBalance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New transaction`
+  String get newTransaction {
+    return Intl.message(
+      'New transaction',
+      name: 'newTransaction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Choose attachments`
+  String get chooseAttachments {
+    return Intl.message(
+      'Choose attachments',
+      name: 'chooseAttachments',
       desc: '',
       args: [],
     );
