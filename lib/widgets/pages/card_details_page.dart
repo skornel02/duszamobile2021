@@ -13,11 +13,11 @@ import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:open_file/open_file.dart';
 
 class CardDetailsPage extends StatefulWidget {
   final String itemId;
@@ -58,6 +58,8 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
         titleTextEditingController = TextEditingController(),
         dateTextEditingController = TextEditingController() {
     item = account.items.firstWhere((element) => element.id == id);
+    print(item);
+    print(item.filePaths);
     selectedDateTime = item.creation;
     titleTextEditingController.text = item.title;
     dateTextEditingController.text =
@@ -73,6 +75,7 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
     selectedBalance = account.getBalanceFromId(item.balanceId)!;
     isSingle = !item.monthly;
     isIncome = item.amount >= 0;
+    filePaths = item.filePaths;
   }
 
   @override
@@ -171,37 +174,6 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                   },
                 ),
               ),
-              /*
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: TextField(
-                  decoration: InputDecoration.collapsed(
-                      hintText: S.of(context).chooseDate),
-                  controller: dateTextEditingController,
-                  onTap: () async {
-                    // Below line stops keyboard from appearing
-                    FocusScope.of(context).requestFocus(FocusNode());
-
-
-                    TimeOfDay? pickedDateTime = await showTimePicker(
-                        context: context,
-                        initialTime: TimeOfDay.now(),
-
-                        lastDate: DateTime.now());
-                    if (pickedDateTime != null) {
-
-                      setState(() {
-                        dateTextEditingController.text =
-                            pickedDateTime.toString();
-                        selectedDateTime = pickedDateTime;
-                      });
-                    }
-
-                  },
-                ),
-              ),
-              */
-
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: DropdownButtonFormField(
@@ -291,7 +263,7 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                                 await FilePicker.platform.pickFiles();
 
                             if (result != null) {
-                              String path = result!.files!.single!.path!;
+                              String path = result.files.single.path!;
                               File file = File(path);
                               setState(() {
                                 filePaths.add(path);
@@ -304,8 +276,6 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 80),
-                      //  height: 200,
-                      //  width: 400,
                       child: ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
@@ -313,22 +283,33 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                           itemBuilder: (context, index) {
                             List<String> list = filePaths[index].split("/");
                             return Card(
-                                child: Row(
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text(list[list.length - 1]),
-                                ),
-                                Spacer(),
-                                IconButton(
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Text(list[list.length - 1]),
+                                  ),
+                                  Spacer(),
+                                  IconButton(
+                                    onPressed: () {
+                                      OpenFile.open(filePaths[index]);
+                                    },
+                                    icon: const Icon(Icons.open_in_browser),
+                                  ),
+                                  IconButton(
                                     onPressed: () {
                                       setState(() {
                                         filePaths.removeAt(index);
                                       });
                                     },
-                                    icon: const FaIcon(FontAwesomeIcons.times))
-                              ],
-                            ));
+                                    icon: const FaIcon(
+                                      FontAwesomeIcons.times,
+                                      color: Colors.red,
+                                    ),
+                                  )
+                                ],
+                              ),
+                            );
                           }),
                     )
                   ],
