@@ -71,5 +71,8 @@
     "exportVisuals": "Export visuals",
     "amazonTrees": "With this much money this number of trees could have been planted in the Amazonian rainforest: ",
     "date": "Date",
-    "accountMoneyHistory": "Account history"
+    "accountMoneyHistory": "Account history",
+    "newTransaction": "New transaction",
+    "fromBalance": "From balance",
+    "toBalance": "To balance"
 }

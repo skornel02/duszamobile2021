@@ -80,6 +80,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "exportData": MessageLookupByLibrary.simpleMessage("Export data"),
         "exportVisuals": MessageLookupByLibrary.simpleMessage("Export visuals"),
         "finishButton": MessageLookupByLibrary.simpleMessage("Finish"),
+        "fromBalance": MessageLookupByLibrary.simpleMessage("From balance"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter Demo Home Page"),
@@ -93,6 +94,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mustBeWhole": MessageLookupByLibrary.simpleMessage(
             "Value must be a whole number"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "newTransaction":
+            MessageLookupByLibrary.simpleMessage("New transaction"),
         "new_title": MessageLookupByLibrary.simpleMessage("New"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "outcome": MessageLookupByLibrary.simpleMessage("Spending"),
@@ -117,6 +120,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Subcategory is in use!"),
         "thisMonth": MessageLookupByLibrary.simpleMessage("This month"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
+        "toBalance": MessageLookupByLibrary.simpleMessage("To balance"),
         "turn": MessageLookupByLibrary.simpleMessage("Turn"),
         "type": MessageLookupByLibrary.simpleMessage("Type")
       };

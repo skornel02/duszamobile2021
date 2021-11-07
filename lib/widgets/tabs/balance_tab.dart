@@ -4,6 +4,7 @@ import 'package:duszamobile2021/resources/account.dart';
 import 'package:duszamobile2021/resources/balance.dart';
 import 'package:duszamobile2021/widgets/balances/balance_information.dart';
 import 'package:duszamobile2021/widgets/balances/balance_picker.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -83,9 +84,13 @@ class _BalanceTabState extends State<BalanceTab> {
       floatingActionButton: FloatingActionButton(
         child: FaIcon(
           FontAwesomeIcons.dollarSign,
-          color: Theme.of(context).disabledColor,
+         // color: Theme.of(context).disabledColor,
         ),
-        onPressed: null,
+        onPressed:  (){
+          if(account.balances.length >= 2){
+            Modular.to.pushNamed("/transaction-wizard");
+          }
+        },
       ),
     );
   }

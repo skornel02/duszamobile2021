@@ -70,5 +70,8 @@
     "exportVisuals": "Kimutatások exportálása",
     "amazonTrees": "A megadott összegből ennyi fát lehetne ültetni az amazonasi esőerdőben: ",
     "date": "Dátum",
-    "accountMoneyHistory": "Számla történet"
+    "accountMoneyHistory": "Számla történet",
+    "newTransaction": "Új tranzakció",
+    "fromBalance": "Honnan",
+    "toBalance": "Hova"
 }

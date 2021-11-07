@@ -12,7 +12,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:toggle_switch/toggle_switch.dart';
 
 class CardDetailsPage extends StatefulWidget {
-  String itemId;
+  final String itemId;
 
   CardDetailsPage(this.itemId);
 

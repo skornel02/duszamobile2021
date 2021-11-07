@@ -83,6 +83,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "exportVisuals":
             MessageLookupByLibrary.simpleMessage("Kimutatások exportálása"),
         "finishButton": MessageLookupByLibrary.simpleMessage("Befejezés"),
+        "fromBalance": MessageLookupByLibrary.simpleMessage("Honnan"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter demó otthon oldal"),
@@ -96,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "mustBeWhole": MessageLookupByLibrary.simpleMessage(
             "Az értéknek egésznek kell lennie"),
         "name": MessageLookupByLibrary.simpleMessage("Név"),
+        "newTransaction": MessageLookupByLibrary.simpleMessage("Új tranzakció"),
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "outcome": MessageLookupByLibrary.simpleMessage("Kiadás"),
@@ -120,6 +122,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "Alkategéria használatban van!"),
         "thisMonth": MessageLookupByLibrary.simpleMessage("Jelenlegi hónap"),
         "title": MessageLookupByLibrary.simpleMessage("Cím"),
+        "toBalance": MessageLookupByLibrary.simpleMessage("Hova"),
         "turn": MessageLookupByLibrary.simpleMessage("Forduló"),
         "type": MessageLookupByLibrary.simpleMessage("Típus")
       };

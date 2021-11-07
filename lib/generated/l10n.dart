@@ -769,6 +769,36 @@ class S {
       args: [],
     );
   }
+
+  /// `New transaction`
+  String get newTransaction {
+    return Intl.message(
+      'New transaction',
+      name: 'newTransaction',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `From balance`
+  String get fromBalance {
+    return Intl.message(
+      'From balance',
+      name: 'fromBalance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `To balance`
+  String get toBalance {
+    return Intl.message(
+      'To balance',
+      name: 'toBalance',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
