@@ -51,12 +51,20 @@
     "itemCreated": "Bejegyzés sikeresen létrehozva!",
     "amount": "Összeg",
     "income": "Bevétel",
-    "outcome": "Kivétel",
+    "outcome": "Kiadás",
     "dateCategory": "dátum ketegória",
     "specifyAmount": "Összeg meghatározása",
     "addNameHere": "Név megadása",
     "chooseCategory": "Kategória kiválasztása",
     "chooseDate": "Dátum kiválasztása",
     "single": "Egyszeri",
-    "monthly": "Havi"
+    "monthly": "Havi",
+    "selectBalance": "Kérjük válasszon ki egy számlát!",
+    "accountwideBalance": "Összes pénz",
+    "thisMonth": "Jelenlegi hónap",
+    "latestTransactions": "Legutóbbi tranzakciók",
+    "details": "Részletek",
+    "exportData": "Adatok exportálása",
+    "exportVisuals": "Kimutatások exportálása",
+    "amazonTrees": "A megadott összegből ennyi fát lehetne ültetni az amazonasi esőerdőben: "
 }

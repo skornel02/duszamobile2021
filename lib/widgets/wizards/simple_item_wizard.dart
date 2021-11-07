@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:duszamobile2021/extensions.dart';
+import 'package:monet/monet.dart';
+import 'package:lottie/lottie.dart';
 
 class SimpleItemWizardWidget extends StatefulWidget {
   final List<Balance> balances;
@@ -16,8 +18,6 @@ class SimpleItemWizardWidget extends StatefulWidget {
     required this.balances,
     required this.createItem,
   }) : super(key: key);
-
-
 
   @override
   _SimpleItemWizardWidgetState createState() => _SimpleItemWizardWidgetState();
@@ -78,10 +78,11 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
             header: Row(
               children: [
                 Card(
-                  color: Colors.lightGreen,
+                  color: Theme.of(context).primaryColor,
                   elevation: 0,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8, bottom: 8.0, left: 12, right: 12),
+                  child: const Padding(
+                    padding: EdgeInsets.only(
+                        top: 8, bottom: 8.0, left: 12, right: 12),
                     child: Text("1"),
                   ),
                 ),
@@ -89,7 +90,7 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
                     "${S.of(context).type}${selectedTypeChip != null ? ": ${selectedTypeChip}" : ""}",
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
               ],
@@ -130,14 +131,14 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                         onPressed: typeChipSelectedIndex == null
                             ? null
                             : () {
-                          setState(() {
-                            controller1.toggle();
-                            controller2.toggle();
-                            selectedTypeChip =
-                            typeChipOptions[typeChipSelectedIndex!];
-                            wizardStep++;
-                          });
-                        },
+                                setState(() {
+                                  controller1.toggle();
+                                  controller2.toggle();
+                                  selectedTypeChip =
+                                      typeChipOptions[typeChipSelectedIndex!];
+                                  wizardStep++;
+                                });
+                              },
                       ),
                     )
                   ],
@@ -151,10 +152,11 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
             header: Row(
               children: [
                 Card(
-                  color: Colors.lightGreen,
+                  color: Theme.of(context).primaryColor,
                   elevation: 0,
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 8, bottom: 8.0, left: 12, right: 12),
+                  child: const Padding(
+                    padding: EdgeInsets.only(
+                        top: 8, bottom: 8.0, left: 12, right: 12),
                     child: Text("2"),
                   ),
                 ),
@@ -162,10 +164,9 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                   padding: const EdgeInsets.only(left: 8.0),
                   child: Text(
                     "${S.of(context).amount}${selectedAmount != null ? ": ${selectedAmount!.huf}" : ""}",
-                    style: TextStyle(fontSize: 16),
+                    style: const TextStyle(fontSize: 16),
                   ),
                 ),
-
               ],
             ),
             collapsed: Container(),
@@ -184,14 +185,14 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                         onPressed: !amountIsFine
                             ? null
                             : () {
-                          setState(() {
-                            controller2.toggle();
-                            controller3.toggle();
-                            selectedAmount = textEditingController.text;
+                                setState(() {
+                                  controller2.toggle();
+                                  controller3.toggle();
+                                  selectedAmount = textEditingController.text;
 
-                            wizardStep++;
-                          });
-                        },
+                                  wizardStep++;
+                                });
+                              },
                       ),
                     )
                   ],
@@ -204,11 +205,12 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
           ExpandablePanel(
             header: Row(
               children: [
-                const Card(
-                  color: Colors.lightGreen,
+                Card(
+                  color: Theme.of(context).primaryColor,
                   elevation: 0,
-                  child: Padding(
-                    padding: EdgeInsets.only(top: 8, bottom: 8.0, left: 12, right: 12),
+                  child: const Padding(
+                    padding: EdgeInsets.only(
+                        top: 8, bottom: 8.0, left: 12, right: 12),
                     child: Text("3"),
                   ),
                 ),
@@ -219,7 +221,6 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                     style: const TextStyle(fontSize: 16),
                   ),
                 ),
-
               ],
             ),
             collapsed: Container(),
@@ -240,28 +241,45 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                             });
                           },
                         );
-                      }
-                      ),
+                      }),
                 ),
                 Row(
                   children: [
-                    Spacer(),
+                    const Spacer(),
                     ElevatedButton(
                       child: Text(S.of(context).continueButton),
                       onPressed: balanceChipSelectedIndex == null
                           ? null
                           : () {
-                        setState(() {
-                          controller3.toggle();
-                          selectedBalance =
-                          widget.balances[balanceChipSelectedIndex!];
+                              setState(() {
+                                controller3.toggle();
+                                selectedBalance =
+                                    widget.balances[balanceChipSelectedIndex!];
 
-                          wizardStep++;
-                        });
-                      },
+                                wizardStep++;
+                              });
+                            },
                     )
                   ],
-                )
+                ),
+                selectedAmount != null
+                    ? Row(
+                        children: [
+                          Lottie.asset(
+                            'assets/animations/falling_tree.json',
+                            width: 200,
+                            height: 200,
+                          ),
+                          Flexible(
+                            child: Text(
+                              S.of(context).amazonTrees +
+                                  "${(int.parse(textEditingController.value.text) / 300).floor()}",
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      )
+                    : const SizedBox.shrink(),
               ],
             ),
             controller: controller3,
@@ -269,77 +287,79 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
           ),
           wizardStep == 4
               ? Padding(
-            padding: const EdgeInsets.all(10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [ElevatedButton(
-                child: Text(S.of(context).finishButton),
-                onPressed: () {
-                  String type = typeChipOptions[typeChipSelectedIndex!];
-                  int amount = int.parse(selectedAmount!);
-                  Balance bal = selectedBalance!;
-                  print("${type} preset: ${amount} HUF to: ${bal.name}");
+                  padding: const EdgeInsets.all(10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        child: Text(S.of(context).finishButton),
+                        onPressed: () {
+                          String type = typeChipOptions[typeChipSelectedIndex!];
+                          int amount = int.parse(selectedAmount!);
+                          Balance bal = selectedBalance!;
+                          print(
+                              "${type} preset: ${amount} HUF to: ${bal.name}");
 
-                  Item? item;
-                  switch (typeChipSelectedIndex) {
-                    case 0:
-                      item = Item(
-                        title: "Bevásárlás",
-                        creation: DateTime.now(),
-                        category: "Általános/Bevásárlás",
-                        amount: (0 - amount).toDouble(),
-                        balance: bal,
-                      );
-                      break;
-                    case 1:
-                      item = Item(
-                        title: "Egyéb program",
-                        creation: DateTime.now(),
-                        category: "Program/Egyéb",
-                        amount: (0 - amount).toDouble(),
-                        balance: bal,
-                      );
-                      break;
-                    case 2:
-                      item = Item(
-                        title: "Egyszeri bevétel",
-                        creation: DateTime.now(),
-                        category: "Bevétel/Egyszeri bevétel",
-                        amount: (amount).toDouble(),
-                        balance: bal,
-                      );
-                      break;
-                    case 3:
-                      item = Item(
-                        title: "Ajándék",
-                        creation: DateTime.now(),
-                        category: "Bevétel/Ajándék",
-                        amount: (amount).toDouble(),
-                        balance: bal,
-                      );
-                      break;
-                    case 4:
-                      item = Item(
-                        title: "Fizetés",
-                        creation: DateTime.now(),
-                        category: "Bevétel/Fizetés",
-                        amount: (amount).toDouble(),
-                        balance: bal,
-                        monthly: true,
-                      );
-                      break;
-                  }
+                          Item? item;
+                          switch (typeChipSelectedIndex) {
+                            case 0:
+                              item = Item(
+                                title: "Bevásárlás",
+                                creation: DateTime.now(),
+                                category: "Általános/Bevásárlás",
+                                amount: (0 - amount).toDouble(),
+                                balance: bal,
+                              );
+                              break;
+                            case 1:
+                              item = Item(
+                                title: "Egyéb program",
+                                creation: DateTime.now(),
+                                category: "Program/Egyéb",
+                                amount: (0 - amount).toDouble(),
+                                balance: bal,
+                              );
+                              break;
+                            case 2:
+                              item = Item(
+                                title: "Egyszeri bevétel",
+                                creation: DateTime.now(),
+                                category: "Bevétel/Egyszeri bevétel",
+                                amount: (amount).toDouble(),
+                                balance: bal,
+                              );
+                              break;
+                            case 3:
+                              item = Item(
+                                title: "Ajándék",
+                                creation: DateTime.now(),
+                                category: "Bevétel/Ajándék",
+                                amount: (amount).toDouble(),
+                                balance: bal,
+                              );
+                              break;
+                            case 4:
+                              item = Item(
+                                title: "Fizetés",
+                                creation: DateTime.now(),
+                                category: "Bevétel/Fizetés",
+                                amount: (amount).toDouble(),
+                                balance: bal,
+                                monthly: true,
+                              );
+                              break;
+                          }
 
-                  if (item != null) {
-                    widget.createItem(item);
-                  }
-                },
-              )],
-            ),
-          )
+                          if (item != null) {
+                            widget.createItem(item);
+                          }
+                        },
+                      )
+                    ],
+                  ),
+                )
               : const SizedBox(),
         ]),
-
       ],
     );
   }

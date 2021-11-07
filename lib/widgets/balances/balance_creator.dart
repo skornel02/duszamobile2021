@@ -95,7 +95,7 @@ class _BalanceCreatorWidgetState extends State<BalanceCreatorWidget> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.all(8),
+            padding: const EdgeInsets.all(8),
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: ToggleSwitch(

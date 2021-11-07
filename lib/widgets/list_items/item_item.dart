@@ -1,5 +1,6 @@
 import 'package:duszamobile2021/resources/item.dart';
 import 'package:flutter/material.dart';
+import 'package:jiffy/jiffy.dart';
 
 class ItemWidget extends StatelessWidget {
   final Item item;
@@ -8,9 +9,34 @@ class ItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text(
-          "${item.title} - ${item.amount} (${item.creation.toIso8601String()})"),
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(item.title,  style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w400)),
+                    Text(
+                      Jiffy(item.creation).format("yyyy MM dd"),
+                      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Text("${item.amount.toStringAsFixed(0)} HUF", style: const TextStyle(fontSize: 16,),)
+                  ],
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

@@ -59,7 +59,13 @@ class _BalanceTabState extends State<BalanceTab> {
                     account: account,
                     balance: account.balances[balanceChipSelectedIndex!],
                   )
-                : Text("_SELECT_BALANCE"),
+                : Align(
+                    child: Text(
+                      S.of(context).selectBalance,
+                      style: const TextStyle(fontSize: 16.0),
+                    ),
+                    alignment: Alignment.center,
+                  ),
           ],
         ),
       ),

@@ -22,52 +22,60 @@ class BalancePicker extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 100,
-      child: Expanded(
-        child: ListView.builder(
-            padding: const EdgeInsets.all(4),
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: balances.length + 1,
-            itemBuilder: (context, index) {
-              if (index < balances.length) {
-                Balance balance = balances[index];
-                return Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: ChoiceChip(
-                    labelPadding: const EdgeInsets.all(12),
-                    label: Text(balance.name, style: TextStyle(fontSize: 16),),
-                    selected: selectedIndex == index,
-                    onSelected: (selected) {
-                      selectIndex(index);
-                    },
+      child: ListView.builder(
+          padding: const EdgeInsets.all(4),
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemCount: balances.length + 1,
+          itemBuilder: (context, index) {
+            if (index < balances.length) {
+              Balance balance = balances[index];
+              return Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: ChoiceChip(
+                  backgroundColor: Colors.white,
+                  elevation: 4.0,
+                  labelPadding: const EdgeInsets.all(12),
+                  label: Text(
+                    balance.name,
+                    style: const TextStyle(fontSize: 16),
                   ),
-                );
-              } else {
-                return Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: ChoiceChip(
-                    label: Text(S.of(context).addNewBalance),
-                    labelPadding: const EdgeInsets.all(12),
-                    padding: const EdgeInsets.all(6),
-                    selected: false,
-                    onSelected: (selected) {
-                      Alert(
-                          context: context,
-                          title: S.of(context).creation,
-                          content: Column(
-                            children: <Widget>[
-                              BalanceCreatorWidget(
-                                createBalance: handleCreate,
-                              ),
-                            ],
-                          ),
-                          buttons: []).show();
-                    },
+                  selected: selectedIndex == index,
+                  onSelected: (selected) {
+                    selectIndex(index);
+                  },
+                ),
+              );
+            } else {
+              return Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: ChoiceChip(
+                  backgroundColor: Colors.white,
+                  elevation: 4.0,
+                  label: Text(
+                    S.of(context).addNewBalance,
+                    style: const TextStyle(fontWeight: FontWeight.w500),
                   ),
-                );
-              }
-            }),
-      ),
+                  labelPadding: const EdgeInsets.all(12),
+                  padding: const EdgeInsets.all(6),
+                  selected: false,
+                  onSelected: (selected) {
+                    Alert(
+                        context: context,
+                        title: S.of(context).creation,
+                        content: Column(
+                          children: <Widget>[
+                            BalanceCreatorWidget(
+                              createBalance: handleCreate,
+                            ),
+                          ],
+                        ),
+                        buttons: []).show();
+                  },
+                ),
+              );
+            }
+          }),
     );
   }
 }

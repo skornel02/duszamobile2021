@@ -51,12 +51,20 @@
     "itemCreated": "Item created successfully!",
     "amount": "Amount",
     "income": "Income",
-    "outcome": "Outcome",
+    "outcome": "Spending",
     "dateCategory": "date category",
     "specifyAmount": "Specify amount",
     "addNameHere": "Add name here",
     "chooseCategory": "Choose category",
     "chooseDate": "Choose date",
     "single": "Single",
-    "monthly": "Monthly"
+    "monthly": "Monthly",
+    "selectBalance": "Please select a balance!",
+    "accountwideBalance": "Accountwide balance",
+    "thisMonth": "This month",
+    "latestTransactions": "Latest transactions",
+    "details": "Details",
+    "exportData": "Export data",
+    "exportVisuals": "Export visuals",
+    "amazonTrees": "With this much money this number of trees could have been planted in the Amazonian rainforest: "
 }
