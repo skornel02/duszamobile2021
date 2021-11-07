@@ -75,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Hitelszámla fordulók"),
         "date": MessageLookupByLibrary.simpleMessage("Dátum"),
         "dateCategory": MessageLookupByLibrary.simpleMessage("dátum ketegória"),
+        "daysRemaining": MessageLookupByLibrary.simpleMessage("nap maradt"),
         "debit": MessageLookupByLibrary.simpleMessage("Bankszámla"),
         "details": MessageLookupByLibrary.simpleMessage("Részletek"),
         "easy": MessageLookupByLibrary.simpleMessage("Egyszerű"),
@@ -97,8 +98,11 @@ class MessageLookup extends MessageLookupByLibrary {
             "Az értéknek egésznek kell lennie"),
         "name": MessageLookupByLibrary.simpleMessage("Név"),
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
+        "no": MessageLookupByLibrary.simpleMessage("nem"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "outcome": MessageLookupByLibrary.simpleMessage("Kiadás"),
+        "overBudget":
+            MessageLookupByLibrary.simpleMessage("Túlhaladt a kereten"),
         "printStatistics":
             MessageLookupByLibrary.simpleMessage("Statisztikák nyomtatása"),
         "remove": MessageLookupByLibrary.simpleMessage("Törlés"),
@@ -121,6 +125,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "thisMonth": MessageLookupByLibrary.simpleMessage("Jelenlegi hónap"),
         "title": MessageLookupByLibrary.simpleMessage("Cím"),
         "turn": MessageLookupByLibrary.simpleMessage("Forduló"),
-        "type": MessageLookupByLibrary.simpleMessage("Típus")
+        "type": MessageLookupByLibrary.simpleMessage("Típus"),
+        "yes": MessageLookupByLibrary.simpleMessage("igen")
       };
 }

@@ -200,16 +200,6 @@ class S {
     );
   }
 
-  /// `Export data`
-  String get exportData {
-    return Intl.message(
-      'Export data',
-      name: 'exportData',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Name`
   String get name {
     return Intl.message(
@@ -730,6 +720,16 @@ class S {
     );
   }
 
+  /// `Export data`
+  String get exportData {
+    return Intl.message(
+      'Export data',
+      name: 'exportData',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Export visuals`
   String get exportVisuals {
     return Intl.message(
@@ -765,6 +765,46 @@ class S {
     return Intl.message(
       'Account history',
       name: 'accountMoneyHistory',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `days remaining`
+  String get daysRemaining {
+    return Intl.message(
+      'days remaining',
+      name: 'daysRemaining',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Over budget`
+  String get overBudget {
+    return Intl.message(
+      'Over budget',
+      name: 'overBudget',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `yes`
+  String get yes {
+    return Intl.message(
+      'yes',
+      name: 'yes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `no`
+  String get no {
+    return Intl.message(
+      'no',
+      name: 'no',
       desc: '',
       args: [],
     );

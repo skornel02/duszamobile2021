@@ -74,6 +74,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "creditCards": MessageLookupByLibrary.simpleMessage("Credit due dates"),
         "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateCategory": MessageLookupByLibrary.simpleMessage("date category"),
+        "daysRemaining": MessageLookupByLibrary.simpleMessage("days remaining"),
         "debit": MessageLookupByLibrary.simpleMessage("Debit"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "easy": MessageLookupByLibrary.simpleMessage("Easy"),
@@ -94,8 +95,10 @@ class MessageLookup extends MessageLookupByLibrary {
             "Value must be a whole number"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "new_title": MessageLookupByLibrary.simpleMessage("New"),
+        "no": MessageLookupByLibrary.simpleMessage("no"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "outcome": MessageLookupByLibrary.simpleMessage("Spending"),
+        "overBudget": MessageLookupByLibrary.simpleMessage("Over budget"),
         "printStatistics":
             MessageLookupByLibrary.simpleMessage("Print statistics"),
         "receipts": MessageLookupByLibrary.simpleMessage("Receipts"),
@@ -118,6 +121,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "thisMonth": MessageLookupByLibrary.simpleMessage("This month"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "turn": MessageLookupByLibrary.simpleMessage("Turn"),
-        "type": MessageLookupByLibrary.simpleMessage("Type")
+        "type": MessageLookupByLibrary.simpleMessage("Type"),
+        "yes": MessageLookupByLibrary.simpleMessage("yes")
       };
 }
