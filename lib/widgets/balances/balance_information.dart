@@ -71,7 +71,9 @@ class BalanceInformation extends StatelessWidget {
               ),
             ),
           ),
-          BalanceMonthy(account: account, balance: balance),
+          Container(
+            child: BalanceMonthy(account: account, balance: balance),
+          ),
         ],
       ),
     );

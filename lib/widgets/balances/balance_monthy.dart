@@ -59,18 +59,15 @@ class _BalanceMonthyState extends State<BalanceMonthy> {
                 icon: const FaIcon(FontAwesomeIcons.arrowRight))
           ],
         ),
-        // TODO: Fix scrolling
-        SingleChildScrollView(
-          child: ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: items.length,
-              itemBuilder: (context, index) {
-                Item item = items[index];
+        ListView.builder(
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: items.length,
+            itemBuilder: (context, index) {
+              Item item = items[index];
 
-                return ItemWidget(item: item);
-              }),
-        ),
+              return ItemWidget(item: item);
+            }),
       ],
     );
   }

@@ -8,12 +8,11 @@
     "balances": "Számlák",
     "balance": "Számla",
     "statistics": "Statisztikák",
-    "latestTransactions": "Legutobbi tranzakciók",
-    "details": "Részletek",
-    "thisMonth": "Ebben a hónapban",
-    "receipts": "Receptek",
     "ok": "Ok",
     "cancel": "Mégsem",
+    "save": "Mentés",
+    "printStatistics": "Statisztikák nyomtatása",
+    "exportData": "Adatok exportálása",
     "name": "Név",
     "addNew": "Új hozzáadása",
     "remove": "Törlés",
@@ -63,8 +62,10 @@
     "accountwideBalance": "Összes pénz",
     "thisMonth": "Jelenlegi hónap",
     "latestTransactions": "Legutóbbi tranzakciók",
+    "creditCards": "Hitelszámla fordulók",
     "details": "Részletek",
     "exportData": "Adatok exportálása",
     "exportVisuals": "Kimutatások exportálása",
-    "amazonTrees": "A megadott összegből ennyi fát lehetne ültetni az amazonasi esőerdőben: "
+    "amazonTrees": "A megadott összegből ennyi fát lehetne ültetni az amazonasi esőerdőben: ",
+    "accountMoneyHistory": "Számla történet"
 }

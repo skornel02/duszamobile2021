@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "accountMoneyHistory":
+            MessageLookupByLibrary.simpleMessage("Account history"),
+        "accountwideBalance":
+            MessageLookupByLibrary.simpleMessage("Accountwide balance"),
         "addNameHere": MessageLookupByLibrary.simpleMessage("Add name here"),
         "addNew": MessageLookupByLibrary.simpleMessage("Add new"),
         "addNewBalance":
@@ -31,6 +35,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addNewSubCategory":
             MessageLookupByLibrary.simpleMessage("Add new sub category"),
         "advanced": MessageLookupByLibrary.simpleMessage("Advanced"),
+        "amazonTrees": MessageLookupByLibrary.simpleMessage(
+            "With this much money this number of trees could have been planted in the Amazonian rainforest: "),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "appTitle": MessageLookupByLibrary.simpleMessage("GreenGuardian"),
         "areYouSure":
@@ -64,10 +70,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "creation": MessageLookupByLibrary.simpleMessage("Creation"),
         "credit": MessageLookupByLibrary.simpleMessage("Credit"),
+        "creditCards": MessageLookupByLibrary.simpleMessage("Credit due dates"),
         "dateCategory": MessageLookupByLibrary.simpleMessage("date category"),
         "debit": MessageLookupByLibrary.simpleMessage("Debit"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "easy": MessageLookupByLibrary.simpleMessage("Easy"),
+        "exportData": MessageLookupByLibrary.simpleMessage("Export data"),
+        "exportVisuals": MessageLookupByLibrary.simpleMessage("Export visuals"),
         "finishButton": MessageLookupByLibrary.simpleMessage("Finish"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
@@ -84,11 +93,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "new_title": MessageLookupByLibrary.simpleMessage("New"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
-        "outcome": MessageLookupByLibrary.simpleMessage("Outcome"),
+        "outcome": MessageLookupByLibrary.simpleMessage("Spending"),
+        "printStatistics":
+            MessageLookupByLibrary.simpleMessage("Print statistics"),
         "receipts": MessageLookupByLibrary.simpleMessage("Receipts"),
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "removeSuccessful":
             MessageLookupByLibrary.simpleMessage("Removed successfully!"),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "selectBalance":
+            MessageLookupByLibrary.simpleMessage("Please select a balance!"),
         "single": MessageLookupByLibrary.simpleMessage("Single"),
         "specifyAmount": MessageLookupByLibrary.simpleMessage("Specify amount"),
         "spendingLimit": MessageLookupByLibrary.simpleMessage("Spending limit"),

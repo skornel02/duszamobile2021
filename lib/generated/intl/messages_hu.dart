@@ -22,6 +22,10 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "accountMoneyHistory":
+            MessageLookupByLibrary.simpleMessage("Számla történet"),
+        "accountwideBalance":
+            MessageLookupByLibrary.simpleMessage("Összes pénz"),
         "addNameHere": MessageLookupByLibrary.simpleMessage("Név megadása"),
         "addNew": MessageLookupByLibrary.simpleMessage("Új hozzáadása"),
         "addNewBalance": MessageLookupByLibrary.simpleMessage("Új számla!"),
@@ -30,6 +34,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addNewSubCategory":
             MessageLookupByLibrary.simpleMessage("Új alkategória hozzáadása"),
         "advanced": MessageLookupByLibrary.simpleMessage("Részletes"),
+        "amazonTrees": MessageLookupByLibrary.simpleMessage(
+            "A megadott összegből ennyi fát lehetne ültetni az amazonasi esőerdőben: "),
         "amount": MessageLookupByLibrary.simpleMessage("Összeg"),
         "appTitle": MessageLookupByLibrary.simpleMessage("ZöldŐr"),
         "areYouSure":
@@ -64,10 +70,16 @@ class MessageLookup extends MessageLookupByLibrary {
         "continueButton": MessageLookupByLibrary.simpleMessage("Következő"),
         "creation": MessageLookupByLibrary.simpleMessage("Létrehozás"),
         "credit": MessageLookupByLibrary.simpleMessage("Hitelszámla"),
+        "creditCards":
+            MessageLookupByLibrary.simpleMessage("Hitelszámla fordulók"),
         "dateCategory": MessageLookupByLibrary.simpleMessage("dátum ketegória"),
         "debit": MessageLookupByLibrary.simpleMessage("Bankszámla"),
         "details": MessageLookupByLibrary.simpleMessage("Részletek"),
         "easy": MessageLookupByLibrary.simpleMessage("Egyszerű"),
+        "exportData":
+            MessageLookupByLibrary.simpleMessage("Adatok exportálása"),
+        "exportVisuals":
+            MessageLookupByLibrary.simpleMessage("Kimutatások exportálása"),
         "finishButton": MessageLookupByLibrary.simpleMessage("Befejezés"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
@@ -76,7 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "itemCreated": MessageLookupByLibrary.simpleMessage(
             "Bejegyzés sikeresen létrehozva!"),
         "latestTransactions":
-            MessageLookupByLibrary.simpleMessage("Legutobbi tranzakciók"),
+            MessageLookupByLibrary.simpleMessage("Legutóbbi tranzakciók"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),
         "monthly": MessageLookupByLibrary.simpleMessage("Havi"),
         "mustBeWhole": MessageLookupByLibrary.simpleMessage(
@@ -84,11 +96,15 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Név"),
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
-        "outcome": MessageLookupByLibrary.simpleMessage("Kivétel"),
-        "receipts": MessageLookupByLibrary.simpleMessage("Receptek"),
+        "outcome": MessageLookupByLibrary.simpleMessage("Kiadás"),
+        "printStatistics":
+            MessageLookupByLibrary.simpleMessage("Statisztikák nyomtatása"),
         "remove": MessageLookupByLibrary.simpleMessage("Törlés"),
         "removeSuccessful":
             MessageLookupByLibrary.simpleMessage("Sikeres eltávolítás!"),
+        "save": MessageLookupByLibrary.simpleMessage("Mentés"),
+        "selectBalance": MessageLookupByLibrary.simpleMessage(
+            "Kérjük válasszon ki egy számlát!"),
         "single": MessageLookupByLibrary.simpleMessage("Egyszeri"),
         "specifyAmount":
             MessageLookupByLibrary.simpleMessage("Összeg meghatározása"),
@@ -100,7 +116,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Alkategória már létezik!"),
         "subcategoryNameInUse": MessageLookupByLibrary.simpleMessage(
             "Alkategéria használatban van!"),
-        "thisMonth": MessageLookupByLibrary.simpleMessage("Ebben a hónapban"),
+        "thisMonth": MessageLookupByLibrary.simpleMessage("Jelenlegi hónap"),
         "turn": MessageLookupByLibrary.simpleMessage("Forduló"),
         "type": MessageLookupByLibrary.simpleMessage("Típus")
       };
