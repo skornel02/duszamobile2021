@@ -1,4 +1,5 @@
 import 'package:duszamobile2021/chart_helper.dart';
+import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:duszamobile2021/indicator.dart';
 import 'package:duszamobile2021/resources/account.dart';
 import 'package:duszamobile2021/resources/balance.dart';
@@ -25,8 +26,8 @@ class MoneyChart extends StatelessWidget {
         Wrap(
           spacing: 5.0,
           children: [
-            Indicator(color: Colors.green, text: "_INCOME", isSquare: true),
-            Indicator(color: Colors.red, text: "_EXPENSE", isSquare: true),
+            Indicator(color: Colors.green, text: S.of(context).income, isSquare: true),
+            Indicator(color: Colors.red, text: S.of(context).outcome, isSquare: true),
             Indicator(
                 color: Theme.of(context).primaryColor,
                 text: "_TOTAL",

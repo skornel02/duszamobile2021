@@ -216,7 +216,7 @@ class _HomeTabState extends State implements Disposable {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    "${creditBalance.name}: $daysRemaining ${S.of(context).daysRemaining}",
+                                    "${creditBalance.name}: ${daysRemaining.toStringAsFixed(0)} ${S.of(context).daysRemaining}",
                                     style: const TextStyle(
                                       fontSize: 16.0,
                                     ),
