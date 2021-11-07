@@ -139,6 +139,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "thisMonth": MessageLookupByLibrary.simpleMessage("This month"),
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "toBalance": MessageLookupByLibrary.simpleMessage("To balance"),
+        "total": MessageLookupByLibrary.simpleMessage("Total"),
         "turn": MessageLookupByLibrary.simpleMessage("Turn"),
         "type": MessageLookupByLibrary.simpleMessage("Type")
       };
