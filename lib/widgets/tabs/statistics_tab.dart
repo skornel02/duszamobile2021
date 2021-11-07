@@ -98,56 +98,59 @@ class StatisticsTab extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: RepaintBoundary(
-          key: _printKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Align(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: Text(
-                    S.of(context).accountMoneyHistory,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w300, fontSize: 20.0),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: RepaintBoundary(
+            key: _printKey,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Align(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: Text(
+                      S.of(context).accountMoneyHistory,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w300, fontSize: 20.0),
+                    ),
                   ),
+                  alignment: Alignment.centerLeft,
                 ),
-                alignment: Alignment.centerLeft,
-              ),
-              MoneyChart(
-                account: account,
-                colorMap: balanceColors,
-              ),
-              Align(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: Text(
-                    "_SPENDINGSTHISMONTH",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w300, fontSize: 20.0),
+                MoneyChart(
+                  account: account,
+                  colorMap: balanceColors,
+                ),
+                Align(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: Text(
+                      S.of(context).spendingsThisMonth,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w300, fontSize: 20.0),
+                    ),
                   ),
+                  alignment: Alignment.centerLeft,
                 ),
-                alignment: Alignment.centerLeft,
-              ),
-              SpendingChart(
-                account: account,
-                categoryColorMap: categoryColors,
-              ),
-              Align(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 16.0),
-                  child: Text(
-                    "_COMPARISONPERBALANCE",
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w300, fontSize: 20.0),
+                SpendingChart(
+                  account: account,
+                  categoryColorMap: categoryColors,
+                ),
+                Align(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: Text(
+                      S.of(context).comparisonPerBalance,
+                      style: const TextStyle(
+                          fontWeight: FontWeight.w300, fontSize: 20.0),
+                    ),
                   ),
+                  alignment: Alignment.centerLeft,
                 ),
-                alignment: Alignment.centerLeft,
-              ),
-              BalanceChangesChart(
-                account: account,
-              ),
-            ],
+                BalanceChangesChart(
+                  account: account,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -790,21 +790,11 @@ class S {
     );
   }
 
-  /// `yes`
-  String get yes {
+  /// `Not over budget`
+  String get notOverBudget {
     return Intl.message(
-      'yes',
-      name: 'yes',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `no`
-  String get no {
-    return Intl.message(
-      'no',
-      name: 'no',
+      'Not over budget',
+      name: 'notOverBudget',
       desc: '',
       args: [],
     );
@@ -855,6 +845,36 @@ class S {
     return Intl.message(
       'Choose attachments',
       name: 'chooseAttachments',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Comparison per balance`
+  String get comparisonPerBalance {
+    return Intl.message(
+      'Comparison per balance',
+      name: 'comparisonPerBalance',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No records for account`
+  String get noRecordForAccount {
+    return Intl.message(
+      'No records for account',
+      name: 'noRecordForAccount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `With this much money the below amount of CO₂ could be cleared: `
+  String get clearCO {
+    return Intl.message(
+      'With this much money the below amount of CO₂ could be cleared: ',
+      name: 'clearCO',
       desc: '',
       args: [],
     );

@@ -70,6 +70,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "chooseCategory":
             MessageLookupByLibrary.simpleMessage("Choose category"),
         "chooseDate": MessageLookupByLibrary.simpleMessage("Choose date"),
+        "clearCO": MessageLookupByLibrary.simpleMessage(
+            "With this much money the below amount of CO₂ could be cleared: "),
+        "comparisonPerBalance":
+            MessageLookupByLibrary.simpleMessage("Comparison per balance"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "creation": MessageLookupByLibrary.simpleMessage("Creation"),
         "credit": MessageLookupByLibrary.simpleMessage("Credit"),
@@ -100,7 +104,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "newTransaction":
             MessageLookupByLibrary.simpleMessage("New transaction"),
         "new_title": MessageLookupByLibrary.simpleMessage("New"),
-        "no": MessageLookupByLibrary.simpleMessage("no"),
+        "noRecordForAccount":
+            MessageLookupByLibrary.simpleMessage("No records for account"),
+        "notOverBudget":
+            MessageLookupByLibrary.simpleMessage("Not over budget"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "outcome": MessageLookupByLibrary.simpleMessage("Spending"),
         "overBudget": MessageLookupByLibrary.simpleMessage("Over budget"),
@@ -129,7 +136,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "title": MessageLookupByLibrary.simpleMessage("Title"),
         "toBalance": MessageLookupByLibrary.simpleMessage("To balance"),
         "turn": MessageLookupByLibrary.simpleMessage("Turn"),
-        "type": MessageLookupByLibrary.simpleMessage("Type"),
-        "yes": MessageLookupByLibrary.simpleMessage("yes")
+        "type": MessageLookupByLibrary.simpleMessage("Type")
       };
 }

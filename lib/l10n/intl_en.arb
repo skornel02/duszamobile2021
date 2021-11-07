@@ -73,11 +73,13 @@
     "accountMoneyHistory": "Account history",
     "daysRemaining": "days remaining",
     "overBudget": "Over budget",
-    "yes": "yes",
-    "no": "no",
+    "notOverBudget": "Not over budget",
     "spendingsThisMonth": "Spendings this month",
     "fromBalance": "From balance",
     "toBalance": "To balance",
     "newTransaction": "New transaction",
-    "chooseAttachments": "Choose attachments"
+    "chooseAttachments": "Choose attachments",
+    "comparisonPerBalance": "Comparison per balance",
+    "noRecordForAccount": "No records for account",
+    "clearCO": "With this much money the below amount of CO₂ could be cleared: "
 }

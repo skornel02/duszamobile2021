@@ -207,18 +207,32 @@ class _HomeTabState extends State implements Disposable {
                           bool alert =
                               creditBalance.limit != null && overBudget;
 
-                          String alertText =
-                              alert ? S.of(context).yes : S.of(context).no;
-
                           return Card(
                             child: Padding(
                               padding: const EdgeInsets.fromLTRB(
                                   18.0, 12.0, 12.0, 12.0),
-                              child: Text(
-                                "${creditBalance.name}: $daysRemaining ${S.of(context).daysRemaining}\n${S.of(context).overBudget}: $alertText",
-                                style: const TextStyle(
-                                  fontSize: 16.0,
-                                ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    "${creditBalance.name}: $daysRemaining ${S.of(context).daysRemaining}",
+                                    style: const TextStyle(
+                                      fontSize: 16.0,
+                                    ),
+                                  ),
+                                  alert
+                                      ? Text(S.of(context).overBudget,
+                                          style: const TextStyle(
+                                              fontSize: 16.0,
+                                              color: Colors.red))
+                                      : Text(
+                                          S.of(context).notOverBudget,
+                                          style: const TextStyle(
+                                            fontSize: 16.0,
+                                            color: Colors.green,
+                                          ),
+                                        ),
+                                ],
                               ),
                             ),
                           );

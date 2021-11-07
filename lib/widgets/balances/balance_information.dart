@@ -101,7 +101,7 @@ class BalanceInformation extends StatelessWidget {
                   ),
                 ]
               : [
-                  Text("_NORECORDSFORTHISACCOUNT"),
+                  Text(S.of(context).noRecordForAccount),
                 ]),
         ],
       ),

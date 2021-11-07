@@ -60,7 +60,7 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
     item = account.items.firstWhere((element) => element.id == id);
     selectedDateTime = item.creation;
     titleTextEditingController.text = item.title;
-    dateTextEditingController.text = DateFormat('yyyy.MM.dd').format(item.creation);
+    dateTextEditingController.text = DateFormat('yyyy.MM.dd, HH:mm:ss').format(item.creation);
     amountTextEditingController = MoneyMaskedTextController(
       initialValue: item.amount,
       rightSymbol: " HUF",
@@ -157,14 +157,14 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                         setState(() {
                           selectedDateTime = date;
                           dateTextEditingController.text =
-                              DateFormat('yyyy.MM.dd').format(selectedDateTime);
+                              DateFormat('yyyy.MM.dd, HH:mm:ss').format(selectedDateTime);
                         });
                       },
                       onConfirm: (date) {
                         setState(() {
                           selectedDateTime = date;
                           dateTextEditingController.text =
-                              selectedDateTime.toString();
+                              DateFormat('yyyy.MM.dd, HH:mm:ss').format(selectedDateTime);
                         });
                       },
                       locale: LocaleType.en,

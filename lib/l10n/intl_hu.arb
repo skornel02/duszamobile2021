@@ -72,11 +72,13 @@
     "accountMoneyHistory": "Számla történet",
     "daysRemaining": "nap maradt",
     "overBudget": "Túlhaladt a kereten",
-    "yes": "igen",
-    "no": "nem",
+    "notOverBudget": "Nem haladt túl a kereten",
     "spendingsThisMonth": "E havi költések",
     "fromBalance": "Honnan",
     "toBalance": "Hova",
     "newTransaction": "Új tranzakció",
-    "chooseAttachments": "Csatolmányok választása"
+    "chooseAttachments": "Csatolmányok választása",
+    "comparisonPerBalance": "Számlánkénti összehasonlítás",
+    "noRecordForAccount": "Nincsenek számlához tartozó adatok",
+    "clearCO": "Ennyi pénzből az alábbi mennyiségű CO₂-től lehetne megtísztítani a Földet: "
 }

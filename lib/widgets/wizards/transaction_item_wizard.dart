@@ -21,16 +21,17 @@ class TransactionItemWizardWidget extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _TransactionItemWizardWidgetState createState() => _TransactionItemWizardWidgetState();
+  _TransactionItemWizardWidgetState createState() =>
+      _TransactionItemWizardWidgetState();
 }
 
-class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidget> {
+class _TransactionItemWizardWidgetState
+    extends State<TransactionItemWizardWidget> {
   int wizardStep = 1;
 
   int selectedAmount = 0;
 
   bool amountIsFine = false;
-
 
   List<Balance> fromBalanceOptions = [];
   int? selectedFromBalanceIndex;
@@ -49,10 +50,10 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
       tapBodyToCollapse: false,
       tapHeaderToExpand: false);
 
-
   Account account;
 
-  _TransactionItemWizardWidgetState() : account = Modular.get<AccountRepository>().getAccount(){
+  _TransactionItemWizardWidgetState()
+      : account = Modular.get<AccountRepository>().getAccount() {
     fromBalanceOptions = account.balances;
     toBalanceOptions = account.balances;
     controller1.toggle();
@@ -64,14 +65,14 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
     );
     textEditingController.addListener(() {
       setState(() {
-        if (textEditingController.text != "" && textEditingController.numberValue != 0) {
+        if (textEditingController.text != "" &&
+            textEditingController.numberValue != 0) {
           amountIsFine = true;
         } else {
           amountIsFine = false;
         }
       });
     });
-
   }
 
   @override
@@ -137,13 +138,13 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
                         onPressed: selectedFromBalanceIndex == null
                             ? null
                             : () {
-                          setState(() {
-                            controller1.toggle();
-                            controller2.toggle();
-                          //  toBalanceOptions.removeAt(selectedFromBalanceChipIndex!);
-                            wizardStep++;
-                          });
-                        },
+                                setState(() {
+                                  controller1.toggle();
+                                  controller2.toggle();
+                                  //  toBalanceOptions.removeAt(selectedFromBalanceChipIndex!);
+                                  wizardStep++;
+                                });
+                              },
                       ),
                     )
                   ],
@@ -184,7 +185,7 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
                       scrollDirection: Axis.horizontal,
                       itemCount: toBalanceOptions.length,
                       itemBuilder: (context, index) {
-                        if(selectedFromBalanceIndex == index){
+                        if (selectedFromBalanceIndex == index) {
                           return Container();
                         }
                         return Padding(
@@ -209,33 +210,15 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
                       onPressed: selectedToBalanceIndex == null
                           ? null
                           : () {
-                        setState(() {
-                          controller2.toggle();
-                          controller3.toggle();
-                          wizardStep++;
-                        });
-                      },
+                              setState(() {
+                                controller2.toggle();
+                                controller3.toggle();
+                                wizardStep++;
+                              });
+                            },
                     )
                   ],
                 ),
-                selectedAmount != 0
-                    ? Row(
-                  children: [
-                    Lottie.asset(
-                      'assets/animations/falling_tree.json',
-                      width: 200,
-                      height: 200,
-                    ),
-                    Flexible(
-                      child: Text(
-                        S.of(context).amazonTrees +
-                            "${(textEditingController.numberValue / 300).floor()}",
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ],
-                )
-                    : const SizedBox.shrink(),
               ],
             ),
             controller: controller2,
@@ -279,13 +262,14 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
                         onPressed: !amountIsFine
                             ? null
                             : () {
-                          setState(() {
-                            controller3.toggle();
-                            selectedAmount = textEditingController.numberValue.toInt();
+                                setState(() {
+                                  controller3.toggle();
+                                  selectedAmount =
+                                      textEditingController.numberValue.toInt();
 
-                            wizardStep++;
-                          });
-                        },
+                                  wizardStep++;
+                                });
+                              },
                       ),
                     )
                   ],
@@ -297,23 +281,44 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
           ),
           wizardStep == 4
               ? Padding(
-            padding: const EdgeInsets.all(10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  child: Text(S.of(context).finishButton),
-                  onPressed: () {
-                    Balance selectedFromBalance = fromBalanceOptions[selectedFromBalanceIndex!];
-                    Balance selectedToBalance = toBalanceOptions[selectedToBalanceIndex!];
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      (selectedAmount != 0
+                          ? Row(
+                        children: [
+                          Lottie.asset(
+                            'assets/animations/exploding_earth.json',
+                            width: 200,
+                            height: 200,
+                          ),
+                          Flexible(
+                            child: Text(
+                              S.of(context).clearCO +
+                                  "\n${(textEditingController.numberValue / 2400).toStringAsFixed(2)} kg",
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      )
+                          : const SizedBox.shrink()),
+                      ElevatedButton(
+                        child: Text(S.of(context).finishButton),
+                        onPressed: () {
+                          Balance selectedFromBalance =
+                              fromBalanceOptions[selectedFromBalanceIndex!];
+                          Balance selectedToBalance =
+                              toBalanceOptions[selectedToBalanceIndex!];
 
-                    
-                    Account next = Account.copy(account)..transfer(selectedFromBalance, selectedToBalance, selectedAmount);
-                    Modular.get<AccountRepository>().saveAccount(next);
-                    
-                    Modular.to.pop();
-                    Modular.to.navigate("/home");
-                    /*
+                          Account next = Account.copy(account)
+                            ..transfer(selectedFromBalance, selectedToBalance,
+                                selectedAmount);
+                          Modular.get<AccountRepository>().saveAccount(next);
+
+                          Modular.to.pop();
+                          Modular.to.navigate("/home");
+                          /*
                     Item? item;
                     switch (typeChipSelectedIndex) {
                       case 0:
@@ -369,11 +374,11 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
                       widget.createItem(item);
                     }
                     */
-                  },
+                        },
+                      )
+                    ],
+                  ),
                 )
-              ],
-            ),
-          )
               : const SizedBox(),
         ]),
       ],

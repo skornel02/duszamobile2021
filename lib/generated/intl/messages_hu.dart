@@ -70,6 +70,10 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kategória kiválasztása"),
         "chooseDate":
             MessageLookupByLibrary.simpleMessage("Dátum kiválasztása"),
+        "clearCO": MessageLookupByLibrary.simpleMessage(
+            "Ennyi pénzből az alábbi mennyiségű CO₂-től lehetne megtísztítani a Földet: "),
+        "comparisonPerBalance": MessageLookupByLibrary.simpleMessage(
+            "Számlánkénti összehasonlítás"),
         "continueButton": MessageLookupByLibrary.simpleMessage("Következő"),
         "creation": MessageLookupByLibrary.simpleMessage("Létrehozás"),
         "credit": MessageLookupByLibrary.simpleMessage("Hitelszámla"),
@@ -102,7 +106,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Név"),
         "newTransaction": MessageLookupByLibrary.simpleMessage("Új tranzakció"),
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
-        "no": MessageLookupByLibrary.simpleMessage("nem"),
+        "noRecordForAccount": MessageLookupByLibrary.simpleMessage(
+            "Nincsenek számlához tartozó adatok"),
+        "notOverBudget":
+            MessageLookupByLibrary.simpleMessage("Nem haladt túl a kereten"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
         "outcome": MessageLookupByLibrary.simpleMessage("Kiadás"),
         "overBudget":
@@ -132,7 +139,6 @@ class MessageLookup extends MessageLookupByLibrary {
         "title": MessageLookupByLibrary.simpleMessage("Cím"),
         "toBalance": MessageLookupByLibrary.simpleMessage("Hova"),
         "turn": MessageLookupByLibrary.simpleMessage("Forduló"),
-        "type": MessageLookupByLibrary.simpleMessage("Típus"),
-        "yes": MessageLookupByLibrary.simpleMessage("igen")
+        "type": MessageLookupByLibrary.simpleMessage("Típus")
       };
 }
