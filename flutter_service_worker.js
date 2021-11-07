@@ -8,12 +8,12 @@ const RESOURCES = {
 "icons/Icon-512.png": "96e752610906ba2a93c65f8abe1645f1",
 "icons/Icon-192.png": "ac9a721a12bbc803b44f645561ecb1e1",
 "favicon.png": "5dcef449791fa27946b3d35ad8803796",
-"index.html": "e5f0bcbb6625e891ac387ce782f4a625",
-"/": "e5f0bcbb6625e891ac387ce782f4a625",
+"index.html": "df333ccf211cbe85ca97fa9a3f2780ac",
+"/": "df333ccf211cbe85ca97fa9a3f2780ac",
 "manifest.json": "6a750d3a0de7e11f395ee50baff4e4da",
 "version.json": "78e98cebc4e6bda9c388e003f1539ccc",
 "assets/fonts/MaterialIcons-Regular.otf": "4e6447691c9509f7acdbf8a931a85ca1",
-"assets/NOTICES": "80829bd9e1f8df8d07a9efdc2c9c5624",
+"assets/NOTICES": "6c61572c9f3f1d29fc85ba9ed788a81b",
 "assets/packages/cupertino_icons/assets/CupertinoIcons.ttf": "6d342eb68f170c97609e9da345464e5e",
 "assets/packages/rflutter_alert/assets/images/close.png": "13c168d8841fcaba94ee91e8adc3617f",
 "assets/packages/rflutter_alert/assets/images/3.0x/close.png": "98d2de9ca72dc92b1c9a2835a7464a8c",
@@ -42,7 +42,7 @@ const RESOURCES = {
 "assets/assets/animations/exploding_earth.json": "a4defe95066fcd8e8d7887b6b5fc2a44",
 "assets/assets/animations/falling_tree.json": "b088520576ae0e4762a8cca5d41d89d3",
 "assets/AssetManifest.json": "75513829aa1cf456010dfdd52987a20b",
-"main.dart.js": "4148caa967282dccd80c81cd73f5259a"
+"main.dart.js": "00ba75ed04756a3891414ff51a0a9553"
 };
 
 // The application shell files that are downloaded before a service worker can
