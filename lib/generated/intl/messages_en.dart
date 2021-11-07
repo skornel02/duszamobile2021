@@ -22,6 +22,8 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "account": MessageLookupByLibrary.simpleMessage("Account"),
+        "accountwideBalance":
+            MessageLookupByLibrary.simpleMessage("Accountwide balance"),
         "addNameHere": MessageLookupByLibrary.simpleMessage("Add name here"),
         "addNew": MessageLookupByLibrary.simpleMessage("Add new"),
         "addNewBalance":
@@ -31,6 +33,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "addNewSubCategory":
             MessageLookupByLibrary.simpleMessage("Add new sub category"),
         "advanced": MessageLookupByLibrary.simpleMessage("Advanced"),
+        "amazonTrees": MessageLookupByLibrary.simpleMessage(
+            "With this much money this number of trees could have been planted in the Amazonian rainforest: "),
         "amount": MessageLookupByLibrary.simpleMessage("Amount"),
         "appTitle": MessageLookupByLibrary.simpleMessage("GreenGuardian"),
         "areYouSure":
@@ -52,6 +56,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "cards": MessageLookupByLibrary.simpleMessage("Cards"),
         "cash": MessageLookupByLibrary.simpleMessage("Cash"),
         "categories": MessageLookupByLibrary.simpleMessage("Categories"),
+        "category": MessageLookupByLibrary.simpleMessage("Category"),
         "categoryCreated": MessageLookupByLibrary.simpleMessage(
             "Category created successfully!"),
         "categoryNameAlreadyInUse": MessageLookupByLibrary.simpleMessage(
@@ -64,10 +69,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "continueButton": MessageLookupByLibrary.simpleMessage("Continue"),
         "creation": MessageLookupByLibrary.simpleMessage("Creation"),
         "credit": MessageLookupByLibrary.simpleMessage("Credit"),
+        "date": MessageLookupByLibrary.simpleMessage("Date"),
         "dateCategory": MessageLookupByLibrary.simpleMessage("date category"),
         "debit": MessageLookupByLibrary.simpleMessage("Debit"),
         "details": MessageLookupByLibrary.simpleMessage("Details"),
         "easy": MessageLookupByLibrary.simpleMessage("Easy"),
+        "exportData": MessageLookupByLibrary.simpleMessage("Export data"),
+        "exportVisuals": MessageLookupByLibrary.simpleMessage("Export visuals"),
         "finishButton": MessageLookupByLibrary.simpleMessage("Finish"),
         "home": MessageLookupByLibrary.simpleMessage("Home"),
         "homePage":
@@ -84,11 +92,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "name": MessageLookupByLibrary.simpleMessage("Name"),
         "new_title": MessageLookupByLibrary.simpleMessage("New"),
         "ok": MessageLookupByLibrary.simpleMessage("Ok"),
-        "outcome": MessageLookupByLibrary.simpleMessage("Outcome"),
+        "outcome": MessageLookupByLibrary.simpleMessage("Spending"),
         "receipts": MessageLookupByLibrary.simpleMessage("Receipts"),
         "remove": MessageLookupByLibrary.simpleMessage("Remove"),
         "removeSuccessful":
             MessageLookupByLibrary.simpleMessage("Removed successfully!"),
+        "selectBalance":
+            MessageLookupByLibrary.simpleMessage("Please select a balance!"),
         "single": MessageLookupByLibrary.simpleMessage("Single"),
         "specifyAmount": MessageLookupByLibrary.simpleMessage("Specify amount"),
         "spendingLimit": MessageLookupByLibrary.simpleMessage("Spending limit"),
@@ -100,6 +110,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "subcategoryNameInUse":
             MessageLookupByLibrary.simpleMessage("Subcategory is in use!"),
         "thisMonth": MessageLookupByLibrary.simpleMessage("This month"),
+        "title": MessageLookupByLibrary.simpleMessage("Title"),
         "turn": MessageLookupByLibrary.simpleMessage("Turn"),
         "type": MessageLookupByLibrary.simpleMessage("Type")
       };

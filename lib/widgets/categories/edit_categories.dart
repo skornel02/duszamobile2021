@@ -60,7 +60,10 @@ class EditCategoriesWidget extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          Text(category, style: TextStyle(fontSize: 20),),
+                          Text(
+                            category,
+                            style: TextStyle(fontSize: 20),
+                          ),
                           IconButton(
                             onPressed: () {
                               showAreYouSureRemoveDialog(context, () {
@@ -118,7 +121,9 @@ class EditCategoriesWidget extends StatelessWidget {
                 shrinkWrap: true,
               ),
             ),
-            SizedBox(height: 60,)
+            SizedBox(
+              height: 60,
+            )
           ],
         ),
       ),

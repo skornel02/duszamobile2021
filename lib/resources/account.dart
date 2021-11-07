@@ -73,6 +73,14 @@ class Account {
 
   Account.copy(Account acc) : this.fromMap(acc.toMap());
 
+  Item? getItemFromId(String itemId) {
+    return items.firstWhere((element) => element.id == itemId);
+  }
+
+  Balance? getBalanceFromId(String balanceId) {
+    return balances.firstWhere((element) => element.id == balanceId);
+  }
+
   double getRunningBalance(DateTime end, {Balance? balance}) {
     List<Item> items =
         filterItemsForRange(this.items, DateTime(1), end, balance: balance);

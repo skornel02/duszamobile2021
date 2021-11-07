@@ -6,6 +6,7 @@ import 'package:duszamobile2021/resources/item.dart';
 import 'package:duszamobile2021/widgets/wizards/simple_item_wizard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -23,7 +24,12 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
   bool isSingle = true;
   int? balanceChipSelectedIndex;
 
-  TextEditingController amountTextEditingController = TextEditingController();
+  MoneyMaskedTextController amountTextEditingController =
+      MoneyMaskedTextController(
+          rightSymbol: " HUF",
+          decimalSeparator: "",
+          thousandSeparator: " ",
+          precision: 0); //after
   TextEditingController nameTextEditingController = TextEditingController();
   TextEditingController dateTextEditingController = TextEditingController();
 
@@ -93,21 +99,36 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                     ),
                   ),
                   SizedBox(
-                    height: 60,
+                    height: 50,
                     child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: account.balances.length,
                         itemBuilder: (context, index) {
-                          return ChoiceChip(
-                            label: Text(account.balances[index].name),
-                            selected: balanceChipSelectedIndex == index,
-                            onSelected: (selected) {
-                              setState(() {
-                                balanceChipSelectedIndex = index;
-                              });
-                            },
+                          return Padding(
+                            padding: const EdgeInsets.all(4),
+                            child: ChoiceChip(
+                              label: Text(account.balances[index].name),
+                              selected: balanceChipSelectedIndex == index,
+                              onSelected: (selected) {
+                                setState(() {
+                                  balanceChipSelectedIndex = index;
+                                });
+                              },
+                            ),
                           );
                         }),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: Text(S.of(context).amount),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(20),
+                    child: TextField(
+                        decoration: InputDecoration.collapsed(
+                            hintText: S.of(context).specifyAmount),
+                        controller: amountTextEditingController,
+                        keyboardType: TextInputType.number),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -165,20 +186,7 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.all(4),
-                    child: Text(S.of(context).amount),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(20),
-                    child: TextField(
-                        decoration: InputDecoration.collapsed(
-                            hintText: S.of(context).specifyAmount),
-                        controller: amountTextEditingController,
-                        keyboardType: TextInputType.number),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(4),
-                    child: Text(
-                        "${S.of(context).name}, ${S.of(context).dateCategory}"),
+                    child: Text(S.of(context).name),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(20),
@@ -187,6 +195,10 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                           hintText: S.of(context).addNameHere),
                       controller: nameTextEditingController,
                     ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: Text(S.of(context).category),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(20),
@@ -199,6 +211,10 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                           hintText: S.of(context).chooseCategory),
                       items: categories,
                     ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(4),
+                    child: Text(S.of(context).date),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(20),
@@ -228,7 +244,8 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                   if (selectedCategory != null &&
                       balanceChipSelectedIndex != null &&
                       nameTextEditingController.text != "" &&
-                      amountTextEditingController.text != "")
+                      amountTextEditingController.text != "" &&
+                      amountTextEditingController.numberValue != 0)
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
@@ -236,9 +253,9 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                             onPressed: () {
                               Item item = Item(
                                 title: nameTextEditingController.text,
-                                amount: int.parse(
-                                        amountTextEditingController.text) *
-                                    (isIncome ? 1 : -1),
+                                amount:
+                                    amountTextEditingController.numberValue *
+                                        (isIncome ? 1 : -1),
                                 balance:
                                     account.balances[balanceChipSelectedIndex!],
                                 category: selectedCategory!,

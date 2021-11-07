@@ -4,7 +4,8 @@
     "home": "Home",
     "account": "Account",
     "cards": "Kártyák",
-    "categories": "Kategoriák",
+    "categories": "Kategóriák",
+    "category": "Kategória",
     "balances": "Számlák",
     "balance": "Számla",
     "statistics": "Statisztikák",
@@ -20,6 +21,7 @@
     "creation": "Létrehozás",
     "areYouSure": "Biztos a döntésében?",
     "new_title": "Új",
+    "title": "Cím",
     "continueButton": "Következő",
     "finishButton": "Befejezés",
     "addNewCategory": "Új kategória hozzáadása",
@@ -66,5 +68,7 @@
     "details": "Részletek",
     "exportData": "Adatok exportálása",
     "exportVisuals": "Kimutatások exportálása",
-    "amazonTrees": "A megadott összegből ennyi fát lehetne ültetni az amazonasi esőerdőben: "
+    "amazonTrees": "A megadott összegből ennyi fát lehetne ültetni az amazonasi esőerdőben: ",
+    "date": "Dátum"
+
 }

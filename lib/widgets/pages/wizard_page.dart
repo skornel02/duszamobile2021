@@ -40,29 +40,29 @@ class _WizardPageState extends State<WizardPage> {
     return Stack(
       children: [
         Scaffold(
-            appBar: AppBar(
-              title: Text(S.of(context).new_title),
-              leading: IconButton(
-                icon: const FaIcon(FontAwesomeIcons.arrowLeft),
-                onPressed: () {
-                  Modular.to.pop();
-                },
+          appBar: AppBar(
+            title: Text(S.of(context).new_title),
+            leading: IconButton(
+              icon: const FaIcon(FontAwesomeIcons.arrowLeft),
+              onPressed: () {
+                Modular.to.pop();
+              },
+            ),
+          ),
+          body: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SimpleItemWizardWidget(
+                    balances: account.balances,
+                    createItem: createItem,
+                  ),
+                ],
               ),
             ),
-            body: SingleChildScrollView(
-              child: Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SimpleItemWizardWidget(
-                      balances: account.balances,
-                      createItem: createItem,
-                    ),
-                  ],
-                ),
-              ),
-            ),
+          ),
         ),
         Positioned(
           left: 10,

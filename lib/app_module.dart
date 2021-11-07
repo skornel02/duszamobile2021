@@ -1,6 +1,7 @@
 import 'package:duszamobile2021/repositories/account_repository.dart';
 import 'package:duszamobile2021/repositories/local_account_repostiroy.dart';
 import 'package:duszamobile2021/widgets/pages/advanced_wizard_page.dart';
+import 'package:duszamobile2021/widgets/pages/card_details_page.dart';
 import 'package:duszamobile2021/widgets/pages/tab_hoster_page.dart';
 import 'package:duszamobile2021/widgets/pages/wizard_page.dart';
 import 'package:duszamobile2021/widgets/tabs/balance_tab.dart';
@@ -26,6 +27,9 @@ class AppModule extends Module {
           ChildRoute("/statistics", child: (context, args) => StatisticsTab()),
         ]),
         ChildRoute("/wizard", child: (context, args) => WizardPage()),
-        ChildRoute("/wizard/advanced", child: (context, args) => AdvancedWizardPage())
+        ChildRoute("/wizard/advanced",
+            child: (context, args) => AdvancedWizardPage()),
+        ChildRoute("/items/:id",
+            child: (context, args) => CardDetailsPage(args.params["id"]))
       ];
 }

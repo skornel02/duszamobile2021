@@ -38,7 +38,8 @@ class ZoldOr extends StatelessWidget {
         primarySwatch: colors.accent1.asMaterialColor,
         fontFamily: "Nunito-Regular",
         cardTheme: CardTheme(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(36)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(36)),
           elevation: 4,
         ),
       ),

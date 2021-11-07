@@ -5,6 +5,7 @@
     "account": "Account",
     "cards": "Cards",
     "categories": "Categories",
+    "category": "Category",
     "balances": "Balances",
     "balance": "Balance",
     "statistics": "Statistics",
@@ -20,6 +21,7 @@
     "creation": "Creation",
     "areYouSure": "Are you sure about that?",
     "new_title": "New",
+    "title": "Title",
     "continueButton": "Continue",
     "finishButton": "Finish",
     "addNewCategory": "Add new category",
@@ -66,5 +68,7 @@
     "details": "Details",
     "exportData": "Export data",
     "exportVisuals": "Export visuals",
-    "amazonTrees": "With this much money this number of trees could have been planted in the Amazonian rainforest: "
+    "amazonTrees": "With this much money this number of trees could have been planted in the Amazonian rainforest: ",
+    "date": "Date"
+
 }
