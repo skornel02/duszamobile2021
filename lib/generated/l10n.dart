@@ -560,6 +560,16 @@ class S {
     );
   }
 
+  /// `Item successfully saved!`
+  String get itemSaved {
+    return Intl.message(
+      'Item successfully saved!',
+      name: 'itemSaved',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Amount`
   String get amount {
     return Intl.message(
@@ -805,6 +815,16 @@ class S {
     return Intl.message(
       'Spendings this month',
       name: 'spendingsThisMonth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `You need at least two balances to transfer money!`
+  String get needsAtLeast2Balances {
+    return Intl.message(
+      'You need at least two balances to transfer money!',
+      name: 'needsAtLeast2Balances',
       desc: '',
       args: [],
     );

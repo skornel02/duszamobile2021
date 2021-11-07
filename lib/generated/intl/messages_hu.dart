@@ -97,6 +97,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "income": MessageLookupByLibrary.simpleMessage("Bevétel"),
         "itemCreated": MessageLookupByLibrary.simpleMessage(
             "Bejegyzés sikeresen létrehozva!"),
+        "itemSaved":
+            MessageLookupByLibrary.simpleMessage("Bejegyzés sikeresen mentve!"),
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Legutóbbi tranzakciók"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),
@@ -104,6 +106,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mustBeWhole": MessageLookupByLibrary.simpleMessage(
             "Az értéknek egésznek kell lennie"),
         "name": MessageLookupByLibrary.simpleMessage("Név"),
+        "needsAtLeast2Balances": MessageLookupByLibrary.simpleMessage(
+            "Legalább 2 számlára van szükséged az utaláshoz!"),
         "newTransaction": MessageLookupByLibrary.simpleMessage("Új tranzakció"),
         "new_title": MessageLookupByLibrary.simpleMessage("Új"),
         "noRecordForAccount": MessageLookupByLibrary.simpleMessage(

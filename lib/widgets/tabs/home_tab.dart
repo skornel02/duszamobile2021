@@ -25,24 +25,25 @@ class _HomeTabState extends State implements Disposable {
 
   _HomeTabState() : repo = Modular.get<AccountRepository>() {
     account = repo.getAccount();
-    listener = () {
-      if (!mounted) return;
-      handleAccountChange();
-    };
-    repo.addListener(listener);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print("REGISTERING");
+    repo.addListener(handleAccountChange);
   }
 
   @override
   void dispose() {
+    repo.removeListener(handleAccountChange);
+    print("DEREGISTERING");
     super.dispose();
-    repo.removeListener(listener);
   }
 
   void handleAccountChange() {
-    repo.addListener(() {
-      setState(() {
-        account = repo.getAccount();
-      });
+    setState(() {
+      account = repo.getAccount();
     });
   }
 

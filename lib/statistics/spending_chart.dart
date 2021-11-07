@@ -151,8 +151,12 @@ class SpendingChart extends StatelessWidget {
       allValues.addAll(month.values);
     }
 
-    double maxMoney = allValues.reduce(max);
-    double minMoney = allValues.reduce(min);
+    double maxMoney = 0;
+    double minMoney = 0;
+    try {
+      maxMoney = allValues.reduce(max);
+      minMoney = allValues.reduce(min);
+    } catch (err) {}
     double range = maxMoney - minMoney;
 
     return LineChartData(

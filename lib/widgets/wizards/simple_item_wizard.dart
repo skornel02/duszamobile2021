@@ -59,7 +59,7 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
 
   _SimpleItemWizardWidgetState() {
     controller1.toggle();
-    textEditingController =  MoneyMaskedTextController(
+    textEditingController = MoneyMaskedTextController(
       rightSymbol: " HUF",
       decimalSeparator: "",
       thousandSeparator: " ",
@@ -74,8 +74,6 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
         }
       });
     });
-
-
   }
 
   @override
@@ -197,7 +195,8 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                                 setState(() {
                                   controller2.toggle();
                                   controller3.toggle();
-                                  selectedAmount = textEditingController.numberValue.toInt();
+                                  selectedAmount =
+                                      textEditingController.numberValue.toInt();
                                   FocusScope.of(context).unfocus();
                                   wizardStep++;
                                 });
@@ -269,7 +268,6 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                                     widget.balances[balanceChipSelectedIndex!];
 
                                 wizardStep++;
-
                               });
                             },
                     )

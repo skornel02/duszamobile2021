@@ -28,10 +28,9 @@ class AppModule extends Module {
           ChildRoute("/statistics", child: (context, args) => StatisticsTab()),
         ]),
         ChildRoute("/wizard", child: (context, args) => WizardPage()),
-        ChildRoute("/wizard/advanced",
-            child: (context, args) => AdvancedWizardPage()),
         ChildRoute("/items/:id",
-            child: (context, args) => CardDetailsPage(itemId: args.params["id"])),
+            child: (context, args) =>
+                CardDetailsPage(itemId: args.params["id"])),
         ChildRoute("/transaction-wizard",
             child: (context, args) => TransactionWizardPage())
       ];

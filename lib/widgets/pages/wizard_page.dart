@@ -2,6 +2,7 @@ import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:duszamobile2021/repositories/account_repository.dart';
 import 'package:duszamobile2021/resources/account.dart';
 import 'package:duszamobile2021/resources/item.dart';
+import 'package:duszamobile2021/widgets/wizards/advanced_item_wizard.dart';
 import 'package:duszamobile2021/widgets/wizards/simple_item_wizard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,17 +17,21 @@ class WizardPage extends StatefulWidget {
 
 class _WizardPageState extends State<WizardPage> {
   Account account;
+  bool simple = true;
 
   _WizardPageState() : account = Modular.get<AccountRepository>().getAccount();
 
   createItem(Item item) {
     Account next = Account.copy(account);
-    next.items.add(item);
+    List<Item> nextItems = List.of(account.items);
+    nextItems.add(item);
+    next.items = nextItems;
     Modular.get<AccountRepository>().saveAccount(next);
     setState(() {
       account = next;
     });
     Modular.to.pop();
+    Modular.to.navigate("/home");
     Fluttertoast.showToast(
       msg: S.current.itemCreated,
       toastLength: Toast.LENGTH_LONG,
@@ -51,27 +56,27 @@ class _WizardPageState extends State<WizardPage> {
           ),
           body: SingleChildScrollView(
             child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SimpleItemWizardWidget(
-                    balances: account.balances,
-                    createItem: createItem,
-                  ),
-                ],
-              ),
-            ),
+                padding: const EdgeInsets.all(16),
+                child: simple
+                    ? SimpleItemWizardWidget(
+                        balances: account.balances,
+                        createItem: createItem,
+                      )
+                    : AdvancedItemWizard(
+                        account: account,
+                        createItem: createItem,
+                      )),
           ),
         ),
         Positioned(
           left: 10,
           bottom: 18,
           child: ElevatedButton(
-            child: Text(S.of(context).advanced),
+            child: Text(simple ? S.of(context).advanced : S.of(context).easy),
             onPressed: () {
-              Modular.to.pop();
-              Modular.to.pushNamed("/wizard/advanced");
+              setState(() {
+                simple = !simple;
+              });
             },
           ),
         )

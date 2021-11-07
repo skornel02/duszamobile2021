@@ -70,7 +70,8 @@ class _BalanceTabState extends State<BalanceTab> {
                           padding: const EdgeInsets.only(bottom: 70),
                           child: BalanceInformation(
                             account: account,
-                            balance: account.balances[balanceChipSelectedIndex!],
+                            balance:
+                                account.balances[balanceChipSelectedIndex!],
                           ),
                         ),
                       )
@@ -89,11 +90,18 @@ class _BalanceTabState extends State<BalanceTab> {
       floatingActionButton: FloatingActionButton(
         child: const FaIcon(
           FontAwesomeIcons.dollarSign,
-         // color: Theme.of(context).disabledColor,
+          // color: Theme.of(context).disabledColor,
         ),
-        onPressed:  (){
-          if(account.balances.length >= 2){
+        onPressed: () {
+          if (account.balances.length >= 2) {
             Modular.to.pushNamed("/transaction-wizard");
+          } else {
+            Fluttertoast.showToast(
+              msg: S.of(context).needsAtLeast2Balances,
+              toastLength: Toast.LENGTH_LONG,
+              textColor: Colors.white,
+              backgroundColor: Colors.orange,
+            );
           }
         },
       ),

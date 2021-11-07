@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:duszamobile2021/generated/l10n.dart';
@@ -12,6 +11,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
@@ -60,7 +60,8 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
     item = account.items.firstWhere((element) => element.id == id);
     selectedDateTime = item.creation;
     titleTextEditingController.text = item.title;
-    dateTextEditingController.text = DateFormat('yyyy.MM.dd, HH:mm:ss').format(item.creation);
+    dateTextEditingController.text =
+        DateFormat('yyyy.MM.dd, HH:mm:ss').format(item.creation);
     amountTextEditingController = MoneyMaskedTextController(
       initialValue: item.amount,
       rightSymbol: " HUF",
@@ -113,18 +114,13 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: TextField(
-                  decoration:
-                      InputDecoration(
-                        hintText: S.of(context).title
-                      ),
+                  decoration: InputDecoration(hintText: S.of(context).title),
                   controller: titleTextEditingController,
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: TextField(
@@ -147,7 +143,8 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                       context,
                       showTitleActions: true,
                       currentTime: selectedDateTime,
-                      minTime: Jiffy(DateTime.now()).subtract(years: 1).dateTime,
+                      minTime:
+                          Jiffy(DateTime.now()).subtract(years: 1).dateTime,
                       maxTime: Jiffy(DateTime(DateTime.now().year,
                               DateTime.now().month, DateTime.now().day))
                           .add(days: 1)
@@ -157,14 +154,16 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                         setState(() {
                           selectedDateTime = date;
                           dateTextEditingController.text =
-                              DateFormat('yyyy.MM.dd, HH:mm:ss').format(selectedDateTime);
+                              DateFormat('yyyy.MM.dd, HH:mm:ss')
+                                  .format(selectedDateTime);
                         });
                       },
                       onConfirm: (date) {
                         setState(() {
                           selectedDateTime = date;
                           dateTextEditingController.text =
-                              DateFormat('yyyy.MM.dd, HH:mm:ss').format(selectedDateTime);
+                              DateFormat('yyyy.MM.dd, HH:mm:ss')
+                                  .format(selectedDateTime);
                         });
                       },
                       locale: LocaleType.en,
@@ -215,7 +214,6 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                   items: categories,
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.all(20),
                 child: DropdownButtonFormField(
@@ -228,7 +226,6 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                   items: balances,
                 ),
               ),
-
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ToggleSwitch(
@@ -283,60 +280,59 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                   animationDuration: 250,
                 ),
               ),
+              if (!kIsWeb)
+                Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 20, bottom: 10),
+                      child: ElevatedButton(
+                          onPressed: () async {
+                            FilePickerResult? result =
+                                await FilePicker.platform.pickFiles();
 
-              if(!kIsWeb) Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20, bottom: 10),
-                    child: ElevatedButton(onPressed: () async {
-                      FilePickerResult? result = await FilePicker.platform.pickFiles();
-
-                      if (result != null) {
-                        String path = result!.files!.single!.path!;
-                        File file = File(path);
-                        setState(() {
-                          filePaths.add(path);
-                        });
-
-                      } else {
-                        // User canceled the picker
-                      }
-
-
-                    }, child: Text(S.of(context).chooseAttachments)),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 80),
-                  //  height: 200,
-                  //  width: 400,
-                    child: ListView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        shrinkWrap: true,
-                        itemCount: filePaths.length,
-                        itemBuilder: (context, index){
-                          List<String> list = filePaths[index].split("/");
-                          return Card(
-                            child: Row(
+                            if (result != null) {
+                              String path = result!.files!.single!.path!;
+                              File file = File(path);
+                              setState(() {
+                                filePaths.add(path);
+                              });
+                            } else {
+                              // User canceled the picker
+                            }
+                          },
+                          child: Text(S.of(context).chooseAttachments)),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 80),
+                      //  height: 200,
+                      //  width: 400,
+                      child: ListView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: filePaths.length,
+                          itemBuilder: (context, index) {
+                            List<String> list = filePaths[index].split("/");
+                            return Card(
+                                child: Row(
                               children: [
                                 Padding(
                                   padding: const EdgeInsets.only(left: 8.0),
-                                  child: Text(list[list.length-1]),
+                                  child: Text(list[list.length - 1]),
                                 ),
                                 Spacer(),
-                                IconButton(onPressed: (){
-                                  setState(() {
-                                    filePaths.removeAt(index);
-                                  });
-                                }, icon: const FaIcon(FontAwesomeIcons.times))
+                                IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        filePaths.removeAt(index);
+                                      });
+                                    },
+                                    icon: const FaIcon(FontAwesomeIcons.times))
                               ],
-                            )
-                          );
-                        }),
-                  )
-                ],
-              )
-
-
+                            ));
+                          }),
+                    )
+                  ],
+                )
             ],
           ),
         ),
@@ -360,6 +356,12 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
           Modular.get<AccountRepository>().saveAccount(next);
           Modular.to.pop();
           Modular.to.navigate("/home");
+          Fluttertoast.showToast(
+            msg: S.current.itemSaved,
+            toastLength: Toast.LENGTH_LONG,
+            textColor: Colors.white,
+            backgroundColor: Colors.green,
+          );
         },
       ),
     );

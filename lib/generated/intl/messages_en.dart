@@ -94,6 +94,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "income": MessageLookupByLibrary.simpleMessage("Income"),
         "itemCreated":
             MessageLookupByLibrary.simpleMessage("Item created successfully!"),
+        "itemSaved":
+            MessageLookupByLibrary.simpleMessage("Item successfully saved!"),
         "latestTransactions":
             MessageLookupByLibrary.simpleMessage("Latest transactions"),
         "limit": MessageLookupByLibrary.simpleMessage("Limit"),
@@ -101,6 +103,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "mustBeWhole": MessageLookupByLibrary.simpleMessage(
             "Value must be a whole number"),
         "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "needsAtLeast2Balances": MessageLookupByLibrary.simpleMessage(
+            "You need at least two balances to transfer money!"),
         "newTransaction":
             MessageLookupByLibrary.simpleMessage("New transaction"),
         "new_title": MessageLookupByLibrary.simpleMessage("New"),
