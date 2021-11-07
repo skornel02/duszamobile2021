@@ -6,7 +6,7 @@ We have decided on [Flutter](https://flutter.dev/), for the following reasons:
 
  * Multi platform audience (Android, IOS, Web)
  * Rich ecosystem of libraries
- * Fast development cycle (Imporant here!)
+ * Fast development cycle (Important here!)
 
 The following drawbacks we are expecting:
 
@@ -55,7 +55,7 @@ The routing table of the project can be found in `/lib/app_module.dart`.
 
 ### Data structure
 
-The data structure can be found in the `/lib/resources folder`. 
+The data structure can be found in the `/lib/resources` folder. 
 
 ### Data storage
 
