@@ -86,6 +86,17 @@ class _HomeTabState extends State implements Disposable {
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0, bottom: 8.0),
+                child: Align(
+                  child: Text(
+                    S.of(context).thisMonth,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w300, fontSize: 20.0),
+                  ),
+                  alignment: Alignment.centerLeft,
+                ),
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -99,7 +110,7 @@ class _HomeTabState extends State implements Disposable {
                             style: const TextStyle(fontWeight: FontWeight.w300),
                           ),
                           Text(
-                              "${account.getIncomeMonth(DateTime.now().year, DateTime.now().month)} HUF",
+                              "${account.getIncomeMonth(DateTime.now().year, DateTime.now().month).toStringAsFixed(0)} HUF",
                               style: const TextStyle(fontSize: 18.0)),
                         ],
                       ),
@@ -115,7 +126,7 @@ class _HomeTabState extends State implements Disposable {
                             style: const TextStyle(fontWeight: FontWeight.w300),
                           ),
                           Text(
-                              "${account.getSpendingMonth(DateTime.now().year, DateTime.now().month)} HUF",
+                              "${account.getSpendingMonth(DateTime.now().year, DateTime.now().month).toStringAsFixed(0)} HUF",
                               style: const TextStyle(fontSize: 18.0)),
                         ],
                       ),
@@ -196,20 +207,25 @@ class _HomeTabState extends State implements Disposable {
                           bool alert =
                               creditBalance.limit != null && overBudget;
 
-                          return Text(
-                              "${creditBalance.name}: $daysRemaining _DAYSREMAINING; _OVERBUDGET: $alert");
+                          String alertText =
+                              alert ? S.of(context).yes : S.of(context).no;
+
+                          return Card(
+                            child: Padding(
+                              padding: const EdgeInsets.fromLTRB(
+                                  18.0, 12.0, 12.0, 12.0),
+                              child: Text(
+                                "${creditBalance.name}: $daysRemaining ${S.of(context).daysRemaining}\n${S.of(context).overBudget}: $alertText",
+                                style: const TextStyle(
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                            ),
+                          );
                         },
                       ),
                     ]
                   : []),
-              Align(
-                child: Text(
-                  S.of(context).thisMonth,
-                  style: const TextStyle(
-                      fontWeight: FontWeight.w300, fontSize: 20.0),
-                ),
-                alignment: Alignment.centerLeft,
-              ),
             ],
           ),
         ),

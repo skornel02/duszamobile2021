@@ -13,7 +13,6 @@
     "cancel": "Mégsem",
     "save": "Mentés",
     "printStatistics": "Statisztikák nyomtatása",
-    "exportData": "Adatok exportálása",
     "name": "Név",
     "addNew": "Új hozzáadása",
     "remove": "Törlés",
@@ -70,5 +69,9 @@
     "exportVisuals": "Kimutatások exportálása",
     "amazonTrees": "A megadott összegből ennyi fát lehetne ültetni az amazonasi esőerdőben: ",
     "date": "Dátum",
-    "accountMoneyHistory": "Számla történet"
+    "accountMoneyHistory": "Számla történet",
+    "daysRemaining": "nap maradt",
+    "overBudget": "Túlhaladt a kereten",
+    "yes": "igen",
+    "no": "nem"
 }

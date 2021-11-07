@@ -36,7 +36,7 @@ class ZoldOr extends StatelessWidget {
       supportedLocales: S.delegate.supportedLocales,
       theme: ThemeData(
         primarySwatch: colors.accent1.asMaterialColor,
-        fontFamily: "Nunito-Regular",
+        fontFamily: "Nunito",
         cardTheme: CardTheme(
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(36)),
