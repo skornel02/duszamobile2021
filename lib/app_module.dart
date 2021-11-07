@@ -30,6 +30,7 @@ class AppModule extends Module {
         ChildRoute("/wizard/advanced",
             child: (context, args) => AdvancedWizardPage()),
         ChildRoute("/items/:id",
-            child: (context, args) => CardDetailsPage(args.params["id"]))
+            child: (context, args) =>
+                CardDetailsPage(itemId: args.params["id"]))
       ];
 }
