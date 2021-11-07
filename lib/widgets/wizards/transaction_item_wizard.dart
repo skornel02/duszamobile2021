@@ -296,7 +296,7 @@ class _TransactionItemWizardWidgetState
                           Flexible(
                             child: Text(
                               S.of(context).clearCO +
-                                  "\n${(textEditingController.numberValue / 2400).toStringAsFixed(2)} kg",
+                                  "\n${((textEditingController.numberValue / 350)).toStringAsFixed(2)} kg",
                               textAlign: TextAlign.center,
                             ),
                           ),
