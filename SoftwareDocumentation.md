@@ -12,7 +12,7 @@ The following drawbacks we are expecting:
 
  * Bigger application size
  * Longer loading times
- * Second class integration (No widgets on android)
+ * Second class integration (No widgets on Android)
 
 ## Project structure
 
@@ -61,11 +61,11 @@ The data structure can be found in the `/lib/resources` folder.
 
 The backend of data storage has been generified and can be found in `/lib/repositories/account_repository.dart`
 
-Currently one implementation exists, that uses the User's shared preferences. This might be upgraded to an online storage like Google drive in the future.
+Currently one implementation exists, that uses the User's shared preferences. This might be upgraded to an online storage like Google Drive in the future.
 
 ## Setting the project up
 
-First step is to install the dependencies (prior flutter installation is expected)
+First step is to install the dependencies (prior Flutter installation is expected)
 ```
 flutter pub get
 ```
