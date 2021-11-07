@@ -73,5 +73,6 @@
     "daysRemaining": "nap maradt",
     "overBudget": "Túlhaladt a kereten",
     "yes": "igen",
-    "no": "nem"
+    "no": "nem",
+    "spendingsThisMonth": "E havi költések"
 }

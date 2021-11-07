@@ -809,6 +809,16 @@ class S {
       args: [],
     );
   }
+
+  /// `Spendings this month`
+  String get spendingsThisMonth {
+    return Intl.message(
+      'Spendings this month',
+      name: 'spendingsThisMonth',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

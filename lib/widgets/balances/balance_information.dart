@@ -31,6 +31,9 @@ class BalanceInformation extends StatelessWidget {
         break;
     }
     DateTime dueDate = DateTime.now();
+    int itemsForBalance = account.items
+        .where((element) => element.balanceId == balance.id)
+        .length;
 
     return Padding(
       padding: const EdgeInsets.all(14),
@@ -67,33 +70,39 @@ class BalanceInformation extends StatelessWidget {
                   : []),
             ],
           ),
-          SizedBox(
-            height: 240,
-            child: AspectRatio(
-              aspectRatio: 1.70,
-              child: Container(
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(18),
+          ...(itemsForBalance != 0
+              ? [
+                  SizedBox(
+                    height: 240,
+                    child: AspectRatio(
+                      aspectRatio: 1.70,
+                      child: Container(
+                        decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(18),
+                            ),
+                            color: Color(0xff232d37)),
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                            right: 18.0,
+                            left: 12.0,
+                            top: 24,
+                            bottom: 12,
+                          ),
+                          child: LineChart(
+                            moneyChangeData(context, account, balance: balance),
+                          ),
+                        ),
+                      ),
                     ),
-                    color: Color(0xff232d37)),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    right: 18.0,
-                    left: 12.0,
-                    top: 24,
-                    bottom: 12,
                   ),
-                  child: LineChart(
-                    moneyChangeData(context, account, balance: balance),
+                  Container(
+                    child: BalanceMonthy(account: account, balance: balance),
                   ),
-                ),
-              ),
-            ),
-          ),
-          Container(
-            child: BalanceMonthy(account: account, balance: balance),
-          ),
+                ]
+              : [
+                  Text("_NORECORDSFORTHISACCOUNT"),
+                ]),
         ],
       ),
     );

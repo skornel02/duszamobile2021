@@ -1,8 +1,16 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:math';
+
 import 'package:duszamobile2021/chart_helper.dart';
 import 'package:duszamobile2021/generated/l10n.dart';
+import 'package:duszamobile2021/indicator.dart';
 import 'package:duszamobile2021/repositories/account_repository.dart';
 import 'package:duszamobile2021/resources/account.dart';
 import 'package:duszamobile2021/resources/exporter.dart';
+import 'package:duszamobile2021/statistics/balance_changes_char.dart';
+import 'package:duszamobile2021/statistics/money_chart.dart';
+import 'package:duszamobile2021/statistics/spending_chart.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -46,15 +54,27 @@ class StatisticsTab extends StatelessWidget {
   void _shareData() async {
     List<ExportItem> exportItems = createExportItems(account);
     List<String> filelines = [ExportItem.headerLine];
-    exportItems.forEach((element) {
+    for (var element in exportItems) {
       filelines.add(element.line);
-    });
+    }
     String fileContent = filelines.join('\n');
     Share.share(fileContent);
   }
 
   @override
   Widget build(BuildContext context) {
+    List<String> categories = flattenCategories(account.categories);
+    Map<String, Color> categoryColors = {};
+    for (var category in categories) {
+      categoryColors[category] =
+          Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+    }
+    Map<String, Color> balanceColors = {};
+    for (var balance in account.balances) {
+      balanceColors[balance.id] =
+          Color((Random().nextDouble() * 0xFFFFFF).toInt()).withOpacity(1.0);
+    }
+
     return Scaffold(
       floatingActionButton: SpeedDial(
         icon: Icons.save,
@@ -77,10 +97,6 @@ class StatisticsTab extends StatelessWidget {
           ),
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   child: const Icon(Icons.print),
-      //   onPressed: _printScreen,
-      // ),
       body: SingleChildScrollView(
         child: RepaintBoundary(
           key: _printKey,
@@ -98,29 +114,38 @@ class StatisticsTab extends StatelessWidget {
                 ),
                 alignment: Alignment.centerLeft,
               ),
-              SizedBox(
-                height: 240,
-                child: AspectRatio(
-                  aspectRatio: 1.70,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(18),
-                        ),
-                        color: Color(0xff232d37)),
-                    child: Padding(
-                      padding: const EdgeInsets.only(
-                        right: 18.0,
-                        left: 12.0,
-                        top: 24,
-                        bottom: 12,
-                      ),
-                      child: LineChart(
-                        moneyChangeData(context, account),
-                      ),
-                    ),
+              MoneyChart(
+                account: account,
+                colorMap: balanceColors,
+              ),
+              Align(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Text(
+                    "_SPENDINGSTHISMONTH",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w300, fontSize: 20.0),
                   ),
                 ),
+                alignment: Alignment.centerLeft,
+              ),
+              SpendingChart(
+                account: account,
+                categoryColorMap: categoryColors,
+              ),
+              Align(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16.0),
+                  child: Text(
+                    "_COMPARISONPERBALANCE",
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w300, fontSize: 20.0),
+                  ),
+                ),
+                alignment: Alignment.centerLeft,
+              ),
+              BalanceChangesChart(
+                account: account,
               ),
             ],
           ),

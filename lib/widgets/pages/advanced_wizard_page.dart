@@ -267,20 +267,6 @@ class _AdvancedWizardPageState extends State<AdvancedWizardPage> {
                             child: Text(S.of(context).finishButton))
                       ],
                     )
-                  /*
-                  InputDatePickerFormField(
-
-                    onDateSaved: (date){
-                      setState(() {
-                        choosedDateTime = date;
-                      });
-                    },
-                    firstDate: DateTime.now(),
-                    lastDate: DateTime.now().add(Duration(days: 10)),
-                    fieldHintText: S.of(context).chooseDate,
-                  )
-
-                   */
                 ],
               ),
             ),

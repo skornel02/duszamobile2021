@@ -111,6 +111,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "single": MessageLookupByLibrary.simpleMessage("Single"),
         "specifyAmount": MessageLookupByLibrary.simpleMessage("Specify amount"),
         "spendingLimit": MessageLookupByLibrary.simpleMessage("Spending limit"),
+        "spendingsThisMonth":
+            MessageLookupByLibrary.simpleMessage("Spendings this month"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statistics"),
         "subcategoryCreated": MessageLookupByLibrary.simpleMessage(
             "Subcategory created successfully!"),

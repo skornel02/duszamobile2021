@@ -1,5 +1,6 @@
 import 'package:duszamobile2021/resources/account.dart';
 import 'package:duszamobile2021/resources/balance.dart';
+import 'package:duszamobile2021/resources/item.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:jiffy/jiffy.dart';

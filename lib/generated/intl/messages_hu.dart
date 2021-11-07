@@ -115,6 +115,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "specifyAmount":
             MessageLookupByLibrary.simpleMessage("Összeg meghatározása"),
         "spendingLimit": MessageLookupByLibrary.simpleMessage("Hitelkeret"),
+        "spendingsThisMonth":
+            MessageLookupByLibrary.simpleMessage("E havi költések"),
         "statistics": MessageLookupByLibrary.simpleMessage("Statisztikák"),
         "subcategoryCreated": MessageLookupByLibrary.simpleMessage(
             "Alkategória sikeresen létrehozva!"),
