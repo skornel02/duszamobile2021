@@ -232,14 +232,17 @@ class _SimpleItemWizardWidgetState extends State<SimpleItemWizardWidget> {
                       scrollDirection: Axis.horizontal,
                       itemCount: widget.balances.length,
                       itemBuilder: (context, index) {
-                        return ChoiceChip(
-                          label: Text(widget.balances[index].name),
-                          selected: balanceChipSelectedIndex == index,
-                          onSelected: (selected) {
-                            setState(() {
-                              balanceChipSelectedIndex = index;
-                            });
-                          },
+                        return Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: ChoiceChip(
+                            label: Text(widget.balances[index].name),
+                            selected: balanceChipSelectedIndex == index,
+                            onSelected: (selected) {
+                              setState(() {
+                                balanceChipSelectedIndex = index;
+                              });
+                            },
+                          ),
                         );
                       }),
                 ),

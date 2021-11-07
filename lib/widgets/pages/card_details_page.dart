@@ -1,55 +1,76 @@
-import 'package:date_time_picker/date_time_picker.dart';
+
+import 'dart:io';
+
 import 'package:duszamobile2021/generated/l10n.dart';
 import 'package:duszamobile2021/repositories/account_repository.dart';
 import 'package:duszamobile2021/resources/account.dart';
 import 'package:duszamobile2021/resources/balance.dart';
 import 'package:duszamobile2021/resources/item.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:jiffy/jiffy.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 
 class CardDetailsPage extends StatefulWidget {
   final String itemId;
 
-  CardDetailsPage(this.itemId);
+  const CardDetailsPage({Key? key, required this.itemId}) : super(key: key);
 
   @override
-  State<CardDetailsPage> createState() => _CardDetailsPageState();
+  // ignore: no_logic_in_create_state
+  State<CardDetailsPage> createState() => _CardDetailsPageState(itemId);
 }
 
 class _CardDetailsPageState extends State<CardDetailsPage> {
   Account account;
+  late Item item;
 
-  TextEditingController titleTextEditingController = TextEditingController();
-  TextEditingController dateTextEditingController = TextEditingController();
-  MoneyMaskedTextController amountTextEditingController =
-      MoneyMaskedTextController(
-          rightSymbol: " HUF",
-          decimalSeparator: "",
-          thousandSeparator: " ",
-          precision: 0); //after
+  TextEditingController titleTextEditingController;
+  TextEditingController dateTextEditingController;
+  late MoneyMaskedTextController amountTextEditingController;
 
-  DateTime? selectedDateTime;
+  late DateTime selectedDateTime;
 
-  Item? item;
-
-  String? selectedCategory;
+  late String selectedCategory;
   List<DropdownMenuItem> categories = [];
 
-  Balance? selectedBalance;
+  late Balance selectedBalance;
   List<DropdownMenuItem> balances = [];
 
-  bool isIncome = true;
-  bool isSingle = true;
+  late bool isIncome;
+  late bool isSingle;
 
   int incomeToggleIndex = 0;
   int singleToggleIndex = 0;
 
-  _CardDetailsPageState()
-      : account = Modular.get<AccountRepository>().getAccount();
+  List<String> filePaths = [];
+
+  _CardDetailsPageState(String id)
+      : account = Modular.get<AccountRepository>().getAccount(),
+        titleTextEditingController = TextEditingController(),
+        dateTextEditingController = TextEditingController() {
+    item = account.items.firstWhere((element) => element.id == id);
+    selectedDateTime = item.creation;
+    titleTextEditingController.text = item.title;
+    dateTextEditingController.text = item.creation.toString();
+    amountTextEditingController = MoneyMaskedTextController(
+      initialValue: item.amount,
+      rightSymbol: " HUF",
+      decimalSeparator: "",
+      thousandSeparator: " ",
+      precision: 0,
+    );
+    selectedCategory = item.category;
+    selectedBalance = account.getBalanceFromId(item.balanceId)!;
+    isSingle = !item.monthly;
+    isIncome = item.amount >= 0;
+  }
 
   @override
   void initState() {
@@ -60,30 +81,16 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
         value: element,
       ));
     });
-    item = account.getItemFromId(widget.itemId);
 
-    titleTextEditingController.text = item!.title;
-    dateTextEditingController.text = item!.creation.toString();
-    selectedCategory = item!.category;
-    selectedBalance = account.getBalanceFromId(item!.balanceId);
-    account.balances.forEach((element) {
+    for (var element in account.balances) {
       balances.add(DropdownMenuItem(
         child: Text(element.name),
         value: element,
       ));
-    });
-    amountTextEditingController.text = item!.amount.toString();
+    }
 
-    isSingle = !item!.monthly;
-    if (isSingle)
-      singleToggleIndex = 0;
-    else
-      singleToggleIndex = 1;
-    isIncome = item!.amount > 0;
-    if (isIncome)
-      incomeToggleIndex = 0;
-    else
-      incomeToggleIndex = 1;
+    singleToggleIndex = isSingle ? 0 : 1;
+    incomeToggleIndex = isIncome ? 0 : 1;
   }
 
   @override
@@ -119,7 +126,9 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
               padding: const EdgeInsets.all(20),
               child: TextField(
                 decoration:
-                    InputDecoration.collapsed(hintText: S.of(context).title),
+                    InputDecoration(
+                      hintText: S.of(context).title
+                    ),
                 controller: titleTextEditingController,
               ),
             ),
@@ -142,19 +151,32 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
                   // Below line stops keyboard from appearing
                   FocusScope.of(context).requestFocus(FocusNode());
 
-                  DateTime? pickedDateTime = await showDatePicker(
-                      context: context,
-                      initialDate: DateTime.now(),
-                      firstDate:
-                          DateTime.now().subtract(const Duration(days: 365)),
-                      lastDate: DateTime.now());
-                  if (pickedDateTime != null) {
-                    setState(() {
-                      dateTextEditingController.text =
-                          pickedDateTime.toString();
-                      selectedDateTime = pickedDateTime;
-                    });
-                  }
+                  DatePicker.showDateTimePicker(
+                    context,
+                    showTitleActions: true,
+                    currentTime: selectedDateTime,
+                    minTime: Jiffy(DateTime.now()).subtract(years: 1).dateTime,
+                    maxTime: Jiffy(DateTime(DateTime.now().year,
+                            DateTime.now().month, DateTime.now().day))
+                        .add(days: 1)
+                        .subtract(seconds: 1)
+                        .dateTime,
+                    onChanged: (date) {
+                      setState(() {
+                        selectedDateTime = date;
+                        dateTextEditingController.text =
+                            selectedDateTime.toString();
+                      });
+                    },
+                    onConfirm: (date) {
+                      setState(() {
+                        selectedDateTime = date;
+                        dateTextEditingController.text =
+                            selectedDateTime.toString();
+                      });
+                    },
+                    locale: LocaleType.en,
+                  );
                 },
               ),
             ),
@@ -281,15 +303,45 @@ class _CardDetailsPageState extends State<CardDetailsPage> {
 
             // TODO: csatolmányokat megcsinálni
             Text("Csatolmányok???"),
+
+            ElevatedButton(onPressed: () async {
+              FilePickerResult? result = await FilePicker.platform.pickFiles();
+
+              if (result != null) {
+                String path = result!.files!.single!.path!;
+                File file = File(path);
+                filePaths.add(path);
+
+              } else {
+                // User canceled the picker
+              }
+
+
+            }, child: Text("Choose image"))
+
+
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         child: FaIcon(FontAwesomeIcons.save),
         onPressed: () {
-          // TODO: save item
+          Item nextItem = Item.copy(item);
+          nextItem.title = titleTextEditingController.text;
+          nextItem.amount =
+              amountTextEditingController.numberValue * (isIncome ? 1 : -1);
+          nextItem.category = selectedCategory;
+          nextItem.creation = selectedDateTime;
+          nextItem.balanceId = selectedBalance.id;
 
+          Account next = Account.copy(account);
+          next.items = [
+            ...account.items.where((element) => element.id != item.id),
+            nextItem
+          ];
+          Modular.get<AccountRepository>().saveAccount(next);
           Modular.to.pop();
+          Modular.to.navigate("/home");
         },
       ),
     );

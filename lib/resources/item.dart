@@ -21,6 +21,8 @@ class Item {
   })  : id = (const Uuid()).v4(),
         balanceId = balance.id;
 
+  Item.copy(Item item) : this.fromMap(item.toMap());
+
   Item.fromMap(Map<String, dynamic> map)
       : id = map['id'],
         title = map['title'],

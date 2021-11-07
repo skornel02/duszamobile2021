@@ -84,7 +84,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Kimutatások exportálása"),
         "finishButton": MessageLookupByLibrary.simpleMessage("Befejezés"),
         "fromBalance": MessageLookupByLibrary.simpleMessage("Honnan"),
-        "home": MessageLookupByLibrary.simpleMessage("Home"),
+        "home": MessageLookupByLibrary.simpleMessage("Főoldal"),
         "homePage":
             MessageLookupByLibrary.simpleMessage("Flutter demó otthon oldal"),
         "income": MessageLookupByLibrary.simpleMessage("Bevétel"),

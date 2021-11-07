@@ -19,13 +19,23 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State implements Disposable {
-  late AccountRepository repo;
+  AccountRepository repo;
   late Account account;
+  late VoidCallback listener;
 
-  _HomeTabState() {
-    repo = Modular.get<AccountRepository>();
+  _HomeTabState() : repo = Modular.get<AccountRepository>() {
     account = repo.getAccount();
-    repo.addListener(handleAccountChange);
+    listener = () {
+      if (!mounted) return;
+      handleAccountChange();
+    };
+    repo.addListener(listener);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    repo.removeListener(listener);
   }
 
   void handleAccountChange() {
@@ -34,12 +44,6 @@ class _HomeTabState extends State implements Disposable {
         account = repo.getAccount();
       });
     });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    repo.removeListener(handleAccountChange);
   }
 
   @override
@@ -81,6 +85,43 @@ class _HomeTabState extends State implements Disposable {
                     ),
                   ),
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            S.of(context).income,
+                            style: const TextStyle(fontWeight: FontWeight.w300),
+                          ),
+                          Text(
+                              "${account.getIncomeMonth(DateTime.now().year, DateTime.now().month)} HUF",
+                              style: const TextStyle(fontSize: 18.0)),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          Text(
+                            S.of(context).outcome,
+                            style: const TextStyle(fontWeight: FontWeight.w300),
+                          ),
+                          Text(
+                              "${account.getSpendingMonth(DateTime.now().year, DateTime.now().month)} HUF",
+                              style: const TextStyle(fontSize: 18.0)),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
               ),
               Align(
                 child: Padding(
@@ -168,43 +209,6 @@ class _HomeTabState extends State implements Disposable {
                       fontWeight: FontWeight.w300, fontSize: 20.0),
                 ),
                 alignment: Alignment.centerLeft,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            S.of(context).income,
-                            style: const TextStyle(fontWeight: FontWeight.w300),
-                          ),
-                          Text(
-                              "${account.getIncomeMonth(DateTime.now().year, DateTime.now().month)} HUF",
-                              style: const TextStyle(fontSize: 18.0)),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Card(
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: [
-                          Text(
-                            S.of(context).outcome,
-                            style: const TextStyle(fontWeight: FontWeight.w300),
-                          ),
-                          Text(
-                              "${account.getSpendingMonth(DateTime.now().year, DateTime.now().month)} HUF",
-                              style: const TextStyle(fontSize: 18.0)),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
               ),
             ],
           ),

@@ -179,14 +179,17 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
                         if(selectedFromBalanceIndex == index){
                           return Container();
                         }
-                        return ChoiceChip(
-                          label: Text(toBalanceOptions[index].name),
-                          selected: selectedToBalanceIndex == index,
-                          onSelected: (selected) {
-                            setState(() {
-                              selectedToBalanceIndex = index;
-                            });
-                          },
+                        return Padding(
+                          padding: const EdgeInsets.all(4),
+                          child: ChoiceChip(
+                            label: Text(toBalanceOptions[index].name),
+                            selected: selectedToBalanceIndex == index,
+                            onSelected: (selected) {
+                              setState(() {
+                                selectedToBalanceIndex = index;
+                              });
+                            },
+                          ),
                         );
                       }),
                 ),
@@ -298,8 +301,12 @@ class _TransactionItemWizardWidgetState extends State<TransactionItemWizardWidge
 
                     int amount = int.parse(selectedAmount!);
 
-                    account.transfer(selectedFromBalance, selectedToBalance, amount);
+                    
+                    Account next = Account.copy(account)..transfer(selectedFromBalance, selectedToBalance, amount);
+                    Modular.get<AccountRepository>().saveAccount(next);
+                    
                     Modular.to.pop();
+                    Modular.to.navigate("/home");
                     /*
                     Item? item;
                     switch (typeChipSelectedIndex) {

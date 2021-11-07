@@ -17,7 +17,9 @@ class BalanceTab extends StatefulWidget {
 
 class _BalanceTabState extends State<BalanceTab> {
   int? balanceChipSelectedIndex;
-  Account account;
+  late AccountRepository repo;
+  late Account account;
+  late VoidCallback listener;
 
   _BalanceTabState() : account = Modular.get<AccountRepository>().getAccount();
 
