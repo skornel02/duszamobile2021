@@ -8,8 +8,8 @@ const RESOURCES = {
 "icons/Icon-512.png": "d16823b98aa5952926eddbf939b2c849",
 "icons/Icon-192.png": "9ccd4f980cb522381353fd867c734a40",
 "favicon.png": "12bc180a82084310c5393f54776dfdb2",
-"index.html": "e5e001381919832b6abf5bef137a818b",
-"/": "e5e001381919832b6abf5bef137a818b",
+"index.html": "73b055ed5be6fa9f0a29878bbe847972",
+"/": "73b055ed5be6fa9f0a29878bbe847972",
 "manifest.json": "749f4cca4227d245d622661e1d42c85a",
 "favicon.ico": "7eb248d9ecaa008ecf16915de2b3aa6e",
 "version.json": "78e98cebc4e6bda9c388e003f1539ccc",
@@ -43,7 +43,7 @@ const RESOURCES = {
 "assets/assets/animations/exploding_earth.json": "a4defe95066fcd8e8d7887b6b5fc2a44",
 "assets/assets/animations/falling_tree.json": "b088520576ae0e4762a8cca5d41d89d3",
 "assets/AssetManifest.json": "75513829aa1cf456010dfdd52987a20b",
-"main.dart.js": "c467899a8957f44da3f92d3e69a91130"
+"main.dart.js": "24162b451310692a082c089f29494db4"
 };
 
 // The application shell files that are downloaded before a service worker can
